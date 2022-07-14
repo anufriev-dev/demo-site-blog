@@ -1,6 +1,6 @@
 import useSwr from "swr"
 import { fetcher } from "../utils/fetcher"
-import Layout from "../components/other/Layout/Layout"
+import Layout from "../components/other/layout/Layout"
 
 import styles from "../styles/pages/index.module.scss"
 

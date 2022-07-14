@@ -1,11 +1,17 @@
-import "./layout.module.scss"
-import Navbar from "../Navbar/Navbar"
+import Header from "../Header/Header"
+import Footer from "../footer/footer"
+
+import styles from "./layout.module.scss"
 
 export default function Layout({ children }) {
   return (
     <>
-        <Navbar />
+
+      <Header />
+
         <main>{ children }</main>
+
+      <Footer />
     
     </>
 

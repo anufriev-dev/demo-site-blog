@@ -1,0 +1,15 @@
+.nav {
+
+  display: inline-block;
+
+  &__list {
+    display: flex;
+  }
+  &__item {
+    &:not(:last-child) {
+      margin-right: 1.5em;
+    }
+  }
+}
+
+.link {}

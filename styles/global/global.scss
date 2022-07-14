@@ -1,1 +1,11 @@
 @import "../lib/normalize.css";
+
+
+ul {
+  list-style-type: none;
+}
+
+// dev 
+main {
+  min-height: 700px;
+}

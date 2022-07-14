@@ -1,37 +1,17 @@
-import Link from "next/link"
+import NextJsLink from "./NextJsLink"
 
-/**
- * classes in scss
- * 
- * .nav {
- *
- *     &__ul {
- *
- *     }
- *     &__item {
- *  
- *     }
- *     &__link {
- *
- *     }
- * }
- * 
- */
-export default function NavList({ names, styles }) {
+
+export default function NavList({ styles, names }) {
 
   return (
-    <nav className={ styles.nav }>
-      <ul className={ styles.nav__ul }>
+      <ul className={ styles.nav__list }>
         {
           names.map((it,index) => (
             <li className={ styles.nav__item } key={ index }>
-              <Link href="#">
-                <a className={ styles.nav__link } >{ it }</a>
-              </Link>
+              <NextJsLink href={"#"} styles={styles} name={it} />
             </li>
           ))
         }
       </ul>
-    </nav>
   )
 }
