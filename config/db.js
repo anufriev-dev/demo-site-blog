@@ -7,5 +7,3 @@ export default new Pool({
   port: process.env.PORT,
   database: process.env.DB
 })
-
-

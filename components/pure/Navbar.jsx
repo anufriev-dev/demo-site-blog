@@ -1,15 +1,10 @@
-import { Container } from "@mui/system"
 import NavList from "./NavList"
 
 
-export default function Navbar ({ styles, names }) {
+export default function Navbar ({ styles, data }) {
   return (
     <nav className={styles.nav}>
-
-      <Container>
-        <NavList styles={styles} names={names}/>
-      </Container>
-
+        <NavList styles={styles} data={data}/>
     </nav>
   )
 }

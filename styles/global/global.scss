@@ -1,11 +1,27 @@
 @import "../lib/normalize.css";
+@import "./var.scss";
+
 
 
 ul {
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 // dev 
 main {
   min-height: 700px;
 }
+
+// acitv link - NavLink
+
+#active {
+  color: rgb(2, 172, 220);
+  pointer-events: none;
+}
+
+
+
+
+@import "./fonts.scss";

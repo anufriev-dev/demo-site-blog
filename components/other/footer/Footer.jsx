@@ -1,12 +1,17 @@
 import { Container } from "@mui/system"
 import CardFooter from "../../pure/CardFooter"
+import LinksFooter from "../../pure/LinksFooter"
+
 
 /* styles
    -------------------------------------------------- */
 import indexStyles from "./styles/index.module.scss"
-import cardFooter from "./styles/cardFooter.module.scss"
+import cardStyles from "./styles/card.module.scss"
+import linksStyles from "./styles/links.module.scss"
+import copyrightStyles from "./styles/copyright.module.scss"
 
 
+// fake data
 const data = [
   {
     title: "О блоге", 
@@ -20,8 +25,13 @@ const data = [
     href: "#"
   },
 ]
-
-
+// fake data
+const dataLinks = [
+  {namelink: "Последние комментарии",href: "#"},
+  {namelink: "О блоге",href: "#"},
+  {namelink: "Privacy Policy",href: "#"},
+  {namelink: "Мои железки", href: "#"}
+]
 
 
 export default function Footer() {
@@ -29,16 +39,28 @@ export default function Footer() {
   return (
     <footer className={indexStyles.footer}>
 
-      <Container>
-          {/* карточки */}
-        <CardFooter styles={cardFooter} card={data} />
+        {/* карточки */}
+      <div className={cardStyles.wrapCard}>
+        <Container>
+          <CardFooter styles={cardStyles} card={data} />
+        </Container>
+      </div>
 
-          {/* todo: ссылки */}
-  
-          {/* todo: копирайт */}
+        {/* ссылки */}
+      <div className={linksStyles.wrapLinks}>
+        <Container>
+          <LinksFooter styles={linksStyles} data={dataLinks}/>
+        </Container>
+      </div>
 
-      </Container>
-
+        {/* копирайт */}
+      <div className={copyrightStyles.wrapCopyright}>
+        <Container>
+          <p className={copyrightStyles.title}>
+            Copyright © 2022 Ануфриев Георгий. Тираж 1 штука. Отпечатано на компьютере. А за права отвечаю, или постараюсь.
+          </p>
+        </Container>
+      </div>
 
     </footer>
   )

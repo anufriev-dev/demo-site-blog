@@ -1,7 +1,11 @@
+.navbarWrap {
+  padding: 2em 0;
+  background: var(--themeLayoutOne);
+}
+
 .nav {
-
   display: inline-block;
-
+  
   &__list {
     display: flex;
   }
@@ -12,4 +16,8 @@
   }
 }
 
-.link {}
+.link {
+  text-decoration: none;
+  font-family: "Roboto-Regular";
+  color: white;
+}
