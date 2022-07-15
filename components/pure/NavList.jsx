@@ -1,4 +1,4 @@
-import NextJsLink from "./NextJsLink"
+import NextJsActiveLink from "./NextJsLActiveLink"
 
 
 export default function NavList({ styles, data }) {
@@ -8,7 +8,7 @@ export default function NavList({ styles, data }) {
         {
           data.map((it,index) => (
             <li className={ styles.nav__item } key={ index } >
-                <NextJsLink href={it.href} styles={styles} name={it.namelink} />
+                <NextJsActiveLink href={it.href} styles={styles} name={it.namelink} />
             </li>
           ))
         }

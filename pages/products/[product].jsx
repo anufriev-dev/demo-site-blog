@@ -19,12 +19,7 @@ export default function Products ({ data }) {
   )
 }
 
-export function getStaticPaths ({ props = null }) {
-
-  // const paths = posts.map((post) => ({
-  //   params: { id: post.id },
-  // }))
-  // return { paths, fallback: false }
+export function getStaticPaths () {
 
   return {
     paths: [

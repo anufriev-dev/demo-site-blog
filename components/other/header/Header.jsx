@@ -9,8 +9,8 @@ import navbarTopStyles from "./styles/navbarTop.module.scss"
 
 // fake data
 const dataLinks = [
-  {namelink: "Статьи",href: "#"},
-  {namelink: "Блог",href: "/"},
+  {namelink: "Статьи",href: "/"},
+  {namelink: "Блог",href: "/blog"},
   {namelink: "Книги",href: "#"},
   {namelink: "Видео", href: "#"},
   {namelink: "Подкасты", href: "#"}
@@ -26,7 +26,7 @@ export default function Header() {
     <div className={navbarTopStyles.navbarWrap}>
       <Container>
           <Navbar styles={navbarTopStyles} data={dataLinks} />
-          <button>Войти</button>
+          {/* <button>Войти</button> */}
       </Container>
     </div>
 

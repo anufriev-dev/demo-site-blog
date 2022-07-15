@@ -1,9 +1,4 @@
-import useSwr from "swr"
-import { fetcher } from "../utils/fetcher"
 import Layout from "../components/other/layout/Layout"
-
-import styles from "../styles/pages/index.module.scss"
-
 
 export default function HomePage () {
   
@@ -15,7 +10,7 @@ export default function HomePage () {
   return (
     <Layout>
 
-      <p>Main content</p>
+      <p>Main content </p>
 
     </Layout>
   )
