@@ -1,6 +1,6 @@
 import { Container } from "@mui/system"
-import CardFooter from "../../pure/CardFooter"
-import LinksFooter from "../../pure/LinksFooter"
+import CardFooter from "../../ui/CardFooter"
+import LinksFooter from "../../ui/LinksFooter"
 
 
 /* styles

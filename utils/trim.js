@@ -1,11 +1,9 @@
-
-
 /**
- * ```js
- *  "/string/[params]" -> "/string"  
+ * ```
+ * "/string/[params]" -> "/string"
  * ```
  */
-export default function trim (string) // : string
+module.exports = function trim (string) // : string
 { 
   // ожидаем путь вида: "/str/[id]" 
   if(string.includes("[")) { // если находим "[" в "/str/[params]"

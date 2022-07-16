@@ -2,6 +2,13 @@
 @import "./var.scss";
 
 
+body {
+  overflow-x: auto;
+}
+.stopScroll {
+  overflow: hidden;
+  position: fixed;
+}
 
 ul {
   list-style-type: none;
@@ -9,17 +16,24 @@ ul {
   margin: 0;
 }
 
-// dev 
 main {
-  min-height: 700px;
+  min-height: 700px; // dev
+  height: 100%;
+  padding: 3em 2em;
+  text-align: center;
+  overflow: auto;
+  transition: all 0.5s ease 0s;
 }
 
 // acitv link - NavLink
-
-#active {
+#activeLink {
   color: rgb(2, 172, 220);
   pointer-events: none;
 }
+
+
+
+
 
 
 
