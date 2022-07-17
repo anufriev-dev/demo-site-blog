@@ -1,6 +1,8 @@
 import { Container } from "@mui/system"
 import Navbar from "../../ui/Navbar"
 import BurgerMenu from "../../ui/BurgerMenu"
+import { useRouter } from "next/router"
+import { DELAY_DROP_DOWN_BURGER_MENU } from "../../../config/config"
 
 /* styles
    -------------------------------------------------- */
@@ -20,6 +22,18 @@ const dataLinks = [
 
 export default function Header({ isActiveBurger, setIsActiveBurger }) {
 
+  const router = useRouter()
+
+  const closeNavBar = (e,href) => {
+    if(isActiveBurger) {
+      e.preventDefault()
+      setIsActiveBurger(false)
+      setTimeout(() => {
+        router.push(href)
+      },DELAY_DROP_DOWN_BURGER_MENU) 
+    }
+  }
+
   return (
       
     <header className={ indexStyles.header }>
@@ -28,7 +42,7 @@ export default function Header({ isActiveBurger, setIsActiveBurger }) {
       <div className={ navbarTopStyles.navbarWrap }>
         <Container>
           <div onClick={(e) => e.stopPropagation()} className={ navbarTopStyles.reverseWrap }>
-            <Navbar isActiveBurger={ isActiveBurger } styles={ navbarTopStyles } data={ dataLinks } />
+            <Navbar closeNavBar={ closeNavBar } isActiveBurger={ isActiveBurger } styles={ navbarTopStyles } data={ dataLinks } />
             <BurgerMenu
               isActiveBurger={ isActiveBurger }
               setIsActiveBurger={ setIsActiveBurger }

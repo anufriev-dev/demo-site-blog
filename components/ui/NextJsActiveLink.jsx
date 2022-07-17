@@ -4,7 +4,8 @@ import trim from "../../utils/trim"
 import cn from "classnames"
 
 
-export default function NextJsActiveLink({ href, styles, name }) {
+
+export default function NextJsActiveLink({ href, styles, name, onClick }) {
 
   const { pathname } = useRouter()
 
@@ -13,7 +14,7 @@ export default function NextJsActiveLink({ href, styles, name }) {
   return (
 
     <Link href={ href }>
-      <a id={ trim(pathname) == href ? "activeLink" : null } className={ className }>{ name }</a>
+      <a  onClick={ onClick ? (e) => onClick(e,href) : null }  id={ trim(pathname) == href ? "activeLink" : null } className={ className }>{ name }</a>
     </Link>
 
   )

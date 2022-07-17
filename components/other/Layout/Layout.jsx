@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import resize from "../../../utils/resize"
+import { SIZE_WINDOW_DROP_DOWN_BURGER_MENU } from "../../../config/config"
 
 /* Components */
 import Header from "../Header/Header"
@@ -17,7 +18,7 @@ export default function Layout({ children }) {
  
   // закрыть выпадающее меню при ресайзе
   useEffect(() => {
-    window.addEventListener("resize", (event) => resize(event, setIsActiveBurger, 719))
+    window.addEventListener("resize", (event) => resize(event, setIsActiveBurger, SIZE_WINDOW_DROP_DOWN_BURGER_MENU))
     return () => window.removeEventListener("resize", resize)
   })
 
@@ -32,7 +33,10 @@ export default function Layout({ children }) {
   return (
     <div onClick={() => setIsActiveBurger(false)}>
 
-      <Header isActiveBurger={ isActiveBurger } setIsActiveBurger={ setIsActiveBurger } />
+      <Header 
+        isActiveBurger={ isActiveBurger } 
+        setIsActiveBurger={ setIsActiveBurger } 
+        />
 
         <main className={ isActiveBurger ? indexStyles.mainTransform : null }>{ children }</main>
 
