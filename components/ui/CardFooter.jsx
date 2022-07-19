@@ -3,6 +3,9 @@ import NextJsActiveLink from "./NextJsActiveLink.jsx"
 
 
 export default function CardFooter({ styles, card }) {
+
+  if(!card) return <h1>Loading</h1>
+  
   return (
     <Grid container={ true } spacing={3} rowSpacing={6}>
       {

@@ -9,15 +9,10 @@ import { DELAY_DROP_DOWN_BURGER_MENU } from "../../../config/config"
 import indexStyles from "./styles/index.module.scss"
 import navbarTopStyles from "./styles/navbarTop.module.scss"
 
-// fake data
-const dataLinks = [
-  {namelink: "Главная", href: "/"},
-  {namelink: "Статьи",href: "#"},
-  {namelink: "Блог",href: "/blog"},
-  {namelink: "Книги",href: "#"},
-  {namelink: "Видео", href: "#"},
-  {namelink: "Подкасты", href: "#"}
-]
+/* fake data
+   -------------------------------------------------- */
+import { dataLinks } from "../../../fake_database"
+
 
 
 export default function Header({ isActiveBurger, setIsActiveBurger }) {
@@ -35,7 +30,7 @@ export default function Header({ isActiveBurger, setIsActiveBurger }) {
   }
 
   return (
-      
+
     <header className={ indexStyles.header }>
 
       {/* nav-bar Top */}
