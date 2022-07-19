@@ -1,0 +1,53 @@
+.wrapp {
+
+}
+
+.title {
+  font-family: "Montserrat-Light";
+  font-size: 30px;
+  letter-spacing: 1px;
+
+}
+.cardBlog {
+  padding: 0 10px;
+
+  &__link {
+    text-decoration: none;
+    color: var(--linkLayout);
+    &:hover {
+      color: var(--linkLayoutHover);
+      text-decoration: underline;
+    }
+    &:active {
+      color: var(--linkLayoutActive);
+    }
+  }
+  &__imgContainer {
+    
+  }
+  &__img {
+    max-width: 100%;
+    padding: 0 10px 10px 0;
+    margin: 10px 10px 0 0;
+    object-fit: cover;
+  }
+  &__text {
+    font-family: "Raleway-Light";
+    font-size: 120%;
+    line-height: 1.5;
+    text-align: justify;
+    margin: 10px 0px 15px 0px;
+  }
+}
+
+.img_float {
+  float: left;
+}
+
+@media (max-width: 1050px) {
+  .cardBlog {
+    &__img {
+      width: 100%;
+    }
+  }
+}

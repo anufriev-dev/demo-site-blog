@@ -12,7 +12,7 @@ export default function CardFooter({ styles, card }) {
               <h3 className={ styles.title }>{ it.title }</h3>
               <p className={ styles.content }>{ it.text }</p>
 
-            { it.namelink && <NextJsActiveLink href={ it.href } name={ it.namelink } styles={ styles }/> }
+            { it.namelink && <NextJsActiveLink href={ it.href } name={ it.namelink } classNameProps={ styles.link }/> }
             
             </div>
           </Grid>

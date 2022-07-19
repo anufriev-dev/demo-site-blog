@@ -20,7 +20,7 @@ main {
   min-height: 700px; // dev
   height: 100%;
   padding: 3em 2em;
-  text-align: center;
+  // text-align: center;
   overflow: auto;
   transition: all var(--delayBurgerMenu) ease 0s;
 }
@@ -28,7 +28,7 @@ main {
 // acitv link - NavLink
 #activeLink {
   color: rgb(2, 172, 220);
-  pointer-events: none;
+  text-decoration: underline;
 }
 
 

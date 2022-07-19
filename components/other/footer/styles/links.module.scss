@@ -29,6 +29,7 @@
     }
     &:hover {
       color: var(--linkLayoutHover);
+      text-decoration: underline;
     }
   }
 }

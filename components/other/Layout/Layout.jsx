@@ -18,16 +18,16 @@ export default function Layout({ children }) {
  
   // закрыть выпадающее меню при ресайзе
   useEffect(() => {
-    window.addEventListener("resize", (event) => resize(event, setIsActiveBurger, SIZE_WINDOW_DROP_DOWN_BURGER_MENU))
-    return () => window.removeEventListener("resize", resize)
+    window?.addEventListener("resize", (event) => resize(event, setIsActiveBurger, SIZE_WINDOW_DROP_DOWN_BURGER_MENU))
+    return () => window?.removeEventListener("resize", resize)
   })
 
   // остановить скролл при открытии выпадающего меню
   useEffect(() => {
     isActiveBurger
-      ? document.body.classList.add("stopScroll")
-      : document.body.classList.remove("stopScroll")
-    return () => document.body.classList.remove("stopScroll")
+      ? document?.body.classList.add("stopScroll")
+      : document?.body.classList.remove("stopScroll")
+    return () => document?.body.classList.remove("stopScroll")
   },[isActiveBurger])
 
   return (

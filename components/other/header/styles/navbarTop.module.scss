@@ -19,6 +19,9 @@
     text-decoration: none;
     font-family: "Roboto-Regular";
     color: white;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

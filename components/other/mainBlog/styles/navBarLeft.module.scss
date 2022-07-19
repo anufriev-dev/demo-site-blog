@@ -1,0 +1,23 @@
+.nav {
+  
+  font-size: 20px;
+  &__list {
+    list-style-type: disc;
+
+  }
+  &__item {
+    padding-top: 20px;
+  }
+  &__link {
+    text-decoration: none;
+    font-family: "Roboto-Regular";
+    color: var(--linkLayout);
+    &:hover {
+      color: var(--linkLayoutHover);
+      text-decoration: underline;
+    }
+    &:active {
+      color: var(--linkLayoutActive);
+    }
+  }
+}
