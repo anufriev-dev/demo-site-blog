@@ -13,7 +13,8 @@ export default function Blog({ post }) {
 
   return (
     <Layout>
-      {
+      { 
+        // test
         post.data.map((it,index) => (
           <div key={index}>
             <div>{it.postName}</div>

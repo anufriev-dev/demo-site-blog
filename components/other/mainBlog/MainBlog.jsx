@@ -22,7 +22,7 @@ export default function MainBlog() {
   return (
     <Container>
      <h1 className={indexStyles.title}>Блог</h1>
-      <Grid container columnSpacing={9} rowSpacing={9}>
+      <Grid container columnSpacing={{xl:9,xs:2}} rowSpacing={{xl: 9, xs: 2}}>
         <Grid item xs={12} md={9} >
           <DemoCardBlog routherType={"blog"} dataBlog={dataBlog} styles={demoCardBlogStyles} />
         </Grid>

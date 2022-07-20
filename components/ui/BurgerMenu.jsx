@@ -2,7 +2,10 @@ import cn from "classnames"
 
 export default function BurgerMenu({ styles, setIsActiveBurger,isActiveBurger }) {
 
-  const classBurger = cn(styles.burger, isActiveBurger ? styles.burgerActive : null)
+  const classBurger = cn(
+    styles.burger,
+    isActiveBurger ? styles.burgerActive : null
+  )
   
   const handler = () => {
     return setIsActiveBurger(!isActiveBurger)

@@ -1,14 +1,15 @@
 import NextJsActiveLink from "./NextJsActiveLink"
 import Dashboard from "../other/dashboard/Dashboard"
-import shorten from "../../utils/shorten"
+import toSliceText from "../../utils/toSliceText.js"
 
 
 
 export default function DemoCardBlog({ styles, dataBlog, routherType }) {
 
+
   return (
   <>
-    {
+    { 
       dataBlog.map((item,index) => (
         <div key={index} className={styles.wrapp}>
           <h2 className={styles.title}>
@@ -22,7 +23,7 @@ export default function DemoCardBlog({ styles, dataBlog, routherType }) {
             <div className={styles.cardBlog__imgContainer}>
               <img className={styles.cardBlog__img} src={item.src} alt={item.postName} />
             </div>
-            <p className={styles.cardBlog__text}>{shorten(item.text)}</p>
+            <p className={styles.cardBlog__text}>{ toSliceText(item.text) }</p>
           </div>
             <Dashboard data={item} routh={routherType}/>
         </div> 

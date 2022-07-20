@@ -34,8 +34,8 @@ describe("Returns a new string separated by dots: '.?!', up to 3 sentences", () 
 
 
   it("&4", () => {
-    const test     = "Hello World! My name is Gosha.I'm a programmer. This sentence is ignore! And it this too."
-    const expected = "Hello World! My name is Gosha.I'm a programmer."
+    const test     = "Hello World? My name is Gosha.I'm a programmer. This sentence is ignore! And it this too."
+    const expected = "Hello World? My name is Gosha.I'm a programmer."
 
     expect(shorten(test)).toBe(expected)
   })

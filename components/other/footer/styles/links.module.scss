@@ -8,11 +8,10 @@
 
   display: inline-block;
   font-size: 1.1em;
-
+  padding: 0 15px;
   &__list {
     display: block;
     list-style-type: square;
-    padding: 0 0 0 25px;
   }
   &__item {
     &:not(:first-child) {
@@ -21,8 +20,7 @@
   }
   &__link {
     color: var(--linkLayout);
-    font-family: "Roboto-Bold";
-    font-weight: 600;
+    font-family: "Raleway-Light";
     text-decoration: none;
     &:active {
       color: var(--linkLayoutActive);
@@ -35,7 +33,7 @@
 }
 
 .title {
-  font-size: 24px;
-  font-family: "Roboto-Bold";
+  font-size: 160%;
+  font-family: "Raleway-Light";
   color: white;
 }
