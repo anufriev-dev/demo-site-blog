@@ -12,7 +12,7 @@ export default async function getUser (req,res) {
   }
 
   if( METHOD === "POST") {
-    // Logic ...
+
   }
 
 }

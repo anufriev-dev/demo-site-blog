@@ -14,24 +14,21 @@ export default function BlogPage({ post }) {
 
   return (
     <Layout>
-      <Blog data={data} comments={post.comments} />
+      <Blog data={data} />
     </Layout>
   )
 }
 
 export async function getServerSideProps ({ params }) {
 
-  let data = await fetch(`${process.env.URL_HERE}/api/getUser`)
+  let data = await fetch(`${process.env.URL_HERE}/api/getUser`) 
   data = await data.json()
-  let comments = await fetch(`${process.env.URL_HERE}/api/getComments/${params.id}`)
-  comments = await comments.json()
 
   return {
     props: {
       post: {
         id: params.id,
-        data,
-        comments
+        data
       },
     }
   }

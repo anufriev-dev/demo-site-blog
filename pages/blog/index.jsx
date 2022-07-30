@@ -11,6 +11,17 @@ export default function IndexBlog({ data }) {
   )
 }
 
+// export async function getStaticPaths () {
+  
+//   const result = await fetch(`${process.env.URL_HERE}`)
+
+
+//   return {
+//     paths,
+//     falback: false
+//   }
+// }
+
 export async function getStaticProps () {
   let data = await fetch(`${process.env.URL_HERE}/api/getUser`)
   data = await data.json()
