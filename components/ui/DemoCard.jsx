@@ -6,6 +6,7 @@ import toSliceText from "../../utils/toSliceText.js"
 
 export default function DemoCardBlog({ styles, dataBlog, routherType }) {
 
+  if(!dataBlog) return <h1>Loading...</h1>
 
   return (
   <>
@@ -15,13 +16,13 @@ export default function DemoCardBlog({ styles, dataBlog, routherType }) {
           <h2 className={styles.title}>
             <NextJsActiveLink 
               classNameProps={styles.cardBlog__link} 
-              href={`/${routherType}/${item.id}/${item.postName}`} 
-              name={item.title}
+              href={`/${routherType}/${item.post_id}/${item.summary}`} 
+              name={item.summary}
             />
           </h2>
           <div className={styles.cardBlog}>
             <div className={styles.cardBlog__imgContainer}>
-              <img className={styles.cardBlog__img} src={item.src} alt={item.postName} />
+              <img className={styles.cardBlog__img} src={item.src_img} alt={item.summary} />
             </div>
             <p className={styles.cardBlog__text}>{ toSliceText(item.text) }</p>
           </div>

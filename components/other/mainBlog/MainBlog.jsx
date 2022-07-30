@@ -13,18 +13,21 @@ import indexStyles from "./styles/index.module.scss"
 
 /* fake data
    -------------------------------------------------- */
-import { dataBlog } from "../../../fake_database/index.js"
+// import { dataBlog } from "../../../fake_database/index.js"
 import { dataNavBarLeft } from "../../../fake_database/index.js"
 
 
 
-export default function MainBlog() {
+export default function MainBlog({ post }) {
+
+
+
   return (
     <Container>
      <h1 className={indexStyles.title}>Блог</h1>
       <Grid container columnSpacing={{xl:9,xs:2}} rowSpacing={{xl: 9, xs: 2}}>
         <Grid item xs={12} md={9} >
-          <DemoCardBlog routherType={"blog"} dataBlog={dataBlog} styles={demoCardBlogStyles} />
+          <DemoCardBlog routherType={"blog"} dataBlog={post} styles={demoCardBlogStyles} />
         </Grid>
         <Grid item xs={12} md={3}>
           <Navbar styles={navBarStyles} data={dataNavBarLeft} />

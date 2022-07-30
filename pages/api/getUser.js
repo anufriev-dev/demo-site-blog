@@ -6,9 +6,9 @@ export default async function getUser (req,res) {
   const METHOD = req.method
 
   if( METHOD === "GET") {
-    const result = await db.query("SELECT * FROM public.\"user\"")
+    const result = await db.query("SELECT * FROM post_blog")
   
-    res.status(200).json(result.rows)
+    return res.status(200).json(result.rows)
   }
 
   if( METHOD === "POST") {

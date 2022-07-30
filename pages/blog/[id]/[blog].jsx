@@ -1,63 +1,38 @@
 import Layout from "../../../components/other/layout/Layout.jsx"
-import Router from "next/router"
 
 /* fake data
    -------------------------------------------------- */
-import { dataBlog } from "../../../fake_database/index.js"
+import Blog from "../../../components/other/blog/Blog.jsx"
 
 
-export default function Blog({ post }) {
+export default function BlogPage({ post }) {
 
+
+  const data = post.data.filter(it => it.post_id == post.id )
 
   if(!post) return <h1>Loading... </h1>
 
   return (
     <Layout>
-      { 
-        // test
-        post.data.map((it,index) => (
-          <div key={index}>
-            <div>{it.postName}</div>
-            <div>{it.category}</div>
-            <div>{it.postName}</div>
-            <div>{it.date}</div>
-            <div>{it.src}</div>
-            <div>{it.title}</div>
-          </div>
-        ))
-      }
-        id = {post.id}
-        <button onClick={() => Router.back()}>Go back</button>
+      <Blog data={data} comments={post.comments} />
     </Layout>
   )
 }
 
+export async function getServerSideProps ({ params }) {
 
-export function getStaticPaths () {
-
-  const paths = dataBlog.map((post) => ({
-    params: { 
-      id: post.id.toString(),
-      blog: post.postName,
-    },
-  }))
-
-  return {
-    paths,
-    fallback: false 
-  }
-}
-
-export function getStaticProps ({ params }) {
-
-  const data = [dataBlog[params.id - 1]]
+  let data = await fetch(`${process.env.URL_HERE}/api/getUser`)
+  data = await data.json()
+  let comments = await fetch(`${process.env.URL_HERE}/api/getComments/${params.id}`)
+  comments = await comments.json()
 
   return {
     props: {
       post: {
         id: params.id,
-        data
-      }
+        data,
+        comments
+      },
     }
   }
 }

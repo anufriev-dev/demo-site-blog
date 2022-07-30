@@ -2,10 +2,22 @@ import Layout from "../../components/other/layout/Layout"
 import MainBlog from "../../components/other/mainBlog/MainBlog"
 
 
-export default function IndexBlog() {
+export default function IndexBlog({ data }) {
+
   return (
     <Layout>
-      <MainBlog />
+      <MainBlog post={data} />
     </Layout>
   )
+}
+
+export async function getStaticProps () {
+  let data = await fetch(`${process.env.URL_HERE}/api/getUser`)
+  data = await data.json()
+
+  return {
+    props: {
+      data
+    }
+  }
 }

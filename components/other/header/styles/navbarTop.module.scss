@@ -27,15 +27,17 @@
 
 // button - burger menu
 .burger {
-  display: none;
-  z-index: 1001;
   position: relative;
+  display: none;
+
+  padding: 0;
+  margin: 0;
   width: 30px;
   height: var(--burgerButtonHeight);
   border: none;
+
+  z-index: 1001;
   background: transparent;
-  padding: 0;
-  margin: 0;
   cursor: pointer;
   
   &__line {
@@ -43,8 +45,10 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
+    
     height: 2px;
     width: 100%;
+
     background: white;
     transition: all 0.8s ease 0s;
   }
@@ -98,29 +102,32 @@
   .reverseWrap {
     display: flex;
     justify-content: flex-end;
-    transition: all 0.5s ease 0s;
     min-height: var(--burgerButtonHeight);
+    transition: all 0.5s ease 0s;
   }
   
   .nav {
     position: fixed;
     right: 0;
     top: 0;
+    transform: translateX(100%);
+
+    // width: 50%;
+    width: var(--minWidthBurger);
+    height: 100vh;
+
+    z-index: 1000;
     overflow-y: scroll;
     background: var(--navTopMenu);
-    // width: 50%;
-    height: 100vh;
-    width: var(--minWidthBurger);
-    z-index: 1000;
-    transform: translateX(100%);
     transition: all var(--delayBurgerMenu) ease 0s;
     
     &__list {
       box-sizing: content-box;
-      margin-top: 83px;
-      padding: 30px 30px 30px 30px;
       flex-direction: column;
       align-items: flex-start;
+      
+      margin-top: 83px;
+      padding: 30px 30px 30px 30px;
     }
     &__item {
       margin-right: 0;

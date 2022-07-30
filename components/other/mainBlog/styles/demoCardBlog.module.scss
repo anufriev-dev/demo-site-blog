@@ -6,7 +6,6 @@
   font-family: "Montserrat-Light";
   font-size: 30px;
   letter-spacing: 1px;
-
 }
 .cardBlog {
   padding: 0 10px;
@@ -29,14 +28,15 @@
     max-width: 100%;
     padding: 0 10px 10px 0;
     margin: 10px 10px 0 0;
+
     object-fit: cover;
   }
   &__text {
+    margin: 10px 0px 15px 0px;
     font-family: "Raleway-Light";
     font-size: 120%;
     line-height: 1.5;
     text-align: justify;
-    margin: 10px 0px 15px 0px;
   }
 }
 
