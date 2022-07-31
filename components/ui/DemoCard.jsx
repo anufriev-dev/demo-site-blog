@@ -1,3 +1,5 @@
+// import { useEffect, useState } from "react"
+// import { getAmountComment } from "../../../http/blogApi"
 import NextJsActiveLink from "./NextJsActiveLink"
 import Dashboard from "../other/dashboard/Dashboard"
 import toSliceText from "../../utils/toSliceText.js"
@@ -5,6 +7,13 @@ import toSliceText from "../../utils/toSliceText.js"
 
 
 export default function DemoCardBlog({ styles, dataBlog, routherType }) {
+
+  // const [amountComments, setAmountComments] = useState("")
+
+  // useEffect(() => {
+  //   setAmountComments(getAmountComment)
+  // },[])
+
 
   if(!dataBlog) return <h1>Loading...</h1>
 
@@ -26,7 +35,7 @@ export default function DemoCardBlog({ styles, dataBlog, routherType }) {
             </div>
             <p className={styles.cardBlog__text}>{ toSliceText(item.text) }</p>
           </div>
-            <Dashboard data={item} routh={routherType}/>
+            <Dashboard  data={item} routh={routherType}/>
         </div> 
       ))
     }

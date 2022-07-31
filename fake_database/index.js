@@ -1,24 +1,3 @@
-const comments = [
-  {
-    comment_id: 1,
-    text: "This is comment 1",
-    date: "03 Июля 2022",
-    postid: 1
-  },
-  {
-    commentid: 2,
-    text: "This is comment 2",
-    date: "04 Июля 2022",
-    postid: 1
-  },
-  {
-    commentid: 3,
-    text: "This is comment 3",
-    date: "05 Июля 2022",
-    postid: 2
-  }
-]
-
 export const dataNavBarLeft = [
   {namelink: "Apple", href: "/category/Apple"},
   {namelink: "Болтовня", href: "#"},

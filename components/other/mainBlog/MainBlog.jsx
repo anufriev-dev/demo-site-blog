@@ -13,7 +13,6 @@ import indexStyles from "./styles/index.module.scss"
 
 /* fake data
    -------------------------------------------------- */
-// import { dataBlog } from "../../../fake_database/index.js"
 import { dataNavBarLeft } from "../../../fake_database/index.js"
 
 
@@ -21,6 +20,7 @@ import { dataNavBarLeft } from "../../../fake_database/index.js"
 export default function MainBlog({ post }) {
 
 
+  if(!post) return <h1>Loading</h1>
 
   return (
     <Container>

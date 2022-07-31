@@ -1,19 +1,18 @@
-import db from "../../../config/db"
+import db from "../../../../config/db"
 
 export default async function getCommentsIndex (req,res) {
   return new Promise(() => {
     
     const METHOD = req.method
     if(METHOD === "POST") {
-    return new Promise((resolved,reject) => {
-        const { author, text, date, post_id } = JSON.parse(req.body)
-        console.log(author,text,date,post_id)
+    return new Promise(resolved => {
+        const { author, text, date, post_id } = req.body
     
         db.query("INSERT INTO comment (author,text,date) VALUES ($1,$2,$3)",
         [author,text,date],
-        (err,response) => {
+        (err) => {
           if(err) {
-            reject(res.status(400).json( { message: "Faild"} ))
+            return res.status(400).json( { message: "Faild"} )
           }
           resolved(post_id)
         })
@@ -24,12 +23,12 @@ export default async function getCommentsIndex (req,res) {
           if(err) {
             return res.status(400).json( { message: "Faild"} )
            }
-          return res.status(200).json( response )
+          return res.status(200).json(response)
         })
       })
     }
     if(METHOD === "GET") {
-        // Logic ...
+       // Logic ...
     }
   })
 }

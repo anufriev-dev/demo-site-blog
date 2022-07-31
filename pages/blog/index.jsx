@@ -1,34 +1,25 @@
+import { useEffect, useState } from "react"
 import Layout from "../../components/other/layout/Layout"
 import MainBlog from "../../components/other/mainBlog/MainBlog"
+import { getPosts } from "../../http/blogApi"
 
 
-export default function IndexBlog({ data }) {
+export default function IndexBlog() {
+
+  const [isLoading, setLoading] = useState(false)
+  const [data, setData] = useState()
+
+  useEffect(() => {
+    setLoading(true)
+    getPosts().then(data => setData(data) )
+    setLoading(false)
+  },[])
+
+  if(isLoading) return <h1>Loading</h1>
 
   return (
     <Layout>
       <MainBlog post={data} />
     </Layout>
   )
-}
-
-// export async function getStaticPaths () {
-  
-//   const result = await fetch(`${process.env.URL_HERE}`)
-
-
-//   return {
-//     paths,
-//     falback: false
-//   }
-// }
-
-export async function getStaticProps () {
-  let data = await fetch(`${process.env.URL_HERE}/api/getUser`)
-  data = await data.json()
-
-  return {
-    props: {
-      data
-    }
-  }
 }
