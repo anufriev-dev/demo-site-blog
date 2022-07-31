@@ -3,6 +3,7 @@
 import NextJsActiveLink from "./NextJsActiveLink"
 import Dashboard from "../other/dashboard/Dashboard"
 import toSliceText from "../../utils/toSliceText.js"
+import Image from "next/image"
 
 
 
@@ -31,7 +32,7 @@ export default function DemoCardBlog({ styles, dataBlog, routherType }) {
           </h2>
           <div className={styles.cardBlog}>
             <div className={styles.cardBlog__imgContainer}>
-              <img className={styles.cardBlog__img} src={item.src_img} alt={item.summary} />
+              <Image width={1920} height={1080} className={styles.cardBlog__img} src={item.src_img} alt={item.summary} />
             </div>
             <p className={styles.cardBlog__text}>{ toSliceText(item.text) }</p>
           </div>

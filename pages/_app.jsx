@@ -1,10 +1,21 @@
 // import App from 'next/app'
-
+import NextNProgress from "nextjs-progressbar"
 
 import "../styles/global/global.scss"
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+    <NextNProgress
+      color="#29D"
+      startPosition={0.3}
+      stopDelayMs={200}
+      height={3}
+      showOnShallow={true}
+    />
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 // Раскомментируйте этот метод только в том случае, если 

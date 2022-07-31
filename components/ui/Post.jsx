@@ -1,4 +1,4 @@
-
+import Image from "next/dist/client/image"
 
 export default function Post({ item }) {
   return (
@@ -7,7 +7,7 @@ export default function Post({ item }) {
         <div>
           <time>{item.date}</time>
           <div>{item.category}</div>
-          <img src={`${item.src_img}`} alt="" height={300} />
+          <Image src={`${item.src_img}`} alt="" width={300} height={300} />
           <p>{item.text}</p>
           
         </div>
