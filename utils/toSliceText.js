@@ -3,9 +3,8 @@
  * Преобразует текст в несколько предложений,
  * по умолчанию: 3
  * 
- * @param {string} text 
- * @param {number} sentence 
- * @returns {string} 
+ * @param {string} text - текст
+ * @param {number} sentence - кол-во предложений, которые нужно вытащить
  * @author Ануфриев Георгий
  * @author github: GeorgyDev11111
  */

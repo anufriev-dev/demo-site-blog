@@ -1,0 +1,19 @@
+.titleh2 {
+  letter-spacing: 0.12em;
+  font-size: 200%;
+  font-family: "Raleway-Light";
+  color: var(--linkLayout2);
+}
+.emptyCommentP {
+  margin: 10px 0px 15px 0px;
+  line-height: 1.5em;
+  text-align: justify;
+  font-size: 120%;
+  font-family: "Raleway-Light";
+}
+
+@media (max-width: 450px) {
+    .titleh2 {
+      font-size: 20px;
+    }
+}

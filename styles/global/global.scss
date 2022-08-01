@@ -1,9 +1,13 @@
 @import "../lib/normalize.css";
 @import "./var.scss";
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 body {
   overflow-x: auto;
+  background-color: #f5f5f5;
 }
 .stopScroll {
   position: fixed;

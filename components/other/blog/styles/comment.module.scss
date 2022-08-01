@@ -1,0 +1,25 @@
+.comment {
+
+  &__author {
+    font-family: "Monserat-Light";
+    font-size: 160%;
+    letter-spacing: 0.12em;
+    color: green;
+    padding: 10px 0 0 0;
+  }
+
+  &__date {
+    font-family: "Raleway-Light";
+    padding: 20px 0;
+    font-style: italic;
+    font-size: 90%;
+  }
+
+  &__text {
+    margin: 10px 0px 15px 0px;
+    font-family: "Raleway-Light";
+    font-size: 120%;
+    line-height: 1.5em;
+    text-align: justify;
+  }
+}

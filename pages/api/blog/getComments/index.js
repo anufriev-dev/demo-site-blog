@@ -1,4 +1,5 @@
 import db from "../../../../config/db"
+import isValid from "../../../../utils/isValid"
 
 export default async function getCommentsIndex (req,res) {
   return new Promise(() => {
@@ -7,6 +8,10 @@ export default async function getCommentsIndex (req,res) {
     if(METHOD === "POST") {
     return new Promise(resolved => {
         const { author, text, date, post_id } = req.body
+
+        if(!isValid(author,{ min: 2, regexp: /[а-ёa-z]/i } || !isValid(text,{ min: 6 })) ) {
+          return res.status(400).json({ message: "Form not valid" })
+        }
     
         db.query("INSERT INTO comment (author,text,date) VALUES ($1,$2,$3)",
         [author,text,date],

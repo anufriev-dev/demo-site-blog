@@ -11,9 +11,9 @@
   &__link {
     text-decoration: none;
     font-family: "Roboto-Regular";
-    color: var(--linkLayout);
+    color: var(--linkLayout1);
     &:hover {
-      color: var(--linkLayoutHover);
+      color: var(--linkLayout2);
       text-decoration: underline;
     }
     &:active {

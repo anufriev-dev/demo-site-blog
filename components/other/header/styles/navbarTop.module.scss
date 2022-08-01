@@ -116,7 +116,6 @@
     width: var(--minWidthBurger);
     height: 100vh;
 
-    z-index: 1000;
     overflow-y: scroll;
     background: var(--navTopMenu);
     transition: all var(--delayBurgerMenu) ease 0s;
@@ -144,6 +143,10 @@
 // max-width: var(--minWidthBurger)
 @media (max-width: 300px) {
   .nav {
+    z-index: 1201;
     width: 150px;
+  }
+  .burger {
+    z-index: 1202;
   }
 }

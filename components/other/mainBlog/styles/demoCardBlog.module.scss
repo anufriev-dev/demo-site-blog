@@ -4,17 +4,17 @@
 
 .title {
   font-family: "Montserrat-Light";
-  font-size: 30px;
-  letter-spacing: 1px;
+  font-size: 160%;
+  letter-spacing: 0.08em;
 }
 .cardBlog {
   padding: 0 10px;
 
   &__link {
     text-decoration: none;
-    color: var(--linkLayout);
+    color: var(--linkLayout2);
     &:hover {
-      color: var(--linkLayoutHover);
+      color: var(--linkLayout1);
       text-decoration: underline;
     }
     &:active {

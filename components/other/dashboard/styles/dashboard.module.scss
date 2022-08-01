@@ -14,7 +14,7 @@
   }
 
   &__link {
-    color: var(--linkLayout);
+    color: var(--linkLayout1);
     font-family: "Raleway-Light";
     text-decoration: none;
   
@@ -22,7 +22,7 @@
       color: var(--linkLayoutActive);
     }
     &:hover {
-      color: var(--linkLayoutHover);
+      color: var(--linkLayout2);
       text-decoration: underline;
     }
   }

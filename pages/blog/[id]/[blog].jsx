@@ -32,7 +32,7 @@ export default function BlogPage() {
 
   return (
     <Layout>
-      <Blog data={data} post_id={id} />
+      <Blog data={data[0]} post_id={id} />
     </Layout>
   )
 }

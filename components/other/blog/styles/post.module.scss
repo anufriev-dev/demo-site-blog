@@ -1,0 +1,44 @@
+.post {
+
+  &__title {
+    letter-spacing: 0.12em;
+    font-size: 250%;
+    font-family: "Raleway-Light";
+    color: var(--linkLayout2);
+  }
+
+  &__time {
+    font-size: 120%;
+    font-family: "Raleway-Light";
+  }
+
+  &__category__link {
+    margin-left: 30px;
+    color: var(--linkLayout1);
+    text-decoration: none;
+    font-size: 190%;
+    font-family: "Caveat-Regular";
+    cursor: pointer;
+    &:hover {
+      color: var(--linkLayout2);
+      text-decoration: underline;
+    }
+    &:active {
+      color: var(--linkLayoutActive);
+    }
+  }
+
+  &__text {
+    margin: 10px 0px 15px 0px;
+    font-size: 120%;
+    text-align: justify;
+    line-height: 1.5em;
+    font-family: "Raleway-Light";
+  }
+}
+
+@media (max-width: 450px) {
+  .post__title {
+    font-size: 22px;
+  }
+}
