@@ -1,7 +1,9 @@
-// components
+/* components     
+   -------------------------------------------------- */
 import DemoCardBlog from "../../ui/DemoCard.jsx"
 import Navbar from "../../ui/Navbar"
-// lib components
+/* lib components
+   -------------------------------------------------- */
 import { Container } from "@mui/system"
 import { Grid } from "@mui/material"
 

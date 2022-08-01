@@ -1,15 +1,21 @@
 
 
-export default function FormData(prpps) {
+export default function FormData(props) {
   return (
-    <div style={{padding:"50px"}}>
+    <div>
     <h2>Добавить комментарий</h2>
 
     <form id="formAddComment" action="">
-      <input onChange={(e) =>prpps.setAuthor(e.target.value)} value={prpps.author} type="text" placeholder="Укажите ваше имя" />
-      <input onChange={(e) =>prpps.setText(e.target.value)} value={prpps.text} type="text" placeholder="Напишите свой комментарий здесь" />
+      <input onChange={(e) => props.setAuthor(e.target.value)} value={props.author} type="text" placeholder="Укажите ваше имя" />
+      <br />
+      <textarea
+        onChange={(e) => props.setText(e.target.value)} 
+        value={props.text}  
+        placeholder="Напишите свой комментарий здесь" 
+        className={props.styles.textArea}
+        />
 
-      <button onClick={(e) => prpps.submit(e)}>{prpps.buttonTitle}</button>
+      <button onClick={(e) => props.submit(e)}>{props.buttonTitle}</button>
     </form>
   </div>
   )

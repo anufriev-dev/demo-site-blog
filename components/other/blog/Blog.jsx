@@ -1,22 +1,28 @@
-
 import Router from "next/router"
+import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-import Post from "../../ui/Post"
+/* Api    
+   -------------------------------------------------- */
 import { getAllComments, addComment } from "../../../http/blogApi.js"
+/* components     
+   -------------------------------------------------- */
+import Post from "../../ui/Post"
 import Comment from "../../ui/Comment"
 import createDate from "../../../utils/createDate"
 import FormData from "../../ui/FormData"
+/* styles
+   -------------------------------------------------- */
+import formDataStyles from "./styles/formData.module.scss"
+import { Container } from "@mui/system"
 
 
-export default function Blog({ data }) {
+export default function Blog({ data, post_id }) {
   
   const [comments,setComments] = useState(null)
   const [isLoading, setLoading] = useState(false)
   const [author,setAuthor] = useState("")
   const [text, setText] = useState("")
 
-  const post_id = data[0].post_id
-  
 
   useEffect(() => {
     setLoading(true)
@@ -53,34 +59,48 @@ export default function Blog({ data }) {
 
   if(isLoading) return <h1>Loading...</h1>
   if(!comments ) return <h1>Loading...</h1>
+  if(!data) return <h1>Loading...</h1>
 
   return (
-    <>
-      <h1 style={{textAlign:"center"}}>Пост номер: { post_id }</h1>
-      
-      { 
-        data.map((item,index) => (
-          <Post key={index} item={item} />
-        ))
-      }
+    <div>
+        {/* Пост */}
+      <div>
+      <Container>
+        { 
+          data.map((item,index) => (
+            <Post key={index} item={item} />
+          ))
+        }
+      </Container>
+      </div>
 
-      {
-        comments.map((comment,index) => (
-          <Comment key={index} comment={comment} />
-        ))
-      }
+        {/* Комментарии */}
+      <div>
+        <Container>
+          {
+            comments.map((comment,index) => (
+              <Comment key={index} comment={comment} />
+            ))
+          }
+        </Container>
+      </div>
   
-      <FormData 
-        setAuthor={setAuthor}
-        setText={setText} 
-        text={text}
-        author={author}
-        submit={submit}
-        buttonTitle={"Отправить"}
-      />
+        {/* Форма */}
+      <div>
+        <Container>
+          <FormData 
+            setAuthor={setAuthor}
+            setText={setText} 
+            text={text}
+            author={author}
+            submit={submit}
+            buttonTitle={"Отправить"}
+            styles={formDataStyles}
+          />
+        </Container>
+      </div>
 
-        
       <button onClick={() => Router.back()}>Go back</button>
-    </>
+    </div>
   )
 }

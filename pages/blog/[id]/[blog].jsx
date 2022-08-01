@@ -15,7 +15,7 @@ export default function BlogPage() {
   const { id } = routher.query
 
   const [isLoading, setLoading] = useState(false)
-  const [data, setData] = useState()
+  const [data, setData] = useState(null)
 
   useEffect(() => {
     setLoading(true)
@@ -32,7 +32,7 @@ export default function BlogPage() {
 
   return (
     <Layout>
-      <Blog data={data} />
+      <Blog data={data} post_id={id} />
     </Layout>
   )
 }
