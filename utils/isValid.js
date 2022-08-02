@@ -13,25 +13,15 @@
  * @author Ануфриев Георгий 
  * @author github: GeorgyDev11111
  */
-function isValid (pole,object = { min: null, max: null, regexp: null }) {
+ function isValid (pole,object = { min: null, max: null, regexp: null }) {
   
-  if(object.min) {
-    if(pole.length < object.min){
-      return false
-    }
-  }
-  if(object.max) {
-    if(pole.length > object.max){
-      return false
-    }
-  }
-  if(object.regexp) {
-    if(!object.regexp?.test(pole)){
-      return false
-    }
-  }
-  return true
+  if(pole.length < object.min) return false
+  if(pole.length > object.max) return false
+  if(object.regexp && !object.regexp.test(pole)) return false
+
+  return true // если все проверки прошли успешно, вернуть true
 }
+
 
 
 module.exports = isValid
