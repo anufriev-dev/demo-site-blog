@@ -15,6 +15,7 @@
  */
  function isValid (pole,object = { min: null, max: null, regexp: null }) {
   
+  if(!pole) return false
   if(pole.length < object.min) return false
   if(pole.length > object.max) return false
   if(object.regexp && !object.regexp.test(pole)) return false
