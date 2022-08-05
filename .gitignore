@@ -6,3 +6,6 @@
 
 # local env files
 .env.local
+
+# test rest API
+test.rest

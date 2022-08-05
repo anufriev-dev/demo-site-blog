@@ -91,10 +91,12 @@ export default function Blog({ data, post_id }) {
           <Container>
             <h2 className={indexStyles.titleh2}>Комментарии</h2>
             { 
+              comments.length
+              ?
               comments.map((comment,index) => (
                 <Comment styles={commentStyles} key={index} comment={comment} />
               ))
-              ||
+              :
               <div>
                 <p className={indexStyles.emptyCommentP}>
                   Паника, что-то случилось!!! Ничего не найдено в комментариях. 
