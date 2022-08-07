@@ -23,26 +23,13 @@ import indexStyles from "./styles/index.module.scss"
 import isValid from "../../../utils/isValid.js"
 
 
-export default function Blog({ data, post_id }) {
-  
-  const [comments,setComments] = useState([])
-  const [isLoading, setLoading] = useState(false)
+export default function Blog({ data, post_id, comments, setComments }) {
+
   const [author,setAuthor] = useState("")
   const [text, setText] = useState("")
 
   const [isErrorAuthor, setErrorAuthor] = useState(false)
   const [isErrorText, setErrorText] = useState(false)
-
-
-  useEffect(() => {
-    setLoading(true)
-
-    getAllComments(post_id).then(final => {
-        setComments(final)
-    })
-        
-    setLoading(false) 
-  },[post_id])
 
 
   const submit = async (e) => {
@@ -63,19 +50,15 @@ export default function Blog({ data, post_id }) {
     const date = createDate()
     const dataFetch = { post_id, author, text, date, }
 
-    addComment(dataFetch).then(() => {
-      getAllComments(post_id).then(final => {
-        setComments(final)
-      })
-    })
+    addComment(dataFetch)
+    setComments([...comments, dataFetch])
 
     setAuthor(""); setText("")
     setLoading(false)
   }
 
-
-  if(isLoading) return <h1>Loading...</h1>
   if(!data) return <h1>Loading...</h1>
+  if(!comments) return <h1>Loading...</h1>
 
   return (
     <div>
