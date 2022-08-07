@@ -11,7 +11,9 @@ export default function IndexBlog() {
 
   useEffect(() => {
     setLoading(true)
-    getPosts().then(data => setData(data) )
+    getPosts()
+      .then(data => setData(data))
+      .catch(err => console.log(err.response.data))
     setLoading(false)
   },[])
 

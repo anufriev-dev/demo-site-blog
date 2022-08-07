@@ -18,7 +18,7 @@ export default async function getCommentsIndex (req,res) {
     
       res.status(200).json(result.rows)
     }catch(e) {
-      res.status(400).json(e.message)
+      res.status(400).send(`Server ${e.stack}`)
     }
   }
 
