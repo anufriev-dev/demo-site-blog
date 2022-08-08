@@ -9,13 +9,6 @@ import Image from "next/image"
 
 export default function DemoCardBlog({ styles, dataBlog, routherType }) {
 
-  // const [amountComments, setAmountComments] = useState("")
-
-  // useEffect(() => {
-  //   setAmountComments(getAmountComment)
-  // },[])
-
-
   if(!dataBlog) return <h1>Loading...</h1>
 
   return (

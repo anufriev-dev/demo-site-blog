@@ -1,3 +1,4 @@
+import { useRouter } from "next/router.js"
 /* components     
    -------------------------------------------------- */
 import DemoCardBlog from "../../ui/DemoCard.jsx"
@@ -6,6 +7,7 @@ import Navbar from "../../ui/Navbar"
    -------------------------------------------------- */
 import { Container } from "@mui/system"
 import { Grid } from "@mui/material"
+import { Pagination } from "@mui/material"
 
 /* styles
    -------------------------------------------------- */
@@ -19,22 +21,48 @@ import { dataNavBarLeft } from "../../../fake_database/index.js"
 
 
 
-export default function MainBlog({ post }) {
+export default function MainBlog({ post, maxPages, currentPage }) {
 
+  const router = useRouter()
 
   if(!post) return <h1>Loading</h1>
 
   return (
     <Container>
      <h1 className={indexStyles.title}>Блог</h1>
-      <Grid container columnSpacing={{xl:9,xs:2}} rowSpacing={{xl: 9, xs: 2}}>
+        {/* Постраничная навигация */}
+      <Pagination 
+        count={maxPages} 
+        page={currentPage} 
+        onChange={(e,number) => router.push(`/blog?page=${number}`)} 
+
+        shape="rounded" 
+        variant="outlined"
+        color="primary"
+      />
+        {/* Main */}
+      <Grid container columnSpacing={{xl:9,xs:5}} rowSpacing={{xl: 2, xs: 4}}>
         <Grid item xs={12} md={9} >
+          {/* Main content */}
           <DemoCardBlog routherType={"blog"} dataBlog={post} styles={demoCardBlogStyles} />
         </Grid>
         <Grid item xs={12} md={3}>
+          {/* навигация */}
           <Navbar styles={navBarStyles} data={dataNavBarLeft} />
         </Grid>
       </Grid>
+        {/* Постраничная навигация */}
+      <Pagination 
+        count={maxPages} 
+        page={currentPage} 
+        onChange={(e,number) => router.push(`/blog?page=${number}`)} 
+
+        shape="rounded" 
+        variant="outlined"
+        color="primary"
+      />
+        <br />
+        <br />  
     </Container>
   )
 }

@@ -57,7 +57,8 @@ export async function getServerSideProps({ query })  {
   }
 
   }catch(e) {
-    console.log("Error")
+    /* eslint-disable-next-line no-console */
+    console.error("Ошибка на сервере")
     return {props: {data: null} } 
   }
 }

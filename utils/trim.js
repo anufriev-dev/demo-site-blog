@@ -3,7 +3,7 @@
  * "/string/[params]" -> "/string"
  * ```
  */
-function trim (string) { // : string 
+function trim (string) { // : string
   // ожидаем путь вида: "/str/[id]" 
   if(string.includes("[")) { // если находим "[" в "/str/[params]"
     const elemR = string.indexOf("[") // берём индекс этой скобки

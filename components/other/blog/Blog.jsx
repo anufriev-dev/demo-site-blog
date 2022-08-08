@@ -1,11 +1,10 @@
 import Router from "next/router"
-import { useEffect, useState } from "react"
 /* lib components
    -------------------------------------------------- */
 import { Container } from "@mui/system"
 /* Api    
    -------------------------------------------------- */
-import { addComment, getAllComments } from "../../../http/blogApi.js"
+import { addComment } from "../../../http/blogApi.js"
 /* Utils   
    -------------------------------------------------- */
 import createDate from "../../../utils/createDate.js"
@@ -27,6 +26,7 @@ export default function Blog({ data, post_id, comments, setComments }) {
 
   const [author,setAuthor] = useState("")
   const [text, setText] = useState("")
+  const [isLoading,setLoading] = useState(false)
 
   const [isErrorAuthor, setErrorAuthor] = useState(false)
   const [isErrorText, setErrorText] = useState(false)
@@ -59,6 +59,7 @@ export default function Blog({ data, post_id, comments, setComments }) {
 
   if(!data) return <h1>Loading...</h1>
   if(!comments) return <h1>Loading...</h1>
+  if(isLoading) return <h1>Loading...</h1>
 
   return (
     <div>
