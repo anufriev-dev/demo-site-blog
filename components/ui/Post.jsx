@@ -6,9 +6,7 @@ export default function Post({ item,styles }) {
 
   const date = convertDate(item.date)
 
-  if(!date) return <h1>Loading...</h1>
   return (
-    
     <div className={styles.post}>
         <h2 className={styles.post__title}>{item.summary}</h2>
         <div className={styles.post__wrapp}>

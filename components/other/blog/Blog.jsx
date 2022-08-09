@@ -1,3 +1,4 @@
+import { useState } from "react"
 import Router from "next/router"
 /* lib components
    -------------------------------------------------- */
@@ -20,16 +21,18 @@ import commentStyles from "./styles/comment.module.scss"
 import formDataStyles from "./styles/formData.module.scss"
 import indexStyles from "./styles/index.module.scss"
 import isValid from "../../../utils/isValid.js"
+import Warning from "../../ui/Warning.jsx"
+import ErrorComments from "../../ui/ErrorComment.jsx"
 
 
 export default function Blog({ data, post_id, comments, setComments }) {
 
   const [author,setAuthor] = useState("")
   const [text, setText] = useState("")
-  const [isLoading,setLoading] = useState(false)
 
   const [isErrorAuthor, setErrorAuthor] = useState(false)
   const [isErrorText, setErrorText] = useState(false)
+  const [errSubmit, setErrorSubmit] = useState(false)
 
 
   const submit = async (e) => {
@@ -46,20 +49,16 @@ export default function Blog({ data, post_id, comments, setComments }) {
     }else  setErrorText(false)
 
     // отправка формы на сервер
-    setLoading(true)
     const date = createDate()
     const dataFetch = { post_id, author, text, date, }
 
-    addComment(dataFetch)
-    setComments([...comments, dataFetch])
+    addComment(dataFetch).then(() => {
+      setComments([...comments, dataFetch])
+      setErrorSubmit(false)
+    },() =>  setErrorSubmit(true))
 
     setAuthor(""); setText("")
-    setLoading(false)
   }
-
-  if(!data) return <h1>Loading...</h1>
-  if(!comments) return <h1>Loading...</h1>
-  if(isLoading) return <h1>Loading...</h1>
 
   return (
     <div>
@@ -74,20 +73,18 @@ export default function Blog({ data, post_id, comments, setComments }) {
       <div>
           <Container>
             <h2 className={indexStyles.titleh2}>Комментарии</h2>
+
+            {/* Отобразить */}
             { 
               comments.length
-              ?
-              comments.map((comment,index) => (
-                <Comment styles={commentStyles} key={index} comment={comment} />
-              ))
-              :
-              <div>
-                <p className={indexStyles.emptyCommentP}>
-                  Паника, что-то случилось!!! Ничего не найдено в комментариях. 
-                  Срочно нужно что-то добавить, чтобы это место не оставалось пустым.</p>
-                <hr />
-              </div>
-             }
+                ? comments.map((comment,index) => (
+                  <Comment styles={commentStyles} key={index} comment={comment} />
+                ))
+                : <Warning styles={indexStyles} />
+            }
+            
+            {/* Ошибка отправки */}
+            { errSubmit && <ErrorComments styles={indexStyles} /> }
           </Container>
       </div>
   

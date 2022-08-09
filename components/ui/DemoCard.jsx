@@ -9,8 +9,6 @@ import Image from "next/image"
 
 export default function DemoCardBlog({ styles, dataBlog, routherType }) {
 
-  if(!dataBlog) return <h1>Loading...</h1>
-
   return (
   <>
     { 

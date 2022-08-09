@@ -2,8 +2,6 @@ import NextJsActiveLink from "./NextJsActiveLink"
 
 
 export default function NavList({ styles, data, closeNavBar }) {
-
-  if(!data) return <h1>Loading...</h1>
   
   return (
     <ul className={ styles.nav__list }>

@@ -3,13 +3,17 @@ import MainBlog from "../../components/other/mainBlog/MainBlog"
 import db from "../../config/db"
 
 
-export default function IndexBlog({ data, currentPage, maxPages }) {
+export default function IndexBlog(props) {
 
-  if(!data) return <h1>Loading</h1>
+  if(!props) return null
 
   return (
     <Layout>
-      <MainBlog post={data} maxPages={maxPages} currentPage={currentPage} />
+      <MainBlog
+        post={props.data} 
+        maxPages={props.maxPages} 
+        currentPage={props.currentPage} 
+      />
     </Layout>
   )
 }

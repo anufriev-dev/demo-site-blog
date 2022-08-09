@@ -6,6 +6,7 @@ export const addComment = async (body) => {
     return data
   }catch(e) {
     alert("Упс, комментарий не отправился :(")
+    /* eslint-disable-next-line no-console */
     console.error(new Error(e.response.data))
   }
 }

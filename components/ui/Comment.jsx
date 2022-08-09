@@ -3,10 +3,7 @@ import convertDate from "../../utils/convertDate"
 
 export default function Comment({ comment, styles }) {
 
-  const thisDate = convertDate(comment.date)
-
-  if(!thisDate) return <h1>Loading</h1> 
-  
+  const thisDate = convertDate(comment.date)  
   return (
 
   <div className={styles.comment}>

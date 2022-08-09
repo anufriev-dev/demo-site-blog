@@ -25,21 +25,24 @@ export default function MainBlog({ post, maxPages, currentPage }) {
 
   const router = useRouter()
 
-  if(!post) return <h1>Loading</h1>
+  /* JSX Component */
+  const pagination = (
+    <Pagination 
+      count={maxPages} 
+      page={currentPage} 
+      onChange={(e,number) => router.push(`/blog?page=${number}`)} 
+
+      shape="rounded" 
+      variant="outlined"
+      color="primary"
+    />
+  )
 
   return (
     <Container>
      <h1 className={indexStyles.title}>Блог</h1>
         {/* Постраничная навигация */}
-      <Pagination 
-        count={maxPages} 
-        page={currentPage} 
-        onChange={(e,number) => router.push(`/blog?page=${number}`)} 
-
-        shape="rounded" 
-        variant="outlined"
-        color="primary"
-      />
+        {pagination}
         {/* Main */}
       <Grid container columnSpacing={{xl:9,xs:5}} rowSpacing={{xl: 2, xs: 4}}>
         <Grid item xs={12} md={9} >
@@ -52,15 +55,7 @@ export default function MainBlog({ post, maxPages, currentPage }) {
         </Grid>
       </Grid>
         {/* Постраничная навигация */}
-      <Pagination 
-        count={maxPages} 
-        page={currentPage} 
-        onChange={(e,number) => router.push(`/blog?page=${number}`)} 
-
-        shape="rounded" 
-        variant="outlined"
-        color="primary"
-      />
+        { pagination }
         <br />
         <br />  
     </Container>

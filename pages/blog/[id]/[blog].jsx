@@ -8,24 +8,23 @@ import Blog from "../../../components/other/blog/Blog.jsx"
 import db from "../../../config/db.js"
 
 
-export default function BlogPage({ data, comment }) {
+export default function BlogPage(props) {
   
   const routher = useRouter()
-  const [comments,setComments] = useState(comment)
+  const [comments,setComments] = useState(props.comment)
 
   const { id } = routher.query
 
-  if(!data) return <h1>Loading... </h1>
-  if(!comments) return <h1>Loading... </h1>
+  if(!props || !comments) return null
 
   return (
     <Layout>
-      <Blog 
-        data={data[0]} 
-        comments={comments} 
-        setComments={setComments}
-        post_id={id} 
-      />
+    <Blog 
+      data={props.data[0]} 
+      comments={comments} 
+      setComments={setComments}
+      post_id={id} 
+    />
     </Layout>
   )
 }

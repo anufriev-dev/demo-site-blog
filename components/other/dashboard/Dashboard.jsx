@@ -10,8 +10,6 @@ export default function Dashboard({ data, routh }) {
 
   const thisDate = convertDate(data.date)
 
-  if(!thisDate) return <h1>Loading</h1>
-
   return (
     <div className={indexStyles.dashboard}>
       <span  className={indexStyles.dashboard__item}>
