@@ -1,16 +1,14 @@
 import { Container } from "@mui/system"
+/* Components 
+   -------------------------------------------------- */
 import CardFooter from "../../ui/CardFooter"
 import LinksFooter from "../../ui/LinksFooter"
-
-
 /* styles
    -------------------------------------------------- */
 import indexStyles from "./styles/index.module.scss"
 import cardStyles from "./styles/card.module.scss"
 import linksStyles from "./styles/links.module.scss"
 import copyrightStyles from "./styles/copyright.module.scss"
-
-
 /* fake data
    -------------------------------------------------- */
 import { dataLinksFooter } from "../../../fake_database"

@@ -21,7 +21,7 @@
     previous = index + 1  // сохраняем текущее состояния в предыдущее
   }
 
-  return result.filter((_,index) => index < sentence ).join("")  
+  return result.filter((_,index) => index < sentence ).join("")
 }
 
 module.exports = toSliceText

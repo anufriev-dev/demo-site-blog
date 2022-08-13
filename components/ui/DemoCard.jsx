@@ -1,7 +1,5 @@
-// import { useEffect, useState } from "react"
-// import { getAmountComment } from "../../../http/blogApi"
 import NextJsActiveLink from "./NextJsActiveLink"
-import Dashboard from "../other/dashboard/Dashboard"
+import Dashboard from "../other/dashboard"
 import toSliceText from "../../utils/toSliceText.js"
 import Image from "next/image"
 

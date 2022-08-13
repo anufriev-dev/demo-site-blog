@@ -4,7 +4,7 @@ import { useState } from "react"
 
 /* fake data
    -------------------------------------------------- */
-import Blog from "../../../components/other/blog/Blog.jsx"
+import Blog from "../../../components/other/blog"
 import db from "../../../config/db.js"
 
 

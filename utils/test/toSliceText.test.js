@@ -1,4 +1,4 @@
-const toSliceText = require("../utils/toSliceText.js")
+const toSliceText = require("../toSliceText.js")
 
 describe("Returns a new string separated by dots: '.?!', up to 3 sentences default", () => {
 

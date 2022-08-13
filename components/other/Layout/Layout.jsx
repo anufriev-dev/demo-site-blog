@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react"
 import resize from "../../../utils/resize"
 import { SIZE_WINDOW_DROP_DOWN_BURGER_MENU } from "../../../config/config"
-
-/* Components */
-import Header from "../Header/Header"
-import Footer from "../footer/footer"
-
+/* Components 
+   -------------------------------------------------- */
+import Header from "../header"
+import Footer from "../footer"
 /* styles
    -------------------------------------------------- */
 import indexStyles from "./styles/index.module.scss"
-
 
 
 export default function Layout({ children }) {

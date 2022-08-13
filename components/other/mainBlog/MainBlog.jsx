@@ -8,13 +8,11 @@ import Navbar from "../../ui/Navbar"
 import { Container } from "@mui/system"
 import { Grid } from "@mui/material"
 import { Pagination } from "@mui/material"
-
 /* styles
    -------------------------------------------------- */
 import navBarStyles from "./styles/navBarLeft.module.scss"
 import demoCardBlogStyles from "./styles/demoCardBlog.module.scss"
 import indexStyles from "./styles/index.module.scss"
-
 /* fake data
    -------------------------------------------------- */
 import { dataNavBarLeft } from "../../../fake_database/index.js"

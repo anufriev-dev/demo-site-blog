@@ -1,14 +1,14 @@
 import { Container } from "@mui/system"
-import Navbar from "../../ui/Navbar"
-import BurgerMenu from "../../ui/BurgerMenu"
 import { useRouter } from "next/router"
 import { DELAY_DROP_DOWN_BURGER_MENU } from "../../../config/config"
-
+/* Components 
+   -------------------------------------------------- */
+import Navbar from "../../ui/Navbar"
+import BurgerMenu from "../../ui/BurgerMenu"
 /* styles
    -------------------------------------------------- */
 import indexStyles from "./styles/index.module.scss"
 import navbarTopStyles from "./styles/navbarTop.module.scss"
-
 /* fake data
    -------------------------------------------------- */
 import { dataLinks } from "../../../fake_database"

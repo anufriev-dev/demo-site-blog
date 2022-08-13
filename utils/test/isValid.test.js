@@ -1,4 +1,4 @@
-const isValid = require("../utils/isValid.js")
+const isValid = require("../isValid.js")
 
 describe("validator 3000",() => {
 

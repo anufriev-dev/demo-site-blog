@@ -1,4 +1,4 @@
-const convertDate = require("../utils/convertDate")
+const convertDate = require("../convertDate")
 
 describe("formatter date", () => {
   

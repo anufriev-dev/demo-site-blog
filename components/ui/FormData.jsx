@@ -1,7 +1,4 @@
-
-
 export default function FormData(props) {
-
 
   return (
     <div>
