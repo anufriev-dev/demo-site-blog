@@ -34,6 +34,11 @@ export default function Blog({ data, post_id, comments, setComments }) {
   const [isErrorText, setErrorText] = useState(false)
   const [errSubmit, setErrorSubmit] = useState(false)
 
+  const dropState = () => {
+    setAuthor("")
+    setText("")
+  }
+
 
   const submit = async (e) => {
     e.preventDefault()
@@ -57,7 +62,7 @@ export default function Blog({ data, post_id, comments, setComments }) {
       setErrorSubmit(false)
     },() =>  setErrorSubmit(true))
 
-    setAuthor(""); setText("")
+    dropState()
   }
 
   return (

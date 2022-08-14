@@ -11,7 +11,8 @@ import indexStyles from "./styles/index.module.scss"
 import navbarTopStyles from "./styles/navbarTop.module.scss"
 /* fake data
    -------------------------------------------------- */
-import { dataLinks } from "../../../fake_database"
+import { dataLinks, dataLinksDropDown } from "../../../fake_database"
+import NextJsActiveLink from "../../ui/NextJsActiveLink"
 
 
 export default function Header({ isActiveBurger, setIsActiveBurger }) {
@@ -37,6 +38,22 @@ export default function Header({ isActiveBurger, setIsActiveBurger }) {
         <Container>
           <div onClick={(e) => e.stopPropagation()} className={ navbarTopStyles.reverseWrap }>
             <Navbar closeNavBar={ closeNavBar } isActiveBurger={ isActiveBurger } styles={ navbarTopStyles } data={ dataLinks } />
+            <div className={navbarTopStyles.user}>
+              Гость 
+            </div>
+            {/* drop-down меню */}
+            <div className={navbarTopStyles.dropDown__wrapp}>
+              <div className={navbarTopStyles.dropDown}>
+                <div className={navbarTopStyles.dropDown__item}>
+                  <NextJsActiveLink classNameProps={navbarTopStyles.dropDown__link} href={"/login"} name="Вход"/>
+
+                </div>
+                <div className={navbarTopStyles.dropDown__item}>
+                  <NextJsActiveLink classNameProps={navbarTopStyles.dropDown__link} href={"/register"} name="Регистрация"/>
+                </div>
+              </div>
+            </div>
+
             <BurgerMenu
               isActiveBurger={ isActiveBurger }
               setIsActiveBurger={ setIsActiveBurger }

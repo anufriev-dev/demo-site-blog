@@ -2,7 +2,6 @@
   padding: 2em 0;
   background: var(--themeLayoutOne);
 }
-
 // nav basic
 .nav {
   display: inline-block;
@@ -24,6 +23,71 @@
     }
   }
 }
+.dropDown__wrapp {
+  display: none ;
+  position: absolute;
+  right: 0;
+  width: 227px;
+  height: 122px;
+  // background: wheat;
+  cursor: pointer;
+}
+
+.dropDown {
+  display: flex; // flex
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  position: absolute;
+
+  right: 0;
+  top: 50px;
+  width: 225px;
+  height: 130px;
+
+  background: var(--themeLayoutOne);
+  transition: all 0.5s ease;
+
+  &__link {
+    margin-left: 15px;
+    color: white;
+    text-decoration: none;
+    font-size: 120%;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__item {
+
+  }
+}
+.reverseWrap {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+}
+
+.user {
+  position: relative;
+  color: white;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  z-index: 1;
+  &:hover {
+    color: rgb(2, 172, 220);
+    text-decoration: underline;
+  }
+}
+
+.user:hover + .dropDown__wrapp {
+  display: block;
+}
+
+.dropDown__wrapp:hover {
+  display: block;
+}
+
 
 // button - burger menu
 .burger {
@@ -96,6 +160,15 @@
 
 @media (max-width: 719px) {
 
+  .dropDown__wrapp {
+    position: absolute;
+    left: 0;
+  }
+  .dropDown {
+    top: 52px;
+    left: 0;
+  }
+
   .burger {
     display: block;
   }
@@ -105,7 +178,10 @@
     min-height: var(--burgerButtonHeight);
     transition: all 0.5s ease 0s;
   }
-  
+  .user {
+    display: inline-table;
+    left: 0;
+  }
   .nav {
     position: fixed;
     right: 0;

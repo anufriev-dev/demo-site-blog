@@ -8,6 +8,7 @@ export default function Search({ styles, url }) {
 
   const [serch, setSerch] = useState("")
 
+
   const handlerClick = async () => {
     router.push(`${url ? url : "/"}${serch}`)
     setSerch("")

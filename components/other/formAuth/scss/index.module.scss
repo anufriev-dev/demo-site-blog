@@ -1,0 +1,25 @@
+.title {
+  font-family: "Raleway-Light";
+  font-size: 250%;
+}
+
+.form {
+  &__btn {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px 30px;
+
+    border: none;
+    font-family: "Raleway-Light";
+    color: white;
+    cursor: pointer;
+    background: var(--linkLayout1);
+
+    &:hover {
+      background: var(--linkLayout2);
+    }
+    &:active {
+      background: var(--linkLayoutActive);
+    }
+  }
+}

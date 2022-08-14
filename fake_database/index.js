@@ -14,6 +14,8 @@ export const dataLinks = [
   {namelink: "Главная", href: "/"},
   // {namelink: "Статьи",href: "#"},
   {namelink: "Блог",href: "/blog"},
+  // {namelink: "Вход",href: "/login"},
+  // {namelink: "Регистрация",href: "/register"},
   // {namelink: "Книги",href: "#"},
   // {namelink: "Видео", href: "#"},
   // {namelink: "Подкасты", href: "#"}

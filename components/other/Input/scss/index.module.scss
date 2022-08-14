@@ -1,0 +1,26 @@
+
+.inputWrapp {
+  margin: 30px 0;
+}
+
+.inputLabel {
+  display: inline-block;
+  width: 80px;
+
+  font-family: "Raleway-Light";
+  font-size: 120%;
+  font-weight: 600;
+}
+
+.input {
+  box-sizing: border-box;
+  width: 70%;
+  font-size: 120%;
+  padding: 8px;
+  outline: none;
+  border: 2px solid #bfbfbf;
+  &:hover,
+  &:focus {
+      border: 2px solid green;
+  } 
+}
