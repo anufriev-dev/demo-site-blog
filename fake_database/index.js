@@ -1,22 +1,22 @@
 export const dataNavBarLeft = [
   {namelink: "Apple", href: "/category/Apple"},
-  {namelink: "Болтовня", href: "#"},
-  {namelink: "Деньги", href: "#"},
-  {namelink: "Книга", href: "#"},
-  {namelink: "Конференция", href: "#"},
-  {namelink: "ИТ Книга", href: "#"},
-  {namelink: "Программы", href: "#"},
-  {namelink: "Поисковик", href: "#"},
-  {namelink: "Microsoft", href: "#"},
+  // {namelink: "Болтовня", href: "#"},
+  // {namelink: "Деньги", href: "#"},
+  // {namelink: "Книга", href: "#"},
+  // {namelink: "Конференция", href: "#"},
+  // {namelink: "ИТ Книга", href: "#"},
+  // {namelink: "Программы", href: "#"},
+  // {namelink: "Поисковик", href: "#"},  
+  // {namelink: "Microsoft", href: "#"},
 ]
 
 export const dataLinks = [
   {namelink: "Главная", href: "/"},
-  {namelink: "Статьи",href: "#"},
+  // {namelink: "Статьи",href: "#"},
   {namelink: "Блог",href: "/blog"},
-  {namelink: "Книги",href: "#"},
-  {namelink: "Видео", href: "#"},
-  {namelink: "Подкасты", href: "#"}
+  // {namelink: "Книги",href: "#"},
+  // {namelink: "Видео", href: "#"},
+  // {namelink: "Подкасты", href: "#"}
 ]
 
 export const dataLinksFooter = [

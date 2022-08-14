@@ -1,4 +1,4 @@
-const trim = require("../utils/trim.js")
+const trim = require("../trim.js")
 
 
 describe("trim.js", () => {

@@ -14,7 +14,6 @@ import navbarTopStyles from "./styles/navbarTop.module.scss"
 import { dataLinks } from "../../../fake_database"
 
 
-
 export default function Header({ isActiveBurger, setIsActiveBurger }) {
 
   const router = useRouter()
@@ -46,8 +45,6 @@ export default function Header({ isActiveBurger, setIsActiveBurger }) {
           </div>
         </Container>
       </div>
-
-      {/* Other ... */}
 
     </header>
     

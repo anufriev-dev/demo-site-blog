@@ -6,13 +6,13 @@
   background: #a3421210;
   font-size: 24px;
   &__item {
+    text-decoration: none;
     &:not(:first-child) {
       padding-left: 20px;
     }
     padding-right: 20px;
     border-right: 1px solid #000; 
   }
-
   &__link {
     color: var(--linkLayout1);
     font-family: "Raleway-Light";
@@ -45,16 +45,21 @@
       display: flex;
       justify-content: space-around;
       flex-direction: column;
-
+      padding: 0;
       height: 200px;
       border: none;
       &__item {
         padding: 10px 0;
         border: none;
-        
+        text-align: center;
+        background: var(--themeLayoutTwo);
+        text-decoration: none;
         &:not(:first-child) {
           padding-left: 0; 
         }
+      }
+      &__info {
+        color: white;
       }
     
       &__link { 

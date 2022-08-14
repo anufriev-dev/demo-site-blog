@@ -1,7 +1,8 @@
 /* Components 
    -------------------------------------------------- */
+import Link from "next/link"
 import convertDate from "../../../utils/convertDate"
-import NextJsActiveLink from "../../ui/NextJsActiveLink"
+import cn from "classnames"
 /* styles
    -------------------------------------------------- */
 import indexStyles from "./styles/dashboard.module.scss"
@@ -11,24 +12,26 @@ export default function Dashboard({ data, routh }) {
 
   const thisDate = convertDate(data.date)
 
+  const classes = cn(indexStyles.dashboard__item, indexStyles.dashboard__info)
+
   return (
     <div className={indexStyles.dashboard}>
-      <span  className={indexStyles.dashboard__item}>
-        <NextJsActiveLink 
-          name={"Читать дельше"} 
-          href={`/${routh}/${data.post_id}/${data.summary}`} 
-          classNameProps={indexStyles.dashboard__link}
-        />
-      </span>
-      <span  className={indexStyles.dashboard__item}>
-        <NextJsActiveLink 
-          name={data.category} 
-          href={`/category/${data.category}`} 
-          classNameProps={indexStyles.dashboard__link}
-        />
-      </span>
-      <span  className={indexStyles.dashboard__item}>{thisDate}</span>
-      <span  className={indexStyles.dashboard__item}>Комментов: {data.comments}</span>
+      <Link href={`/${routh}/${data.post_id}/${data.summary}`}>
+        <a className={indexStyles.dashboard__item}>
+          <span className={indexStyles.dashboard__link}>
+            Читать дельше
+          </span>
+        </a>
+      </Link>
+      <Link href={`/category/${data.category}`}>
+        <a className={indexStyles.dashboard__item}>
+          <span className={indexStyles.dashboard__link}>
+            {data.category}
+          </span>
+        </a>
+      </Link>
+      <span  className={classes}>{thisDate}</span>
+      <span  className={classes}>Комментов: {data.comments}</span>
     </div>
   )
 }
