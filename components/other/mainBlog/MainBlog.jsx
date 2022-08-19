@@ -8,6 +8,7 @@ import Navbar from "../../ui/Navbar"
 import { Container } from "@mui/system"
 import { Grid } from "@mui/material"
 import { Pagination } from "@mui/material"
+import strDelay from "../../../utils/strDelay.js"
 /* styles
    -------------------------------------------------- */
 import navBarStyles from "./styles/navBarLeft.module.scss"
@@ -16,7 +17,9 @@ import indexStyles from "./styles/index.module.scss"
 /* fake data
    -------------------------------------------------- */
 import { dataNavBarLeft } from "../../../fake_database/index.js"
-import TopBarSearch from "../tobBarSearch/TopBarSearch.jsx"
+import TopBarSearch from "../topBarSearch/TopBarSearch.jsx"
+import { useEffect } from "react"
+import timeEffect from "../../../utils/timeEffect"
 
 
 
@@ -24,6 +27,28 @@ export default function MainBlog({ post, posts, maxPages, currentPage }) {
 
   const router = useRouter()
   const search = router.query.search
+
+  const text = router.query.search 
+    ? `По запросу: "${ router.query.search }" Найдено постов: `
+    : "Найдено: "
+  
+  // useEffect(() => {
+  //   strDelay(text,"titleSearch")
+  // },[text])
+
+  // useEffect(() => {
+  //   timeEffect(posts, "postsEffect")
+  // }, [posts])
+
+  useEffect(() => {
+    document.getElementById("postsEffect").innerHTML = ""
+    strDelay(text,"titleSearch")
+    .then(() => {
+      timeEffect(posts, "postsEffect")
+    })
+  
+  }, [text,posts])
+
 
   /* JSX Component */
   const pagination = (
@@ -44,11 +69,8 @@ export default function MainBlog({ post, posts, maxPages, currentPage }) {
     <TopBarSearch url={"/blog?page=1&search="} />
 
     <Container>
-        {
-          router.query.search
-            ? <h3 className={indexStyles.title}>По запросу: &#34;{ router.query.search }&#34; Найдено постов: { posts }</h3>
-            : <h3 className={indexStyles.title}>Найдено:  { posts }</h3>
-        }
+        <span id="titleSearch" className={indexStyles.title}></span>
+        <span id="postsEffect" className={indexStyles.title}></span>
         {/* Постраничная навигация */}
         {pagination}
         {/* Main */}

@@ -1,6 +1,0 @@
-  // useEffect(() => {
-  //   const img = document?.querySelectorAll(`#${}`)
-  //   img?.width < 500
-  //     ? img?.classList.add(styles.img_float)
-  //     : img?.classList.remove(styles.img_float)
-  // },[])

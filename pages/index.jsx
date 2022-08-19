@@ -1,6 +1,7 @@
 import { Container } from "@mui/system"
 import Layout from "../components/other/layout/Layout"
 
+
 export default function HomePage () {
 
   return (

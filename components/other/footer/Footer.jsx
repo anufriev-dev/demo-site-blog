@@ -38,7 +38,7 @@ export default function Footer() {
       <div className={copyrightStyles.wrapCopyright}>
         <Container>
           <p className={copyrightStyles.title}>
-            Copyright © 2022 Ануфриев Георгий. Тираж 1 штука. Отпечатано на компьютере. А за права отвечаю, или постараюсь.
+            Copyright © 2022 Ануфриев Георгий. Тираж 1 штука. Отпечатано на компьютере.
           </p>
         </Container>
       </div>

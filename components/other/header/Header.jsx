@@ -11,7 +11,7 @@ import indexStyles from "./styles/index.module.scss"
 import navbarTopStyles from "./styles/navbarTop.module.scss"
 /* fake data
    -------------------------------------------------- */
-import { dataLinks, dataLinksDropDown } from "../../../fake_database"
+import { dataLinks } from "../../../fake_database"
 import NextJsActiveLink from "../../ui/NextJsActiveLink"
 
 
