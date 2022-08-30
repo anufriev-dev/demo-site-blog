@@ -1,69 +1,27 @@
-import { useState } from "react"
-import Router from "next/router"
+import { useBlog } from "../../hooks"
 /* lib components
-   -------------------------------------------------- */
+-------------------------------------------------- */
 import { Container } from "@mui/system"
-/* Api    
-   -------------------------------------------------- */
-import { addComment } from "../../../http/blogApi.js"
-/* Utils   
-   -------------------------------------------------- */
-import createDate from "../../../utils/createDate.js"
+import Router from "next/router"
 /* components     
-   -------------------------------------------------- */
-import Post from "../../ui/Post"
-import Comment from "../../ui/Comment"
-import FormData from "../../ui/FormData"
+-------------------------------------------------- */
+import { ErrorComments, Warning, Post, Comment, FormData } from "../../../components"
 /* styles
    -------------------------------------------------- */
 import postStyles from "./styles/post.module.scss"
 import commentStyles from "./styles/comment.module.scss"
 import formDataStyles from "./styles/formData.module.scss"
 import indexStyles from "./styles/index.module.scss"
-import isValid from "../../../utils/isValid.js"
-import Warning from "../../ui/Warning.jsx"
-import ErrorComments from "../../ui/ErrorComment.jsx"
 
 
-export default function Blog({ data, post_id, comments, setComments }) {
-
-  const [author,setAuthor] = useState("")
-  const [text, setText] = useState("")
-
-  const [isErrorAuthor, setErrorAuthor] = useState(false)
-  const [isErrorText, setErrorText] = useState(false)
-  const [errSubmit, setErrorSubmit] = useState(false)
-
-  const dropState = () => {
-    setAuthor("")
-    setText("")
-  }
-
-
-  const submit = async (e) => {
-    e.preventDefault()
-    // валидация формы
-    if(!isValid(author,{ min: 2, regexp: /[а-ёa-z]/i })){
-      setErrorAuthor(true)
-      return
-    }else  setErrorAuthor(false)
-
-    if(!isValid(text,{ min: 6 })){
-      setErrorText(true)
-      return
-    }else  setErrorText(false)
-
-    // отправка формы на сервер
-    const date = createDate()
-    const dataFetch = { post_id, author, text, date, }
-
-    addComment(dataFetch).then(() => {
-      setComments([...comments, dataFetch])
-      setErrorSubmit(false)
-    },() =>  setErrorSubmit(true))
-
-    dropState()
-  }
+export default function Blog(props) {
+  // пропсы
+  const { data, post_id, comments, setComments } = props
+  // state, setState
+  const { 
+    author, text, isErrorAuthor, isErrorText, errSubmit,
+    setAuthor, setText, submit
+  } = useBlog({post_id, comments, setComments})
 
   return (
     <div>

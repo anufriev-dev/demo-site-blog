@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
@@ -25,10 +26,14 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
+    "@types/node": "^18.7.14",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
     "eslint": "^8.19.0",
     "eslint-config-next": "12.2.2",
     "jest": "^28.1.3",
-    "jest-environment-jsdom": "^28.1.3"
+    "jest-environment-jsdom": "^28.1.3",
+    "typescript": "^4.8.2"
   },
   "author": "Anufriev_Georgy"
 }

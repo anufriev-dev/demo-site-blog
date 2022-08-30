@@ -1,8 +1,9 @@
 import { Grid } from "@mui/material"
-import NextJsActiveLink from "./NextJsActiveLink.jsx"
+import { NextJsActiveLink } from "../../components"
 
 
-export default function CardFooter({ styles, card }) {
+export default function CardFooter(props) {
+  const { styles, card } = props
 
   if(!card) return <h1>Loading</h1>
   

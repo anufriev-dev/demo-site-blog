@@ -1,7 +1,8 @@
-import convertDate from "../../utils/convertDate"
+import { convertDate } from "../../utils"
 
 
-export default function Comment({ comment, styles }) {
+export default function Comment(props) {
+  const { comment, styles } = props
 
   const thisDate = convertDate(comment.date)  
   return (

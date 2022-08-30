@@ -1,5 +1,5 @@
 import { Container, Grid } from "@mui/material"
-import Search from "../../ui/Search"
+import { Search } from "../../../components"
 
 // styles
 import searchStyles from "./scss/topBarSearch.module.scss"
@@ -10,7 +10,7 @@ export default function TopBarSearch({ url }) {
       <Container>
         <Grid container>
           <Grid item xs={12} md={6}>
-            <Search styles={searchStyles} url={url}/>
+            <Search styles={searchStyles} url={ url }/>
           </Grid>
           <Grid item></Grid>
         </Grid>

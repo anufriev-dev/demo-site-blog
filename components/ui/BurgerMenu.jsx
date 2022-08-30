@@ -1,6 +1,11 @@
 import cn from "classnames"
 
-export default function BurgerMenu({ styles, setIsActiveBurger,isActiveBurger }) {
+export default function BurgerMenu(props) {
+  const { 
+    styles, 
+    setIsActiveBurger,
+    isActiveBurger 
+  } = props
 
   const classBurger = cn(
     styles.burger,

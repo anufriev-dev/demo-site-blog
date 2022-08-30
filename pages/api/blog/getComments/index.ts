@@ -1,7 +1,14 @@
 import db from "../../../../config/db"
-import isValid from "../../../../utils/isValid"
+import { isValid } from "../../../../utils/index"
+import { NextApiRequest, NextApiResponse } from "../../../../node_modules/next/dist/shared/lib/utils" 
 
-export default async function getCommentsIndex (req,res) {
+interface Settings {
+  min: number,
+  max: number,
+  regexp: RegExp
+}
+
+export default async function getCommentsIndex (req: NextApiRequest,res: NextApiResponse) {
   const METHOD = req.method
 
   
@@ -12,7 +19,7 @@ export default async function getCommentsIndex (req,res) {
       // валидация
       if(!date) throw new Error("date is not defined")
       const regexp = /[а-ёa-z]/i
-      if(!isValid(author,{ min: 2, regexp }) || !isValid(text,{ min: 6 })) {
+      if(!isValid(author,<Settings>{ min: 2, regexp: regexp }) || !isValid(text,<Settings>{ min: 6 })) {
         throw new Error("Form not valid")
       }
       // выбираю только тот пост, к которому хочу добавить комментарий

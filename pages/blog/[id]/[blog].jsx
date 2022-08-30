@@ -1,4 +1,4 @@
-import Layout from "../../../components/other/layout/Layout.jsx"
+import { Layout } from "../../../components"
 import { useRouter } from "next/router.js"
 import { useState } from "react"
 

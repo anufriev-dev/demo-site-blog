@@ -1,30 +1,16 @@
-
-import { useState, useEffect } from "react"
-import FormAuth from "../../components/other/formAuth"
-import Input from "../../components/other/Input"
-import Layout from "../../components/other/layout"
-import strDelay from "../../utils/strDelay"
-
+import { useAuth } from "../../components/hooks"
+import { Layout, Input, FormAuth,  } from "../../components"
 
 export default function Login() {
-  const [email, setEmail] = useState("")
-  const [pass, setPass ] = useState("")
-
-  const text = "Авторизация на сайте пока не обязательна, но в будующем, будет много фичей"
-  useEffect(() => {
-    strDelay(text,"auth")
-  }, [text])
-
-  const dropState = () => {
-    setEmail("")
-    setPass("")
-  }
+  
+  const { 
+    email, pass, 
+    setEmail, setPass, dropState
+  } = useAuth()
 
   const submit = async (e) => {
     e.preventDefault()
-
     // Logic ...
-
     dropState()
   }
 

@@ -1,4 +1,4 @@
-import Layout from "../../components/other/layout/Layout.jsx"
+import { Layout } from "../../components"
 import Router from "next/router"
 
 export default function Category({ post }) {

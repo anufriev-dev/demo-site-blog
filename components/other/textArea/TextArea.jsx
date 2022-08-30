@@ -1,6 +1,12 @@
 import indexStyles from "./scss/index.module.scss"
 
-export default function TextArea({ placeholder, state, setState }) {
+export default function TextArea(props) {
+  const { 
+    state, 
+    setState,
+    placeholder
+  } = props
+  
   return (
     <>
       <textarea

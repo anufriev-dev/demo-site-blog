@@ -4,16 +4,15 @@ import trim from "../../utils/trim"
 
 
 export default function NextJsActiveLink(props) {
-
   const {
     href,
-    classNameProps,
     name,
+    classNameProps,
     onClick = false
   } = props
 
   const { pathname } = useRouter()
-
+  
   return (
 
     <Link href={ href }>

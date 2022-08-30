@@ -1,9 +1,12 @@
 import Image from "next/dist/client/image"
-import convertDate from "../../utils/convertDate"
 import Link from "next/link"
 
-export default function Post({ item,styles }) {
+import { convertDate } from "../../utils"
 
+
+export default function Post(props) {
+  const { item, styles } = props
+  
   const date = convertDate(item.date)
 
   return (

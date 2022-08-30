@@ -1,41 +1,52 @@
 export default function FormData(props) {
+  const {
+    styles,
+    isErrorAuthor,
+    isErrorText,
+    setAuthor,
+    setText,
+    submit,
+    text,
+    author,
+    buttonTitle,
+  } = props
 
   return (
     <div>
-      <form className={props.styles.form} id="formAddComment">
-      <div className={props.styles.form__name__wrapp}>
+      <form className={styles.form} id="formAddComment">
+      <div className={styles.form__name__wrapp}>
         {
-          props.isErrorAuthor &&
-        <label className={props.styles.form__errMessage } 
+          isErrorAuthor &&
+        <label className={styles.form__errMessage } 
           htmlFor="pole1">Таких людей не бывает!</label>
         }
         <input
           id="pole1"
-          onChange={(e) => props.setAuthor(e.target.value)}
-          value={props.author} 
+          onChange={(e) => setAuthor(e.target.value)}
+          value={author} 
           type="text" placeholder="Укажите ваше имя"
-          className={props.styles.form__name}
+          className={styles.form__name}
         />
         </div>
         <br />
         {
-          props.isErrorText &&
+          isErrorText &&
         <label 
-          className={props.styles.form__errMessage } 
+          className={styles.form__errMessage } 
           htmlFor="pole2">Сообщение не может быть маленьким, напиши что-то подлиннее</label>
         }
         <textarea
           id="pole2"
-          onChange={(e) => props.setText(e.target.value)} 
-          value={props.text}  
+          onChange={(e) => setText(e.target.value)} 
+          value={text}  
           placeholder="Напиши свой комментарий здесь" 
-          className={props.styles.form__textArea}
+          className={styles.form__textArea}
         />
         <button 
-          onClick={(e) => props.submit(e)}
-          className={props.styles.form__button}
+          onClick={(e) => submit(e)}
+          className={styles.form__button}
         >
-          { props.buttonTitle }
+          { buttonTitle }
         </button>
       </form>
     </div>

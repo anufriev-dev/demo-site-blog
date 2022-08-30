@@ -1,8 +1,7 @@
 import { Container } from "@mui/system"
 /* Components 
    -------------------------------------------------- */
-import CardFooter from "../../ui/CardFooter"
-import LinksFooter from "../../ui/LinksFooter"
+import { CardFooter, LinksFooter } from "../../../components"
 /* styles
    -------------------------------------------------- */
 import indexStyles from "./styles/index.module.scss"

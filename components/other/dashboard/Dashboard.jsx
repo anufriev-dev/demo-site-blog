@@ -1,7 +1,11 @@
 /* Components 
    -------------------------------------------------- */
 import Link from "next/link"
-import convertDate from "../../../utils/convertDate"
+/* Utils   
+-------------------------------------------------- */
+import { convertDate } from "../../../utils"
+/* lib components
+   -------------------------------------------------- */
 import cn from "classnames"
 /* styles
    -------------------------------------------------- */
@@ -9,7 +13,6 @@ import indexStyles from "./styles/dashboard.module.scss"
 
 
 export default function Dashboard({ data, routh }) {
-
   const thisDate = convertDate(data.date)
 
   const classes = cn(indexStyles.dashboard__item, indexStyles.dashboard__info)

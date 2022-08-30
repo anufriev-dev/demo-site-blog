@@ -1,10 +1,9 @@
 import { Container } from "@mui/system"
 import { useRouter } from "next/router"
-import { DELAY_DROP_DOWN_BURGER_MENU } from "../../../config/config"
+import { DELAY_DROP_DOWN_BURGER_MENU } from "../../../config"
 /* Components 
-   -------------------------------------------------- */
-import Navbar from "../../ui/Navbar"
-import BurgerMenu from "../../ui/BurgerMenu"
+-------------------------------------------------- */
+import { Navbar, BurgerMenu, DropDownMenu } from "../../../components/index"
 /* styles
    -------------------------------------------------- */
 import indexStyles from "./styles/index.module.scss"
@@ -12,11 +11,10 @@ import navbarTopStyles from "./styles/navbarTop.module.scss"
 /* fake data
    -------------------------------------------------- */
 import { dataLinks } from "../../../fake_database"
-import NextJsActiveLink from "../../ui/NextJsActiveLink"
 
 
-export default function Header({ isActiveBurger, setIsActiveBurger }) {
-
+export default function Header(props) {
+  const { isActiveBurger, setIsActiveBurger } = props
   const router = useRouter()
 
   const closeNavBar = (e,href) => {
@@ -42,17 +40,7 @@ export default function Header({ isActiveBurger, setIsActiveBurger }) {
               Гость 
             </div>
             {/* drop-down меню */}
-            <div className={navbarTopStyles.dropDown__wrapp}>
-              <div className={navbarTopStyles.dropDown}>
-                <div className={navbarTopStyles.dropDown__item}>
-                  <NextJsActiveLink classNameProps={navbarTopStyles.dropDown__link} href={"/login"} name="Вход"/>
-
-                </div>
-                <div className={navbarTopStyles.dropDown__item}>
-                  <NextJsActiveLink classNameProps={navbarTopStyles.dropDown__link} href={"/register"} name="Регистрация"/>
-                </div>
-              </div>
-            </div>
+            <DropDownMenu styles={navbarTopStyles} />
 
             <BurgerMenu
               isActiveBurger={ isActiveBurger }

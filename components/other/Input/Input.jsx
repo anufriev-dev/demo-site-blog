@@ -1,10 +1,6 @@
-/* styles
-   -------------------------------------------------- */
 import indexStyles from "./scss/index.module.scss"
 
-
 export default function Input(props) {
-
   const {
     id,
     text,

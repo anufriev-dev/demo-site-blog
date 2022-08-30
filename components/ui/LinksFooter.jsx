@@ -1,8 +1,10 @@
 import { Grid } from "@mui/material"
-import Navbar from "./Navbar.jsx"
+import { Navbar } from "../../components"
 
 
-export default function LinksFooter ({ styles, data }) {
+export default function LinksFooter (props) {
+  const { styles, data } = props
+  
   return (  
     <Grid container >
       <Grid item xs={12} >

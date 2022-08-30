@@ -5,6 +5,4 @@ const $host = axios.create({
 })
 
 
-export {
-  $host
-}
+export { $host }

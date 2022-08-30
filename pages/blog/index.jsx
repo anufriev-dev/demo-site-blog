@@ -1,28 +1,32 @@
-import Layout from "../../components/other/layout/Layout"
-import MainBlog from "../../components/other/mainBlog/MainBlog"
+import { Layout, MainBlog } from "../../components/index"
 import db from "../../config/db"
 
 
 export default function IndexBlog(props) {
-
-
-
   if(!props) return null
 
+  const { 
+    data, 
+    posts, 
+    maxPages, 
+    currentPage
+  } = props
+  
   return (
     <Layout>
       <MainBlog
-        post={props.data}
-        posts={props.posts}
-        maxPages={props.maxPages} 
-        currentPage={props.currentPage} 
+        post={data}
+        posts={posts}
+        maxPages={maxPages} 
+        currentPage={currentPage} 
       />
     </Layout>
   )
 }
 
-export async function getServerSideProps({ query: { page = 1, search = "" } }) {
-
+export const getServerSideProps = async (props) =>  {
+  const { query: { page = 1, search = "" }} = props
+  
   const offset =  (10 * (page - 1))  || 0
 
   try{

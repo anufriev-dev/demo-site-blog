@@ -1,5 +1,4 @@
-import Layout from "../../components/other/layout"
-import FormContactMe from "../../components/ui/FormContactMe"
+import { Layout, FormContactMe } from "../../components"
 
 export default function Contactme() {
 

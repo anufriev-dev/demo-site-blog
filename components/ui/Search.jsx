@@ -1,21 +1,11 @@
-import { useState } from "react"
-import { useRouter } from "next/router"
+import { useSearch } from "../hooks"
 import cn from "classnames"
   
-export default function Search({ styles, url }) {
-
-  const router = useRouter()
-
-  const [serch, setSerch] = useState("")
-
-
-  const handlerClick = async () => {
-    router.push(`${url ? url : "/"}${serch}`)
-    setSerch("")
-  }
+export default function Search(props) {
+  const { styles, url } = props
+  const { search, setSearch, handlerClick } = useSearch(url)
 
   const classes = cn(styles?.search__td, styles?.search__td2)
-
 
   return (
     <>
@@ -26,8 +16,8 @@ export default function Search({ styles, url }) {
             <td className={styles?.search__td}>
               <input 
               type="text"
-              value={serch}
-              onChange={(e) => setSerch(e.target.value)}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               className={styles?.search__input}
               placeholder="Найдется всё"
             />
