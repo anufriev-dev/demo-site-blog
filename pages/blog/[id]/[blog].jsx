@@ -9,7 +9,6 @@ import db from "../../../config/db.js"
 
 
 export default function BlogPage(props) {
-  
   const routher = useRouter()
   const [comments,setComments] = useState(props.comment)
 
@@ -50,7 +49,7 @@ export async function getServerSideProps({ query })  {
   
   return {
     props: {
-      data: post.rows ,
+      data: post.rows,
       comment: comments.rows
     }
   }

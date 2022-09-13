@@ -15,7 +15,6 @@ import indexStyles from "./styles/index.module.scss"
 
 
 export default function Blog(props) {
-  // пропсы
   const { data, post_id, comments, setComments } = props
   // state, setState
   const { 
@@ -36,7 +35,6 @@ export default function Blog(props) {
       <div>
           <Container>
             <h2 className={indexStyles.titleh2}>Комментарии</h2>
-
             {/* Отобразить */}
             { 
               comments.length
