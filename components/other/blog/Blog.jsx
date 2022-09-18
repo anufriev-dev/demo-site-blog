@@ -20,7 +20,7 @@ export default function Blog(props) {
   const { 
     author, text, isErrorAuthor, isErrorText, errSubmit,
     setAuthor, setText, submit
-  } = useBlog({post_id, comments, setComments})
+  } = useBlog({post_id, comments, setComments })
 
   return (
     <div>

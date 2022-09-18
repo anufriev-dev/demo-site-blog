@@ -15,7 +15,6 @@ export default function FormContactMe() {
     // Logic ...
     dropState()
   }
-
   return (
     <>
     <FormAuth
@@ -27,11 +26,12 @@ export default function FormContactMe() {
       <p className="text"> Я не всегда могу ответить оперативно, но стараюсь отвечать в течении пары дней максимум.</p>
       <br />
       <p className="text text-blue"id="textWarning"></p>
-      <Input id={"email"} state={email} setState={setEmail} text="E-mail"/>
 
+      <Input id={"email"} state={email} setState={setEmail} text="E-mail"/> 
+      
       <TextArea state={area} setState={setArea} placeholder={"Сообщение"}/>
 
     </FormAuth>
     </>
-  );
+  )
 }

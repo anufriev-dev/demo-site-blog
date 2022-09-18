@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { createDate, isValid } from "../../utils"
 import { addComment } from "../../http/blogApi.js"
+import { useSession } from "next-auth/react"
 
 
 function useBlog(props) {
 
   const { post_id,comments,setComments } = props
+  const { data: session } = useSession()
 
   const [author,setAuthor] = useState("")
   const [text, setText] = useState("")
@@ -14,8 +16,11 @@ function useBlog(props) {
   const [isErrorText, setErrorText] = useState(false)
   const [errSubmit, setErrorSubmit] = useState(false)
 
+  useEffect(() => {
+    session && setAuthor(session.user.name)
+  },[session])
+
   const dropState = () => {
-    setAuthor("")
     setText("")
   }
 
@@ -26,6 +31,7 @@ function useBlog(props) {
       setErrorAuthor(true)
       return
     }else  setErrorAuthor(false)
+    
 
     if(!isValid(text,{ min: 6 })){
       setErrorText(true)

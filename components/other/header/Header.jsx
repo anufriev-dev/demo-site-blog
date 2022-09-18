@@ -1,6 +1,8 @@
 import { Container } from "@mui/system"
 import { useRouter } from "next/router"
 import { DELAY_DROP_DOWN_BURGER_MENU } from "../../../config"
+import { useSession, signIn, signOut } from "next-auth/react"
+import Image from "next/image"
 /* Components 
 -------------------------------------------------- */
 import { Navbar, BurgerMenu, DropDownMenu } from "../../../components/index"
@@ -16,6 +18,7 @@ import { dataLinks } from "../../../fake_database"
 export default function Header(props) {
   const { isActiveBurger, setIsActiveBurger } = props
   const router = useRouter()
+  const { data: session } = useSession()
 
   const closeNavBar = (e,href) => {
     if(isActiveBurger) {
@@ -36,9 +39,17 @@ export default function Header(props) {
         <Container>
           <div onClick={(e) => e.stopPropagation()} className={ navbarTopStyles.reverseWrap }>
             <Navbar closeNavBar={ closeNavBar } isActiveBurger={ isActiveBurger } styles={ navbarTopStyles } data={ dataLinks } />
-            <div className={navbarTopStyles.user}>
-              Гость 
-            </div>
+            {session
+              ?( 
+              <div onClick={() => router.push("/account") } className={navbarTopStyles.user_veryfy}>
+                <span className={navbarTopStyles.user_name}>{session.user.name}</span>
+                <Image className={navbarTopStyles.avatar} src={session.user.image} alt="avatar" width={30} height={30} />
+              </div>
+              ):(
+              <div className={navbarTopStyles.user}>
+                Гость 
+              </div>)
+            }
             {/* drop-down меню */}
             <DropDownMenu styles={navbarTopStyles} />
 

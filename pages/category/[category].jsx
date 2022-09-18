@@ -12,13 +12,13 @@ export default function Category({ post }) {
 }
 
 
-export function getServerSideProps ({ query }) {
+export function getServerSideProps (context) {
+
+  const { query } = context
 
   return {
     props: {
-      post: {
-        id: query.category,
-      }
+      post: { id: query.category }
     }
   }
 }

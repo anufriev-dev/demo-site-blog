@@ -5,7 +5,7 @@ import { useState } from "react"
 /* fake data
    -------------------------------------------------- */
 import Blog from "../../../components/other/blog"
-import db from "../../../config/db.js"
+import { Posts } from "../../../model"
 
 
 export default function BlogPage(props) {
@@ -15,48 +15,30 @@ export default function BlogPage(props) {
   const { id } = routher.query
 
   if(!props || !comments) return null
-
   return (
     <Layout>
     <Blog 
-      data={props.data[0]} 
+      data={props.data} 
       comments={comments} 
       setComments={setComments}
-      post_id={id} 
+      post_id={id}
     />
     </Layout>
   )
 }
 
-export async function getServerSideProps({ query })  {
+export async function getServerSideProps(context)  {
+  const { query } = context
 
   try{
-    const comments = await db.query(
-    `
-      SELECT * FROM comment
-      JOIN post_blog_comment
-      ON comment.comment_id = post_blog_comment.comment_id
-      WHERE post_id = $1
-    `
-    ,[query.id])
-    const post = await db.query(
-      `
-        SELECT * FROM post_blog
-        WHERE post_id = $1
-      `
-      ,[query.id]
-    )
+    const comments = await Posts.getComments(query.id)
+    const post = await Posts.getPost(query.id)
   
-  return {
-    props: {
-      data: post.rows,
-      comment: comments.rows
-    }
-  }
+    return { props: { data: post, comment: comments } }
 
   }catch(e) {
     /* eslint-disable-next-line no-console */
     console.error("Ошибка на сервере")
-    return {props: {data: null} } 
+    return { props: { data: null } } 
   }
 }

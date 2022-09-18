@@ -6,6 +6,7 @@ import strDelay from "./strDelay"
 import timeEffect from "./timeEffect"
 import toSliceText from "./toSliceText"
 import trim from "./trim"
+import defineRole from "./defineRole"
 
 
 export {
@@ -16,5 +17,6 @@ export {
   strDelay,
   timeEffect,
   toSliceText,
-  trim
+  trim,
+  defineRole
 }

@@ -10,3 +10,6 @@ next-env.d.ts
 
 # test rest API
 .test.rest
+
+# db client
+Pg_Local.session.sql

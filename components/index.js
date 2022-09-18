@@ -23,6 +23,7 @@ import MainBlog from "./other/mainBlog"
 import FormContactMe from "./ui/FormContactMe"
 import DropDownMenu from "./ui/DropDownMenu"
 import PaginationMui from "./ui/PaginationMui"
+import ProviderAccount from "./other/providerAccount"
 
 export {
   ErrorComments,
@@ -49,5 +50,6 @@ export {
   MainBlog,
   FormContactMe,
   DropDownMenu,
-  PaginationMui
+  PaginationMui,
+  ProviderAccount
 }

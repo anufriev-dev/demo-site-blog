@@ -1,9 +1,10 @@
 // import App from 'next/app'
 import NextNProgress from "nextjs-progressbar"
+import { SessionProvider } from "next-auth/react"
 
 import "../styles/global/global.scss"
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <>
     <NextNProgress
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }) {
       height={3}
       showOnShallow={true}
     />
-      <Component {...pageProps} />
+      <SessionProvider session={session}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </>
   )
 }
