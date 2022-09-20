@@ -14,7 +14,7 @@ export default async function getCommentsIndex (req: NextApiRequest,res: NextApi
   
   if(METHOD === "POST") {
     const { author, text, date, post_id } = req.body
-
+    
     try {
       // валидация
       if(!date) throw new Error("date is not defined")
@@ -41,6 +41,7 @@ export default async function getCommentsIndex (req: NextApiRequest,res: NextApi
 
   if(METHOD === "GET") {
   // Logic ...
+
   }
 
 }

@@ -5,7 +5,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 import Image from "next/image"
 /* Components 
 -------------------------------------------------- */
-import { Navbar, BurgerMenu, DropDownMenu } from "../../../components/index"
+import { Navbar, BurgerMenu, DropDownMenu, NextJsActiveLink } from "../../../components"
 /* styles
    -------------------------------------------------- */
 import indexStyles from "./styles/index.module.scss"
@@ -42,8 +42,11 @@ export default function Header(props) {
             {session
               ?( 
               <div onClick={() => router.push("/account") } className={navbarTopStyles.user_veryfy}>
-                <span className={navbarTopStyles.user_name}>{session.user.name}</span>
-                <Image className={navbarTopStyles.avatar} src={session.user.image} alt="avatar" width={30} height={30} />
+                <NextJsActiveLink name={session.user.name} classNameProps={navbarTopStyles.user_name}/>
+                {
+                  session.user.image &&
+                  <Image className={navbarTopStyles.avatar} src={session.user.image} alt="avatar" width={30} height={30} />
+                }
               </div>
               ):(
               <div className={navbarTopStyles.user}>

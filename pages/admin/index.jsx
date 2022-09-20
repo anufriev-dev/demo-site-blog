@@ -1,7 +1,6 @@
 import { Layout } from "../../components"
-import { unstable_getServerSession } from "next-auth/next"
-import { authOptions } from "../api/auth/[...nextauth].js"
-import { Role } from "../../model"
+import { getToken } from "next-auth/jwt"
+import { defineRole } from "../../utils"
 
 export default function Admin() {
 
@@ -13,15 +12,14 @@ export default function Admin() {
 }
 
 export const getServerSideProps = async (context) => {
-  const session = await unstable_getServerSession(context.req, context.res, authOptions)
+  const { req } = context
+  const token = await getToken({ req })
 
-  const email = session?.user.email
-  const name = session?.user.name
-
-  const role = await Role.get(email,name)
+  const role = defineRole(token?.role)
+  // const role = await Role.get(email,name)
 
   if(role === "ADMIN") {
-    return { props: { session } }
+    return { props: { } }
   }
   return { redirect: { destination: "/" } }
 }

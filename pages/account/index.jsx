@@ -1,48 +1,50 @@
-import { useSession, signOut } from "next-auth/react"
-import { unstable_getServerSession } from "next-auth/next"
-import { authOptions } from "../api/auth/[...nextauth].js"
+import { useSession, signOut  } from "next-auth/react"
 import { Layout } from "../../components"
-import { Role } from "../../model"
 import { useRouter } from "next/router"
+import { UserApi } from "../../http"
+import { getToken } from "next-auth/jwt"
+import { defineRole } from "../../utils"
 
 export default function Account({isAdmin}) {
   const { data: session } = useSession()
   const router = useRouter()
 
+  const delete_account = async (e) => {
+
+    const result = await UserApi.delete()
+    if(result) {
+      signOut()
+    }
+  }
+
   if(!session) return <div>Loading...</div>
   return (
     <Layout>
       <p>Hello, {session.user.name}</p>
-      <button
-        onClick={() => signOut()}
-      >
-        Exit
-      </button>
-      {
+      <button onClick={() => signOut()} >Exit</button>
+      { 
         isAdmin && 
-        (<button 
-           onClick={() => router.push("/admin")}
-         >
-           Админка
-         </button>)
+        <button onClick={() => router.push("/admin")}> Админка </button> 
       }
+      <button onClick={delete_account}>Удалить аккаунта</button>
     </Layout>
   )
 }
 
 export const getServerSideProps = async (context) => {
-  const session = await unstable_getServerSession(context.req,context.res,authOptions)
+  const { req } = context
+  const token = await getToken({ req })
 
-  const email = session?.user.email
-  const name = session?.user.name
+  const role = defineRole(token?.role)
 
-  const role = await Role.get(email,name)
-  
   if(role === "ADMIN") {
-    return { props: { session, isAdmin: true } }
+    return { props: { isAdmin: true } }
   }
 
-  if(!session) 
+  if(!token) {
     return { redirect: { destination: "/login"} }
-  else return { props: { session } } 
+  }
+  else{
+    return { props: {  } } 
+  }
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { createDate, isValid } from "../../utils"
-import { addComment } from "../../http/blogApi.js"
+import { addComment } from "../../http/blogApi"
 import { useSession } from "next-auth/react"
 
 

@@ -5,13 +5,13 @@ type Role = "USER" | "ADMIN"
 
 
 class User {
-  async create (email: string, name: string, role: Role) {
+  async create (email: string, name: string, role: Role, pass?: any ) {
     try {
-      await db.query(`
-          INSERT INTO "user" (email, name, role)
-          VALUES ($1, $2, $3)
-      `,[email, name, defineRole(role)])
-      
+      const result = await db.query(`
+          INSERT INTO "user" (email, name, role, passwd)
+          VALUES ($1, $2, $3, $4 )
+      `,[email, name, defineRole(role), pass])
+      return result
     } catch(e) { return e }
   }
 
@@ -25,6 +25,35 @@ class User {
        ? true
        : false
     } catch { return false }
+  }
+
+  async get_for_email (email: string) {
+    try {
+      const data = await db.query(`
+          SELECT * FROM "user" as "us"
+          WHERE us.email = $1
+      `,[email])
+      return data?.rows[0]
+    } catch { return false }
+  }
+
+  async check (email: string, pass: string) {
+    try {
+      const result = await db.query(`
+        SELECT * FROM "user" 
+        WHERE email = $1 AND passwd = $2
+      `,[email, pass])
+      return result.rows[0]
+
+    } catch(e) { return e }
+  }
+  async delete_account (id: any) {
+    try {
+      const result = await db.query(`
+        DELETE FROM "user" WHERE id = $1
+      `,[id])
+      return result
+    } catch(e) { return e }
   }
 }
 
