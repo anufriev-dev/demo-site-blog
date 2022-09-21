@@ -61,7 +61,7 @@ export const authOptions: NextAuthOptions = {
         if(!created) throw new Error("user not created")
 
         const user = await User.get_for_email(email)
-        
+          
         return { 
           id_db: user.id,
           email: user.email,
@@ -92,12 +92,16 @@ export const authOptions: NextAuthOptions = {
         provider === "google"
       ) {
         if(!isUser) {
-          User.create(email,name,"USER")
-          return true
+          const result = await User.create(email,name,"USER")
+          if(result?.rowCount) {
+            return true
+          }
+          return false
         }else return true
       }
     },
     async jwt({token,user,account}) {
+      
       if(account) {
         const provider = account.provider
         if(provider === "github" || 
@@ -105,6 +109,7 @@ export const authOptions: NextAuthOptions = {
         ) {
           const user_db = await User.get_for_email(user.email)
           
+          token.date_registration = user_db.date_registration
           token.id_db = user_db.id
           token.role = user_db.role
         }

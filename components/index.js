@@ -25,6 +25,7 @@ import DropDownMenu from "./ui/DropDownMenu"
 import PaginationMui from "./ui/PaginationMui"
 import ProviderAccount from "./other/providerAccount"
 import TextWarningForm from "./other/textWarningForm"
+import Account from "./other/account"
 
 export {
   ErrorComments,
@@ -53,5 +54,6 @@ export {
   DropDownMenu,
   PaginationMui,
   ProviderAccount,
-  TextWarningForm
+  TextWarningForm,
+  Account
 }

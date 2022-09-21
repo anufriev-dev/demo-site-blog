@@ -6,7 +6,7 @@ import style from "./style/NextJsActiveLink.module.scss"
 
 export default function NextJsActiveLink(props) {
   const {
-    href = "",
+    href,
     name,
     classNameProps,
     onClick = false

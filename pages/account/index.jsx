@@ -1,32 +1,14 @@
-import { useSession, signOut  } from "next-auth/react"
-import { Layout } from "../../components"
-import { useRouter } from "next/router"
-import { UserApi } from "../../http"
+import { Layout, Account as UserAccount } from "../../components"
 import { getToken } from "next-auth/jwt"
-import { defineRole } from "../../utils"
+import { convertDate, defineRole, getDate } from "../../utils"
 
-export default function Account({isAdmin}) {
-  const { data: session } = useSession()
-  const router = useRouter()
 
-  const delete_account = async (e) => {
+export default function Account(props) {
+  if(!props) return <div>Loading...</div>
 
-    const result = await UserApi.delete()
-    if(result) {
-      signOut()
-    }
-  }
-
-  if(!session) return <div>Loading...</div>
   return (
     <Layout>
-      <p>Hello, {session.user.name}</p>
-      <button onClick={() => signOut()} >Exit</button>
-      { 
-        isAdmin && 
-        <button onClick={() => router.push("/admin")}> Админка </button> 
-      }
-      <button onClick={delete_account}>Удалить аккаунта</button>
+      <UserAccount {...props} />
     </Layout>
   )
 }
@@ -36,15 +18,17 @@ export const getServerSideProps = async (context) => {
   const token = await getToken({ req })
 
   const role = defineRole(token?.role)
+  let date = token?.date_registration
 
-  if(role === "ADMIN") {
-    return { props: { isAdmin: true } }
-  }
+  // formatter date
+  date = getDate(date)
+  date = convertDate(date)
 
   if(!token) {
     return { redirect: { destination: "/login"} }
   }
-  else{
-    return { props: {  } } 
-  }
+
+  return role === "ADMIN"
+    ? { props: { isAdmin: true, date } }
+    : { props: { date } } 
 }

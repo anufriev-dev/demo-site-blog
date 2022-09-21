@@ -8,8 +8,8 @@ class User {
   async create (email: string, name: string, role: Role, pass?: any ) {
     try {
       const result = await db.query(`
-          INSERT INTO "user" (email, name, role, passwd)
-          VALUES ($1, $2, $3, $4 )
+          INSERT INTO "user" (email, name, role, passwd,date_registration)
+          VALUES ($1, $2, $3, $4, NOW() )
       `,[email, name, defineRole(role), pass])
       return result
     } catch(e) { return e }
@@ -30,7 +30,8 @@ class User {
   async get_for_email (email: string) {
     try {
       const data = await db.query(`
-          SELECT * FROM "user" as "us"
+          SELECT id, email, name, role, passwd, date_registration
+          FROM "user" as "us"
           WHERE us.email = $1
       `,[email])
       return data?.rows[0]

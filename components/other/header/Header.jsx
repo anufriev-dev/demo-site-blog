@@ -42,7 +42,7 @@ export default function Header(props) {
             {session
               ?( 
               <div onClick={() => router.push("/account") } className={navbarTopStyles.user_veryfy}>
-                <NextJsActiveLink name={session.user.name} classNameProps={navbarTopStyles.user_name}/>
+                <NextJsActiveLink href={"/account"} name={session.user.name} classNameProps={navbarTopStyles.user_name}/>
                 {
                   session.user.image &&
                   <Image className={navbarTopStyles.avatar} src={session.user.image} alt="avatar" width={30} height={30} />

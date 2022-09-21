@@ -7,6 +7,7 @@ import timeEffect from "./timeEffect"
 import toSliceText from "./toSliceText"
 import trim from "./trim"
 import defineRole from "./defineRole"
+import getDate from "./getDate"
 
 
 export {
@@ -18,5 +19,6 @@ export {
   timeEffect,
   toSliceText,
   trim,
-  defineRole
+  defineRole,
+  getDate
 }
