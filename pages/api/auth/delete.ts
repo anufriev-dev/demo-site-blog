@@ -13,9 +13,9 @@ const Delete = async (req: NextApiRequest, res: NextApiResponse) => {
 
       if(!result) throw new Error("user not deleted")
 
-      res.status(200).json({ msg: "user deleted" })
+      res.status(200).json({ ok: true })
     } catch(e) { 
-      res.status(400).json({ msg: e })
+      res.status(400).json({ ok: false })
     }
   }
 }

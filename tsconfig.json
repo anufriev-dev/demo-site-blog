@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "target": "es5",
+    "target": "ES2022",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
     "allowJs": true,
+    "baseUrl": "./",
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
@@ -23,7 +24,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/blog/index.jsx"
   ],
   "exclude": [
     "node_modules"
