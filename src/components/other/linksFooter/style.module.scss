@@ -1,0 +1,30 @@
+// navbar bot
+.nav {
+  padding: 0 15px;
+  font-size: 1.1em;
+  &__list {
+    display: block;
+    list-style-type: square;
+  }
+  &__item {
+    &:not(:first-child) {
+      padding-top: 1rem;
+    }
+  }
+  &__link {
+    color: var(--linkLayout1);
+    font-family: "Raleway-Light";
+    &:active {
+      color: var(--linkLayoutActive);
+    }
+    &:hover {
+      color: var(--linkLayout2);
+    }
+  }
+}
+
+.title {
+  font-size: 160%;
+  font-family: "Raleway-Light";
+  color: white;
+}

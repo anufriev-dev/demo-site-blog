@@ -13,3 +13,7 @@ next-env.d.ts
 
 # db client
 Pg_Local.session.sql
+
+#
+docker-compose.yml
+Dockerfile

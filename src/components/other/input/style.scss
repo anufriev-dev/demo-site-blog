@@ -1,0 +1,14 @@
+.input {
+  box-sizing: border-box;
+  font-family: "Raleway-Light";
+
+  width: 70%;
+  font-size: 120%;
+  padding: 8px;
+  outline: none;
+  border: 2px solid #bfbfbf;
+  &:hover,
+  &:focus {
+      border: 2px solid green;
+  } 
+}

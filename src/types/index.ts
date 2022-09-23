@@ -1,0 +1,147 @@
+import { Dispatch, MouseEvent, SetStateAction } from "react"
+
+export interface stringObject {
+   [key: string]: string; 
+}
+type PostJoinData = {
+   post_id: number,
+   summary: string,
+   category: string,
+   date: string,
+   text: string,
+   src_img: string,
+   comments: number,
+   counts: number
+}
+export interface getPostJoinCommentsData { 
+   data: PostJoinData[] ,
+   allPosts: number,
+   maxPages: number
+}
+export interface DashboardProps {
+  data: PostJoinData;
+  routh: string;
+}
+
+export interface DemoCardBlogProps {
+   styles: any;
+   dataBlog: PostJoinData[];
+   routherType: string;
+}
+
+export interface indexBlogProps extends getPostJoinCommentsData {
+   currentPage: number;
+}
+
+export interface addCommentBody { 
+   post_id: number;
+   author: string;
+   text: string; 
+   date: string;
+}
+
+export interface UserDB {
+   id: number;
+   email: string;
+   name: string;
+   role: string;
+   passwd: string;
+   date_registration: Date;
+}
+
+export interface getCommentsParams {
+   comment_id: string;
+   author: string;
+   date: string;
+   text: string;
+}
+
+export interface PostDB {
+   post_id: string;
+   summary: string; 
+   category: string; 
+   date: string;
+   text: string; 
+   src_img: string;
+}
+
+export interface PostPageProps {
+   data: PostDB
+   comments: getCommentsParams[]
+}
+
+export type insert = "INSERT" | "ERROR"
+
+
+export type role = "USER" | "ADMIN"
+
+export interface CardFooterProps {
+   card: {
+     title: string,
+     text: string,
+     namelink?: string,
+     href?: string 
+   }[]
+}
+
+export interface FormAuthProps {
+   submit(e: MouseEvent<HTMLElement>): void;
+   title: string;
+   children: JSX.Element;
+   submitText?: string;
+   text?: string;
+   id?: any;
+}
+
+export interface Burger {
+   isActiveBurger: boolean;
+   setIsActiveBurger: Dispatch<SetStateAction<boolean>>
+}
+
+export type dataLinks = {
+   namelink: string,
+   href
+   : string
+}
+
+export interface NavListProps {
+   data: dataLinks[];
+   styles: any;
+   closeNavBar?(e: MouseEvent<HTMLElement>, href: string): Promise<void> // TODO - зафиксить это недоразумение
+}
+
+export interface NavbarProps extends NavListProps  {
+   isActiveBurger?: boolean;
+}
+
+export interface NavbarItemProps {
+   event(e: MouseEvent<HTMLElement>, href: string): Promise<void>;
+   elements: dataLinks;
+   className: string;
+}
+
+
+export interface InputLableProps {
+   id: string | number;
+   text: string;
+   state: string;
+   setState: Dispatch<SetStateAction<string>>;
+}
+
+export interface InputProps {
+   id: string | number;
+   state: string;
+   setState: Dispatch<SetStateAction<string>>;
+}
+
+export interface LabelProps {
+   id: string | number;
+   text: string;
+}
+
+export interface LinksFooterProps {
+   data: {
+     namelink: string,
+     href: string
+   }[]
+ }

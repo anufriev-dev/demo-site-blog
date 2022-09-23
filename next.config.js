@@ -1,6 +1,6 @@
 module.exports = {
   eslint: {
-    dirs: [ "pages", "components", "lib", "utils", "model" ]
+    dirs: [ "src" ]
   },
   devIndicators: {
     buildActivity: false,

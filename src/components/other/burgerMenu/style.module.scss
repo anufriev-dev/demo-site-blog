@@ -1,0 +1,79 @@
+// button - burger menu
+.burger {
+  position: relative;
+  display: none;
+
+  padding: 0;
+  margin: 0;
+  width: 30px;
+  height: var(--burgerButtonHeight);
+  border: none;
+
+  z-index: 1001;
+  background: transparent;
+  cursor: pointer;
+  
+  &__line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    height: 2px;
+    width: 100%;
+
+    background: white;
+    transition: all 0.8s ease 0s;
+  }
+  &::before,&::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: white;
+    transition: all 0.8s ease 0s;
+  }
+  &::before {
+    top: 0;
+  } 
+  &::after {
+    bottom: 0;
+  }
+
+}
+ // animation burger button
+.burgerActive {
+  position: fixed;
+  bottom: 20px;
+}
+
+.burgerActive .burger__line {
+  opacity: 0;
+}
+
+.burgerActive::before,.burgerActive::after {
+  background: red;
+} 
+
+.burgerActive::before {
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.burgerActive::after {
+  top: 50%;
+  transform: rotate(-45deg);
+}
+
+@media (max-width: 719px) {
+  .burger {
+    display: block;
+  }
+}
+// max-width: var(--minWidthBurger)
+@media (max-width: 300px) {
+  .burger {
+    z-index: 1202;
+  }
+}

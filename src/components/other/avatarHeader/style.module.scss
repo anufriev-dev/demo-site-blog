@@ -1,0 +1,29 @@
+.user_veryfy {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 0;
+  color: white;
+  z-index: 10;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+    color:rgb(2, 172, 220);
+  }
+}
+
+.user_name {
+  margin-right: 20px;
+  font-family: "Roboto-Regular";
+}
+
+.avatar {
+  flex: 1 1 auto;
+  border-radius: 50%;
+}
+
+@media (max-width: 719px) {
+  .user_veryfy {
+    left: 0;
+  }
+}

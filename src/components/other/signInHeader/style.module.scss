@@ -1,0 +1,19 @@
+.user {
+  position: relative;
+  color: white;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  z-index: 1;
+  &:hover {
+    color: rgb(2, 172, 220);
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 719px) {
+  .user {
+    display: inline-table;
+    left: 0;
+  }
+}

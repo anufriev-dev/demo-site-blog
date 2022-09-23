@@ -1,0 +1,36 @@
+
+.item {
+  text-decoration: none;
+  &:not(:first-child) {
+    padding-left: 20px;
+  }
+  padding-right: 20px;
+  border-right: 1px solid #000; 
+}
+.link {
+  color: var(--linkLayout1);
+  font-family: "Raleway-Light";
+  text-decoration: none;
+
+  &:active {
+    color: var(--linkLayoutActive);
+  }
+  &:hover {
+    color: var(--linkLayout2);
+    text-decoration: underline;
+  }
+}
+
+
+@media (max-width: 680px ) {
+  .item {
+    padding: 10px 0;
+    border: none;
+    text-align: center;
+    background: var(--themeLayoutTwo);
+    text-decoration: none;
+    &:not(:first-child) {
+      padding-left: 0; 
+    }
+  }    
+}
