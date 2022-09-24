@@ -1,29 +1,21 @@
 import { Container } from "@mui/system"
-import { useSession, signOut } from "next-auth/react"
-import { useRouter } from "next/router"
-import { UserApi } from "src/http"
-import { AccountProps } from "src/pages/account"
+import { useAccount } from "src/hooks"
+import { AccountProps } from "src/types"
 
 function Account(props: AccountProps) {
-  const { isAdmin, date } = props
+  const { 
+    isAdmin, date, delete_account,
+    router, session, exit 
+  } = useAccount(props)
 
-  const { data: session } = useSession()
-  const router = useRouter()
-
-  const delete_account = async () => {
-    const statusText = await UserApi.delete()
-    if(statusText === "OK") signOut()
-    else alert("account not deleted")
-  }
-
-  if(!session || !props) return <div>Loading...</div>
+  if(!props) return <div>Loading...</div>
 
   return (
     <div>
       <Container>
         <p>Hello, {session?.user.name}</p>
         <p>Дата регистрации аккаунта { date }</p>
-        <button onClick={() => signOut()} >Exit</button>
+        <button onClick={exit} >Exit</button>
         { 
           isAdmin && 
           <button onClick={() => router.push("/admin")}> Админка </button> 

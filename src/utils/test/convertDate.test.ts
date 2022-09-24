@@ -1,4 +1,4 @@
-const convertDate = require("../convertDate")
+import  { convertDate } from  "../"
 
 describe("formatter date", () => {
   

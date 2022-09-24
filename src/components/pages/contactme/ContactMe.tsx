@@ -4,7 +4,7 @@ import { FormContactMe } from "src/components"
 function ContactMe() {
   return (
     <>
-      <FormContactMe/>
+      <FormContactMe />
     </>
   )
 }

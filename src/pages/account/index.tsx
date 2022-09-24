@@ -2,11 +2,8 @@ import { Layout, Account } from "src/components"
 import { getToken } from "next-auth/jwt"
 import { convertDate, defineRole, getDate } from "../../utils"
 import { GetServerSideProps } from "next"
+import { AccountProps } from "src/types"
 
-export interface AccountProps {
-  isAdmin?: boolean,
-  date: string
-}
 
 export default function AccountPage(props: AccountProps ) {
   if(!props) return <div>Loading...</div>

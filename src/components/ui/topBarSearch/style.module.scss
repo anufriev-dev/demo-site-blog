@@ -1,0 +1,23 @@
+.wrapp_topBar {
+  background: var(--themeLayoutTwo);
+}
+
+
+
+@media (max-width: 540px) {
+  .search {
+    &__tr {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    &__td2 {
+      display: flex;
+      justify-content: flex-end;
+    }
+    &__btn {
+      padding: 5px 10px;
+      margin: 0;
+    }
+  }
+}

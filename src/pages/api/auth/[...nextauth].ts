@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
 
         if(!email || !pass) throw new Error("not valid params")
 
-        const user = await User.get_for_email(email)
+        const user = await User.get_by_email(email)
 
         if(!user) throw new Error("user not exist")
 
@@ -61,7 +61,7 @@ export const authOptions: NextAuthOptions = {
 
         if(created !== "INSERT") throw new Error("user not created")
 
-        const user = await User.get_for_email(email)
+        const user = await User.get_by_email(email)
           
         return { 
           id_db: user.id,
@@ -109,7 +109,7 @@ export const authOptions: NextAuthOptions = {
         if(provider === "github" || 
            provider === "google" 
         ) {
-          const user_db = await User.get_for_email(user.email)
+          const user_db = await User.get_by_email(user.email)
           
           token.date_registration = user_db.date_registration
           token.id_db = user_db.id

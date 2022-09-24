@@ -5,15 +5,10 @@ import { InputLabel, FormAuth, ProviderAccount, TextWarningForm } from "src/comp
 
 function Login() {
   const { 
-    email, pass, 
-    setEmail, setPass, submit,
+    email, pass, formProps,
+    setEmail, setPass,
     isErrorEmail, isErrorPass
   } = useAuth()
-
-  const formProps = {
-    id: "auth", submitText: "Войти",
-    submit, title: "Вход"
-  }
   
   return (
     <div>

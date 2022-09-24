@@ -4,13 +4,9 @@ import { FormAuth, Layout, InputLabel, TextWarningForm } from "src/components"
 function Registration() {
   const { 
     email, pass, name,
-    setEmail, setPass, setName, submit, isErrorEmail, isErrorPass, isErrorName
+    setEmail, setPass, setName,
+    formProps, isErrorEmail, isErrorPass, isErrorName
   } = useRegistration()
-
-  const formProps = {
-    id: "auth", submitText: "Зарегистрироваться",
-    submit, title: "Регистрация"
-  }
 
   return (
     <Layout>

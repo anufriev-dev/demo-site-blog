@@ -21,13 +21,11 @@ class User {
           SELECT * FROM "user" as "us"
           WHERE us.email = $1
       `,[email])
-      return data?.rows[0]?.email
-       ? true
-       : false
+      return Boolean(data?.rows[0]?.email)
     } catch { return false }
   }
 
-  async get_for_email (email: string): Promise<UserDB> {
+  async get_by_email (email: string): Promise<UserDB> {
     try {
       const data = await db.query(`
           SELECT id, email, name, role, passwd, date_registration

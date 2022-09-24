@@ -24,12 +24,11 @@ export interface DashboardProps {
 }
 
 export interface DemoCardBlogProps {
-   styles: any;
    dataBlog: PostJoinData[];
    routherType: string;
 }
 
-export interface indexBlogProps extends getPostJoinCommentsData {
+export interface IBlog extends getPostJoinCommentsData {
    currentPage: number;
 }
 
@@ -144,4 +143,9 @@ export interface LinksFooterProps {
      namelink: string,
      href: string
    }[]
- }
+}
+
+export interface AccountProps {
+   isAdmin?: boolean,
+   date: string
+}

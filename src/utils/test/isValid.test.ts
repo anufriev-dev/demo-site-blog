@@ -1,4 +1,4 @@
-const isValid = require("../isValid.js")
+import { isValid } from "../"
 
 describe("validator 3000",() => {
 

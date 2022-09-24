@@ -4,6 +4,7 @@
 # next
 .next
 next-env.d.ts
+.swc
 
 # local env files
 .env.local
@@ -14,6 +15,9 @@ next-env.d.ts
 # db client
 Pg_Local.session.sql
 
-#
+# other
 docker-compose.yml
 Dockerfile
+
+# ts
+tsconfig.tsbuildinfo

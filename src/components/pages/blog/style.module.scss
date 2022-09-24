@@ -1,0 +1,33 @@
+.title {
+  font-size: 42px;
+  font-family: "Montserrat-Regular";
+  line-height: 1.5em;
+}
+
+.title {
+  font-family: "Montserrat-Light";
+}
+
+.nav {
+  padding-bottom: 40px;
+  font-size: 20px;
+  &__list {
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+  &__item {
+    padding-top: 20px;
+  }
+  &__link {
+    text-decoration: none;
+    font-family: "Roboto-Regular";
+    color: var(--linkLayout1);
+    &:hover {
+      color: var(--linkLayout2);
+      text-decoration: underline;
+    }
+    &:active {
+      color: var(--linkLayoutActive);
+    }
+  }
+}

@@ -1,10 +1,10 @@
 import { GetServerSideProps } from "next"
 import { Layout, Blog } from "src/components"
 import { Posts } from "src/model"
-import { indexBlogProps } from "src/types"
+import { IBlog } from "src/types"
 
 
-export default function IndexBlogPage(props: indexBlogProps) {
+export default function IndexBlogPage(props: IBlog) {
   if(!props) return null
   
   return (

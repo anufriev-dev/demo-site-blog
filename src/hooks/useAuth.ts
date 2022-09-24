@@ -16,6 +16,7 @@ function useAuth () {
   useEffect(() => {
     strDelay(text,"auth")
   }, [text])
+  
 
   const submit = async (e: MouseEvent<HTMLElement> ) => {
     e.preventDefault()
@@ -46,12 +47,17 @@ function useAuth () {
     dropState()
   }
 
+  const formProps = {
+    id: "auth", submitText: "Войти",
+    submit, title: "Вход"
+  }
+
   const dropState = () => {
     setEmail("")
     setPass("")
   }
 
-  return { email, pass, setEmail, setPass, submit, isErrorEmail, isErrorPass }
+  return { email, pass, setEmail, setPass, isErrorEmail, isErrorPass, formProps }
 }
 
 

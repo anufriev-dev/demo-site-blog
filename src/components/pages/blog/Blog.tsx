@@ -1,33 +1,15 @@
-import { useTextEffect } from "src/hooks"
-/* components     
-   -------------------------------------------------- */
-import { DemoCardBlog,
-   Navbar, PaginationMui, TopBarSearch  
-  } from "src/components"
-import { indexBlogProps } from "src/types"
-/* lib components
-   -------------------------------------------------- */
+import { DemoCardBlog, Navbar, PaginationMui, TopBarSearch  } from "src/components"
+import { useBlog } from "src/hooks"
+import { IBlog } from "src/types"
 import { Container } from "@mui/system"
 import { Grid } from "@mui/material"
-/* styles
-   -------------------------------------------------- */
-import navBarStyles from "./styles/navBarLeft.module.scss"
-import demoCardBlogStyles from "./styles/demoCardBlog.module.scss"  
-import indexStyles from "./styles/index.module.scss"
-/* fake data
-   -------------------------------------------------- */
-import { dataNavBarLeft } from "fake_database"
 
-export default function Blog(props: indexBlogProps) {
-  const { 
-    data,
-    allPosts,
-    maxPages,
-    currentPage 
-  } = props
-  
-  // effect текста
-  useTextEffect(allPosts)
+import { dataNavBarLeft } from "config/filling_data"
+import style from "./style.module.scss"
+
+
+export default function Blog(props: IBlog) {  
+  const { data, maxPages, currentPage } = useBlog(props)
 
   return (
     <>
@@ -35,20 +17,20 @@ export default function Blog(props: indexBlogProps) {
     <TopBarSearch url={"/blog?page=1&search="} />
 
     <Container>
-        <span id="titleSearch" className={indexStyles.title}></span>
-        <span id="postsEffect" className={indexStyles.title}></span>
+        <span id="titleSearch" className={style.title}></span>
+        <span id="postsEffect" className={style.title}></span>
         {/* Постраничная навигация */}
         <PaginationMui maxPages={maxPages} currentPage={currentPage} />
         {/* Main */}
       <Grid container columnSpacing={{xl:9,xs:5}} rowSpacing={{xl: 2, xs: 4}}>
         <Grid item xs={12} md={9} >
           {/* Main content */}
-          <DemoCardBlog routherType={"blog"} dataBlog={data} styles={demoCardBlogStyles} />
+          <DemoCardBlog routherType={"blog"} dataBlog={data}/>
         </Grid>
         <Grid item xs={12} md={3}>
           {/* Категории */}
-          <h2 className={navBarStyles.title} >Категории:</h2>
-          <Navbar  styles={navBarStyles} data={dataNavBarLeft} />
+          <h2 className={style.title} >Категории:</h2>
+          <Navbar  styles={style} data={dataNavBarLeft} />
         </Grid>
       </Grid>
         {/* Постраничная навигация */}

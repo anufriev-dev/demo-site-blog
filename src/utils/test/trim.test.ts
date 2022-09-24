@@ -1,4 +1,4 @@
-const trim = require("../trim.js")
+import { trim } from "../"
 
 
 describe("trim.js", () => {
