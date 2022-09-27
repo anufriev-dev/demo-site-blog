@@ -2,7 +2,6 @@ import { Container } from "@mui/system"
 import { useAuth } from "src/hooks"
 import { InputLabel,ButtonSubmit, FormAuth, ProviderAccount, TextWarningForm } from "src/components"
 import style from "./style.module.scss"
-import Router from "next/router"
 
 
 function Login() {

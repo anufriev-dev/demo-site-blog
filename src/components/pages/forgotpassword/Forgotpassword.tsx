@@ -2,6 +2,7 @@ import { Container } from "@mui/material"
 import { InputLabel } from "src/components"
 import { ButtonSubmit, TextWarningForm } from "src/components"
 import { useForgotpassword } from "src/hooks"
+import style from "./style.module.scss"
 
 function Forgotpassword() {
   const { 
@@ -26,7 +27,7 @@ function Forgotpassword() {
             isErrorEmail && ( <TextWarningForm>E-mail не соответствует требованиям</TextWarningForm>)
           }
           <InputLabel id={"forgot"} setState={setEmail} state={email} text="E-mail"  />
-          <ButtonSubmit event={handler} text="Восстановить мой пароль"/>          
+          <ButtonSubmit className={style.button} event={handler} text="Восстановить мой пароль"/>          
           </>
         }
 

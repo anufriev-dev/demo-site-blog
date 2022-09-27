@@ -1,7 +1,7 @@
 import { MouseEvent } from "react"
 
 interface IuttonSubmit {
-  event?(e: MouseEvent<HTMLElement>): void,
+  event: any,
   text: string, 
   className?: string, 
   width?: string

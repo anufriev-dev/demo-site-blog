@@ -45,7 +45,8 @@ import Row from "./ui/row"
 import AccountProfile from "./ui/accountProfile"
 import ButtonSubmit from "./ui/buttonSubmit"
 import Settings from "./pages/settings"
-import Forgotpassword from "./pages/forgotpassword/"
+import Forgotpassword from "./pages/forgotpassword"
+import Change from "./pages/change"
 
 
 export {
@@ -96,5 +97,6 @@ export {
   AccountProfile,
   ButtonSubmit,
   Settings,
-  Forgotpassword
+  Forgotpassword,
+  Change
 }

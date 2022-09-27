@@ -1,6 +1,7 @@
 import { useRegistration } from "src/hooks"
 import { FormAuth, ButtonSubmit, Layout, InputLabel, TextWarningForm, ProviderAccount } from "src/components"
 import { Container } from "@mui/system"
+import style from "./style.module.scss"
 
 function Registration() {
   const { 
@@ -21,7 +22,9 @@ function Registration() {
 
           { isErrorPass && <TextWarningForm>Пароль не соответствует требованием</TextWarningForm> }
           <InputLabel  setState={setPass} state={pass} id={"passId"} text={"Пароль"} />
-          <ButtonSubmit event={submit} text={"Зарегистрироваться"} />
+          <div className={style.wrapp}>
+            <ButtonSubmit className={style.registration} event={submit} text={"Зарегистрироваться"} />
+          </div>
         </div>
       </FormAuth>
       <Container>

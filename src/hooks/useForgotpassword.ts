@@ -1,5 +1,6 @@
 import { RegExpEmail } from "config"
 import { useState } from "react"
+import { Email } from "src/http"
 import { isValid } from "src/utils"
 
 export default function useForgotpassword() {
@@ -12,6 +13,8 @@ export default function useForgotpassword() {
       setErrorEmail(true)
       return
     }else setErrorEmail(false)
+
+    await Email.change({email})
     // logic
     setIsActive(!isActive)
   }

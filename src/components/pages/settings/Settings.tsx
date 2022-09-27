@@ -5,7 +5,6 @@ import { useSettings } from "src/hooks"
 import style from "./style.module.scss"
 
 function Settings() {
-
   const { delete_account, exit } = useSettings()
 
   return (

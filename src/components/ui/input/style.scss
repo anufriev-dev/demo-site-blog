@@ -13,3 +13,9 @@
       border: 2px solid green;
   } 
 }
+
+@media(max-width: 300px) {
+  .input {
+    margin-top: 20px;
+  }
+}

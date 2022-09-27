@@ -6,3 +6,9 @@
   font-size: 120%;
   font-weight: 600;
 }
+
+@media(max-width: 300px) {
+  .inputLabel { 
+    margin-top: 10px;
+  }
+}

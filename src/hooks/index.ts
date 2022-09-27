@@ -14,6 +14,7 @@ import useNavbar from "./useNavbar"
 import useBlog from "./useBlog"
 import useSettings from "./useSettings"
 import useForgotpassword from "./useForgotpassword"
+import useChange from "./useChange"
 
 
 export {
@@ -32,5 +33,6 @@ export {
   useNavbar,
   useBlog,
   useSettings,
-  useForgotpassword
+  useForgotpassword,
+  useChange
 }
