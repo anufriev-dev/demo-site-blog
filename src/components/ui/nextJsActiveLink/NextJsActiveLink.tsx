@@ -2,8 +2,14 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { trim } from "src/utils"
 
+interface INextJsActiveLink {
+  href: string,
+  name: string,
+  classNameProps: string,
+  onClick?(e, href): void,
+}
 
-export default function NextJsActiveLink(props) {
+export default function NextJsActiveLink(props: INextJsActiveLink) {
   const {
     href,name,classNameProps,
     onClick = false

@@ -5,8 +5,8 @@ import { FormAuthProps } from "src/types"
 export default function FormAuth(props: FormAuthProps ) {
 
   const { 
-    submit, title, children,
-    submitText, text, id 
+    title, children,
+    text, id 
   } = props
 
   return (
@@ -16,9 +16,6 @@ export default function FormAuth(props: FormAuthProps ) {
       <p id={id} className="text">{text}</p> 
       <form className={indexStyles.form}>
         { children }
-        <button onClick={submit} className={indexStyles.form__btn}>
-          { submitText }
-        </button>
       </form>
     </Container>
     </>

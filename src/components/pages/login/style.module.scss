@@ -1,0 +1,34 @@
+
+
+.buttons {
+  display: flex;
+  flex-basis: 50%;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.signIn {
+  flex:1;
+  background: var(--themeLayoutTwo);
+  margin: 20px 0;
+}
+
+.exit {
+  flex: 1;
+  margin: 20px 0;
+  background: var(--themeLayoutTwo);
+}
+
+@media (max-width: 550px){
+  .buttons {
+    flex-direction: column;
+    gap: 0;
+  }
+  .signIn {
+    width: 100%;
+  }
+  
+  .exit {
+    width: 100%;
+  }
+}

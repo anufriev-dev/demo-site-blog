@@ -1,4 +1,4 @@
-type defineRoleParams = "1" | "2" | "ADMIN" | "USER"
+type defineRoleParams = 1 | 2 | "1" | "2" | "ADMIN" | "USER"
 
 function defineRole(role: defineRoleParams ): defineRoleParams {
   if(!isNaN(+role) ) {

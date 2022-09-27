@@ -8,6 +8,7 @@ import toSliceText from "./toSliceText"
 import trim from "./trim"
 import defineRole from "./defineRole"
 import getDate from "./getDate"
+import dateTimeZone from "./dateTimeZone"
 
 
 export {
@@ -20,5 +21,6 @@ export {
   toSliceText,
   trim,
   defineRole,
-  getDate
+  getDate,
+  dateTimeZone
 }

@@ -1,12 +1,15 @@
 import { signIn } from "next-auth/react"
+import ButtonAuth from "../buttonAuth"
+import style from "./style.module.scss"
 
 function ProviderAccount({url}) {
 
   return (
     <div>
-        <p>Войти с помощю: </p>
-      <button onClick={() => { signIn("github", { callbackUrl: url })} }>Github</button>
-      <button onClick={() => { signIn("google", { callbackUrl: url })} }>Google</button>
+        <div className={style.blok}>
+          <ButtonAuth provider="github" event={() => { signIn("github", { callbackUrl: url })} }/>
+          <ButtonAuth provider="google" event={() => { signIn("google", { callbackUrl: url })} }/>
+        </div>
     </div>
   )
 }

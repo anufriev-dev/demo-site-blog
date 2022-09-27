@@ -1,11 +1,12 @@
 import db from "config/db"
 import { insert, role, UserDB } from "src/types"
-import { defineRole } from "src/utils"
+import { dateTimeZone, defineRole } from "src/utils"
 
 
 class User {
   async create (email: string, name: string, role: role, pass?: any ): Promise<insert> {
     try {
+      const date = dateTimeZone(new Date())
       await db.query(`
           INSERT INTO "user" (email, name, role, passwd,date_registration)
           VALUES ($1, $2, $3, $4, NOW() )

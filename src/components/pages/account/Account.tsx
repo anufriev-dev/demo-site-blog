@@ -1,26 +1,49 @@
 import { Container } from "@mui/system"
-import { useAccount } from "src/hooks"
 import { AccountProps } from "src/types"
+import { AccountProfile, ButtonSubmit } from "src/components"
+import style from "./style.module.scss"
+import Router from "next/router"
 
-function Account(props: AccountProps) {
+
+function Account(props: AccountProps) {  
   const { 
-    isAdmin, date, delete_account,
-    router, session, exit 
-  } = useAccount(props)
-
+    isAdmin, date
+  } = props
+    
   if(!props) return <div>Loading...</div>
-
+  
   return (
     <div>
       <Container>
-        <p>Hello, {session?.user.name}</p>
-        <p>Дата регистрации аккаунта { date }</p>
-        <button onClick={exit} >Exit</button>
-        { 
-          isAdmin && 
-          <button onClick={() => router.push("/admin")}> Админка </button> 
-        }
-        <button onClick={delete_account}>Удалить аккаунта</button>
+        <div className={style.wrapp}>
+        <h1 className={style.heading}>Общая информация</h1>
+        <p className={style.about}>Ваши персональные данные</p>
+
+        <AccountProfile date={date} />
+
+        {/* <NextJsActiveLink 
+          name="Настройки"  
+          href={} 
+          classNameProps={style.settings}
+        /> */}
+        <div className={style.buttons}>
+          <ButtonSubmit 
+            event={() => Router.push(process.env["NEXT_PUBLIC_SETTINGS_URL"]) }
+            text={"Настройки"}
+            className={style.buttonSettings}
+            />
+              {
+                isAdmin &&
+                <ButtonSubmit 
+                event={() => Router.push("/admin")} 
+                  text={"Админка"}
+                  className={style.buttonAdmin}
+                /> 
+              }
+
+        </div>
+
+        </div>
       </Container>
     </div>
   )

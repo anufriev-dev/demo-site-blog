@@ -11,8 +11,9 @@ import useInput from "./useInput"
 import useLayout from "./useLayout"
 import useBurgerMenu from "./useBurgerMenu"
 import useNavbar from "./useNavbar"
-import useAccount from "./useAccount"
 import useBlog from "./useBlog"
+import useSettings from "./useSettings"
+import useForgotpassword from "./useForgotpassword"
 
 
 export {
@@ -29,6 +30,7 @@ export {
   useLayout,
   useBurgerMenu,
   useNavbar,
-  useAccount,
-  useBlog
+  useBlog,
+  useSettings,
+  useForgotpassword
 }

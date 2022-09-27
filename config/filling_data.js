@@ -21,6 +21,12 @@ export const dataLinks = [
   // {namelink: "Подкасты", href: "#"}
 ]
 
+export const themeAccount = {
+  bg_first: "var(--themeLayoutOne)",
+  bg_second: "var(--themeLayoutTwo)",
+  color: "white"
+}
+
 export const dataLinksFooter = [
   {namelink: "Последние комментарии",href: "#"},
   {namelink: "О блоге",href: "#"},

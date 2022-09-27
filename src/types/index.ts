@@ -84,7 +84,6 @@ export interface CardFooterProps {
 }
 
 export interface FormAuthProps {
-   submit(e: MouseEvent<HTMLElement>): void;
    title: string;
    children: JSX.Element;
    submitText?: string;

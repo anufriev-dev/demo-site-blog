@@ -1,0 +1,37 @@
+.wrapp {
+  position: relative;
+}
+
+.heading {
+  font-size: 42px;
+  font-family: "Montserrat-Light";
+  line-height: 1.5em;
+}
+
+.about {
+  text-decoration: none;
+  color: black;
+  font-family: "Montserrat-Regular";
+  font-size: 120%;
+  letter-spacing: 0.08em;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonSettings {
+  background: var(--themeLayoutOne);
+  width: 143px;
+  &:hover {
+    background: var(--linkLayout1);
+  }
+}
+.buttonAdmin {
+  background: var(--linkLayout1);
+  width: 143px;
+  &:hover {
+    background: var(--themeLayoutOne);
+  }
+}

@@ -5,6 +5,10 @@
 *, *::before, *::after {
   box-sizing: border-box;
 }
+// *::selection {
+//   color: white;
+//   background: black;
+// }
 
 body {
   overflow-x: auto;
@@ -32,7 +36,7 @@ main {
 
 // acitv link - NavLink
 #activeLink {
-  color: rgb(2, 172, 220);
+  color: var(--active-link);
   text-decoration: underline;
 }
 // настройки спинера lib: nextjs-progressbar
@@ -68,7 +72,12 @@ main {
     text-decoration: underline;
   }
 }
-
+// Заголовки 
+.text-h1 {
+  font-size: 42px;
+  font-family: "Montserrat-Light";
+  line-height: 1.5em;
+}
 
 
 

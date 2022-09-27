@@ -40,6 +40,12 @@ import NavbarItem from "./ui/navbarItem"
 import CardFooterItem from "./ui/cardFooterItem"
 import Input from "./ui/input"
 import Label from "./ui/label"
+import ButtonAuth from "./ui/buttonAuth"
+import Row from "./ui/row"
+import AccountProfile from "./ui/accountProfile"
+import ButtonSubmit from "./ui/buttonSubmit"
+import Settings from "./pages/settings"
+import Forgotpassword from "./pages/forgotpassword/"
 
 
 export {
@@ -84,5 +90,11 @@ export {
   NavbarItem,
   CardFooterItem,
   Input,
-  Label
+  Label,
+  ButtonAuth,
+  Row,
+  AccountProfile,
+  ButtonSubmit,
+  Settings,
+  Forgotpassword
 }

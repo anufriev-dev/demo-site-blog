@@ -21,13 +21,6 @@ function AvatarHeader() {
           classNameProps={style.user_name}
           href={process.env["NEXT_PUBLIC_ACCOUNT"]} 
         />
-        {session.user.image &&
-          <Image 
-            className={style.avatar} 
-            src={session.user.image} 
-            alt="avatar" width={30} height={30} 
-          />
-            }
     </div>
   )
 }

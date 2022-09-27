@@ -1,0 +1,11 @@
+.blok {
+  display: flex;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+@media(max-width: 550px) {
+  .blok{
+    flex-direction: column;
+  }
+}

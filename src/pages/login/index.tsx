@@ -1,6 +1,5 @@
 import { Layout,Login } from "src/components"
 import { getToken } from "next-auth/jwt"
-
 import { GetServerSideProps } from "next"
 
 export default function LoginPage() {

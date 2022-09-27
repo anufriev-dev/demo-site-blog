@@ -1,0 +1,55 @@
+.buttonAuth {
+  position: relative;
+  padding: 0.8em;
+  color: hsl(206,100%,40%);
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  outline: none;
+  font-family: "Segoe UI Adjusted","Segoe UI","Liberation Sans",sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: calc((13 + 2) / 13);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  margin: 10px 0; 
+  width: 100%;
+  min-width: 170px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  &__svg {
+    margin: 10px;
+
+  }
+}
+
+.google_provider {
+  border-color: hsl(210,8%,85%);
+  &:hover {
+    color: hsl(209,100%,37.5%);
+    background: hsl(210,8%,97.5%);
+    text-decoration: none;
+  }
+  &:focus {
+    box-shadow: 0 0 0 4px hsla(210,8%,15%,0.1);
+    background-color: hsl(210,8%,97.5%);
+    color: hsl(210,8%,15%);
+  }
+}
+.github_provider {
+  background-color: hsl(210,8%,20%);
+  color: white;
+  &:hover {
+    background: hsl(210,8%,15%);
+    text-decoration: none;
+  }
+  &:focus {
+    box-shadow: 0 0 0 4px hsla(210,8%,15%,0.1);
+    background-color: hsl(210,8%,15%);
+    color: white;
+  }
+}

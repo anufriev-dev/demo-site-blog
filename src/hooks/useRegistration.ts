@@ -62,13 +62,13 @@ function useRegistration () {
     setName("")
   }
   const formProps = {
-    id: "auth", submitText: "Зарегистрироваться",
-    submit, title: "Регистрация"
+    id: "auth", 
+    title: "Регистрация"
   }
 
   return { 
     email, pass, name, setEmail, setPass, setName, formProps,
-    isErrorEmail, isErrorPass, isErrorName
+    isErrorEmail, isErrorPass, isErrorName, submit
   }
 }
 

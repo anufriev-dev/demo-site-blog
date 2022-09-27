@@ -44,7 +44,7 @@ export default function Post(props: PostPageProps) {
         </Container>
       </div>
 
-      <button onClick={() => Router.back()}>Go back</button>
+      {/* <button onClick={() => Router.back()}>Go back</button> */}
     </div>
   )
 }

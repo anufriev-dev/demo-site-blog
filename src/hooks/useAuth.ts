@@ -16,9 +16,13 @@ function useAuth () {
   useEffect(() => {
     strDelay(text,"auth")
   }, [text])
-  
 
-  const submit = async (e: MouseEvent<HTMLElement> ) => {
+  const eventForgetPasswd = (e) => {
+    e.preventDefault()
+    Router.push(process.env["NEXT_PUBLIC_FORGOTPASSWORD"])
+  }
+
+  const submitExit = async (e: MouseEvent<HTMLElement> ) => {
     e.preventDefault()
 
     if(!isValid(email,{ regexp: RegExpEmail })) {
@@ -48,8 +52,8 @@ function useAuth () {
   }
 
   const formProps = {
-    id: "auth", submitText: "Войти",
-    submit, title: "Вход"
+    id: "auth",
+    title: "Вход"
   }
 
   const dropState = () => {
@@ -57,7 +61,7 @@ function useAuth () {
     setPass("")
   }
 
-  return { email, pass, setEmail, setPass, isErrorEmail, isErrorPass, formProps }
+  return { email, pass, eventForgetPasswd, setEmail, setPass, isErrorEmail, isErrorPass, formProps, submitExit, Router }
 }
 
 
