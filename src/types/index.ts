@@ -170,3 +170,16 @@ export interface IModal {
    setActive(state): void,
    children: any
 }
+
+export interface IHomePage {
+   data: ICardBlog[]
+}
+
+export interface ICardBlog {
+   post_id: string,
+   summary: string,
+   category: string,
+   date: string,
+   src_img: string,
+   comments: string
+}

@@ -1,12 +1,12 @@
+import { resolve } from "path"
+import { env, cwd } from "process"
+import { User } from "src/model"
+import jwtToken from "config/jwt"
 import { RegExpEmail } from "config"
-import { NextApiRequest, NextApiResponse } from "next"
 import { isValid } from "src/utils"
 import transport from "config/email"
-import { env, cwd } from "process"
 import { readFile, writeFile, unlink } from "fs/promises"
-import { resolve } from "path"
-import jwtToken from "config/jwt"
-import { User } from "src/model"
+import { NextApiRequest, NextApiResponse } from "next"
 
 
 function pathFile(nameFile) {

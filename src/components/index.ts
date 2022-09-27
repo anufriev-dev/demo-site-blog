@@ -49,6 +49,7 @@ import Forgotpassword from "./pages/forgotpassword"
 import Change from "./pages/change"
 import Modal from "./ui/modal"
 import SettingsModal from "./related/settingsModal"
+import CardBlog from "./ui/cardBlog"
 
 
 export {
@@ -102,5 +103,6 @@ export {
   Forgotpassword,
   Change,
   Modal,
-  SettingsModal
+  SettingsModal,
+  CardBlog
 }

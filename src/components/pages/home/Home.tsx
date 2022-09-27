@@ -1,11 +1,26 @@
-import { Container } from "@mui/material"
+import { Container, Grid } from "@mui/material"
+import { CardBlog } from "src/components"
+import { IHomePage } from "src/types"
 
-function Home() {
+function Home(props: IHomePage) {
+  const { data } = props
+
   return (
     <div>
       <Container>
-        <h1 style={{fontFamily: "Montserrat-Regular"}}>Главная</h1>
+        <h1 className="text-h1">Последнее с блога</h1>
+        <Grid spacing={5} container >
+          {
+            data.map((it) => (
+              <Grid key={it.post_id} xs={12} md={6} lg={4} item>
+                <CardBlog {...it} />
+              </Grid>
+            ))
+          }
+        </Grid>
       </Container>
+      <br />
+      <br />
     </div>
   )
 }

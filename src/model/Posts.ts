@@ -34,6 +34,7 @@ class Posts {
         ON pb.post_id = pbc.post_id
         ${search && "WHERE pb.text ILIKE '%"+ search +"%'" + " OR pb.summary ILIKE '%"+ search +"%'"}
         GROUP BY pb.post_id
+        ORDER BY pb.post_id DESC
         LIMIT 10 OFFSET $1
       `,[offset])
 
@@ -42,6 +43,22 @@ class Posts {
 
         
       return { data: data.rows , allPosts: +allPosts , maxPages: +maxPages }
+    } catch(e) { return e }
+  }
+
+  async getLastComments (limit: number) {
+    try {
+      const result = await db.query(`
+        SELECT pb.post_id,pb.summary,pb.category,pb.date,pb.src_img,
+          COUNT(pbc.comment_id) AS comments
+          FROM post_blog AS pb
+          LEFT JOIN post_blog_comment AS pbc
+        ON pb.post_id = pbc.post_id
+        GROUP BY pb.post_id
+        ORDER BY pb.post_id DESC
+        LIMIT $1;
+      `,[limit])
+      return result.rows
     } catch(e) { return e }
   }
 }

@@ -5,7 +5,7 @@ import { trim } from "src/utils"
 interface INextJsActiveLink {
   href: string,
   name: string,
-  classNameProps: string,
+  classNameProps?: string,
   onClick?(e, href): void,
 }
 
