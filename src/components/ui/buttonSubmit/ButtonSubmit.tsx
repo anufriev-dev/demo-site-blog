@@ -1,11 +1,7 @@
 import { MouseEvent } from "react"
+import { IuttonSubmit } from "src/types"
 
-interface IuttonSubmit {
-  event: any,
-  text: string, 
-  className?: string, 
-  width?: string
-}
+
 
 function ButtonSubmit(props: IuttonSubmit ) {
   const { event, text, className, width } = props

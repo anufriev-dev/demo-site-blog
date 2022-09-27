@@ -15,4 +15,10 @@
   &:active {
     background: var(--linkLayoutActive);
   }
+  &:focus {
+    box-shadow: 0 0 0 4px hsla(210,8%,15%,0.1);
+    // background-color: hsl(210,8%,97.5%);
+    outline: none;
+    // color: hsl(210,8%,15%);
+  }
 }

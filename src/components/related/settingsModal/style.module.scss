@@ -1,0 +1,14 @@
+.wrappButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.cancel {
+  background: var(--linkLayout3);
+}
+
+.delete {
+  background: red;
+}

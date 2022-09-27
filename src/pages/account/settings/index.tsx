@@ -1,12 +1,21 @@
 import { GetServerSideProps } from "next"
 import { getToken } from "next-auth/jwt"
-import { Layout, Settings } from "src/components"
+import { useState } from "react"
+import { Layout, Settings, SettingsModal } from "src/components"
+
 
 export default function SettingsPage () {
+  const [activeModal, setActiveModal] = useState(false)
+  const props = {
+    activeModal, setActiveModal
+  }
   return (
-    <Layout>
-      <Settings />
-    </Layout>
+    <>
+      <SettingsModal {...props}/>
+      <Layout>
+        <Settings {...props} />
+      </Layout>
+    </>
   )
 }
 

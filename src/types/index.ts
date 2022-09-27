@@ -38,6 +38,10 @@ export interface addCommentBody {
    text: string; 
    date: string;
 }
+export interface ISettings{
+   activeModal: boolean,
+   setActiveModal : Dispatch<SetStateAction<boolean>>
+}
 
 export interface UserDB {
    id: number;
@@ -147,4 +151,22 @@ export interface LinksFooterProps {
 export interface AccountProps {
    isAdmin?: boolean,
    date: string
+}
+
+export interface IettingsModal {
+   setActiveModal(e): void,
+   activeModal: boolean
+}
+
+export interface IuttonSubmit {
+   event: any,
+   text: string, 
+   className?: string, 
+   width?: string
+}
+
+export interface IModal {
+   active: boolean,
+   setActive(state): void,
+   children: any
 }

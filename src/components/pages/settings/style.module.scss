@@ -9,10 +9,12 @@
   font-family: "Montserrat-Light";
   line-height: 1.5em;
 }
-
+.exit_account {
+  background: var(--themeLayoutOne);
+}
 .delete_account {
-  background: red;
+  background: rgb(206, 11, 11);
 }
 .back {
-  background: green;
+  background: var(--themeLayoutOne);
 }

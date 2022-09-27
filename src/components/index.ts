@@ -47,6 +47,8 @@ import ButtonSubmit from "./ui/buttonSubmit"
 import Settings from "./pages/settings"
 import Forgotpassword from "./pages/forgotpassword"
 import Change from "./pages/change"
+import Modal from "./ui/modal"
+import SettingsModal from "./related/settingsModal"
 
 
 export {
@@ -98,5 +100,7 @@ export {
   ButtonSubmit,
   Settings,
   Forgotpassword,
-  Change
+  Change,
+  Modal,
+  SettingsModal
 }

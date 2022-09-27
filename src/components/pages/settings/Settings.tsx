@@ -2,12 +2,15 @@ import { Container } from "@mui/material"
 import Router from "next/router"
 import { ButtonSubmit } from "src/components"
 import { useSettings } from "src/hooks"
+import { ISettings } from "src/types"
 import style from "./style.module.scss"
 
-function Settings() {
-  const { delete_account, exit } = useSettings()
+function Settings(props: ISettings) {
+  const { setActiveModal, activeModal } = props
+  const { exit } = useSettings()
 
   return (
+    <>
     <Container>
       <h1 className={style.heading}>Настройки</h1>
       <div className={style.wrapp}>
@@ -22,14 +25,15 @@ function Settings() {
             width={"200px"} event={exit} text={"Выйти из аккаунта"}
           />
         </div>
-         <div>
+        <div>
           <ButtonSubmit 
             className={style.delete_account} 
-            width={"200px"} event={delete_account} text={"Удалить аккаунта"} 
+            width={"200px"} event={() => setActiveModal(!activeModal)} text={"Удалить аккаунта"} 
           />
-         </div>
+        </div>
       </div>
     </Container>
+  </>
   )
 }
 
