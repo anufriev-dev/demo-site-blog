@@ -50,6 +50,8 @@ import Change from "./pages/change"
 import Modal from "./ui/modal"
 import SettingsModal from "./related/settingsModal"
 import CardBlog from "./ui/cardBlog"
+import AccountProfileName from "./related/accountProfileName"
+import NextLink from "./ui/nextLink"
 
 
 export {
@@ -104,5 +106,7 @@ export {
   Change,
   Modal,
   SettingsModal,
-  CardBlog
+  CardBlog,
+  AccountProfileName,
+  NextLink
 }

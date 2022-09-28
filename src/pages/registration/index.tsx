@@ -1,15 +1,15 @@
 import { GetServerSideProps } from "next"
 import { getToken } from "next-auth/jwt"
-import { Registration } from "src/components"
+import { Layout, Registration } from "src/components"
 
 
 
 export default function RegistrationPage() {
   
   return (
-    <div>
+    <Layout >
       <Registration />
-    </div>
+    </Layout>
   )
 }
 

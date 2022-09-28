@@ -1,7 +1,8 @@
 import { useRegistration } from "src/hooks"
-import { FormAuth, ButtonSubmit, Layout, InputLabel, TextWarningForm, ProviderAccount } from "src/components"
+import { FormAuth, ButtonSubmit, InputLabel, TextWarningForm, ProviderAccount } from "src/components"
 import { Container } from "@mui/system"
 import style from "./style.module.scss"
+
 
 function Registration() {
   const { 
@@ -11,8 +12,8 @@ function Registration() {
   } = useRegistration()
 
   return (
-    <Layout>
-      <FormAuth {...formProps}>
+    <div>
+        <FormAuth {...formProps}>
         <div>
           { isErrorName && <TextWarningForm>Имя не соответствует требованием</TextWarningForm> }
           <InputLabel  setState={setName} state={name} id={"nameId"} text={"Имя"} /> 
@@ -30,7 +31,7 @@ function Registration() {
       <Container>
         <ProviderAccount url={"/account"}/>
       </Container>
-  </Layout>
+    </div>
   )
 }
 

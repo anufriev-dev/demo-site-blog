@@ -23,7 +23,7 @@ function Login() {
           { isErrorPass && <TextWarningForm>Пароль не соответствует требованием или неверный</TextWarningForm> }
           <InputLabel setState={setPass} state={pass} id={"passId"} text={"Пароль"} />
           <div className={style.buttons}>
-            <ButtonSubmit className={style.signIn}  event={submitExit} text={"Войти"} />
+            <ButtonSubmit className={style.signIn} event={submitExit} text={"Войти"} />
             <ButtonSubmit 
               className={style.exit}  
               event={eventForgetPasswd} text={"Забыли пароль?"} 

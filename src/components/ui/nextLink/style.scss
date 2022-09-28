@@ -1,0 +1,10 @@
+.nextLink {
+  text-decoration: none;
+  color: var(--linkLayout2);
+  &:hover {
+    text-decoration: underline;
+    color: var(--linkLayout1);
+  }
+}
+
+

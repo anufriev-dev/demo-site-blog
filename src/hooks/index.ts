@@ -15,6 +15,8 @@ import useBlog from "./useBlog"
 import useSettings from "./useSettings"
 import useForgotpassword from "./useForgotpassword"
 import useChange from "./useChange"
+import useRefreshData from "./functional/useRefreshData"
+import useAccountProfile from "./useAccountProfile"
 
 
 export {
@@ -34,5 +36,7 @@ export {
   useBlog,
   useSettings,
   useForgotpassword,
-  useChange
+  useChange,
+  useAccountProfile,
+  useRefreshData
 }

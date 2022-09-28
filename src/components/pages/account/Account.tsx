@@ -1,15 +1,15 @@
 import { Container } from "@mui/system"
-import { AccountProps } from "src/types"
+import { AccountProps, IUser } from "src/types"
 import { AccountProfile, ButtonSubmit } from "src/components"
 import style from "./style.module.scss"
 import Router from "next/router"
 
 
-function Account(props: AccountProps) {  
+function Account(props: AccountProps & IUser ) {  
   const { 
-    isAdmin, date
+    isAdmin, date,
   } = props
-    
+
   if(!props) return <div>Loading...</div>
   
   return (
@@ -18,14 +18,8 @@ function Account(props: AccountProps) {
         <div className={style.wrapp}>
         <h1 className={style.heading}>Общая информация</h1>
         <p className={style.about}>Ваши персональные данные</p>
-
-        <AccountProfile date={date} />
-
-        {/* <NextJsActiveLink 
-          name="Настройки"  
-          href={} 
-          classNameProps={style.settings}
-        /> */}
+        
+        <AccountProfile user={props.user} date={date} />
         <div className={style.buttons}>
           <ButtonSubmit 
             event={() => Router.push(process.env["NEXT_PUBLIC_SETTINGS_URL"]) }

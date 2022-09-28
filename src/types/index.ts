@@ -171,6 +171,16 @@ export interface IModal {
    children: any
 }
 
+export interface IUser {
+   user?: {
+      id?: string,
+      email?: string,
+      name: string,
+      role?: string
+      date_registration?: string
+   }
+}
+
 export interface IHomePage {
    data: ICardBlog[]
 }

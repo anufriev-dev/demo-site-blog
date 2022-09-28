@@ -1,13 +1,12 @@
 import db from "config/db"
 import { insert, role, UserDB } from "src/types"
-import { dateTimeZone, defineRole } from "src/utils"
+import { defineRole } from "src/utils"
 import bcrypt from "bcrypt"
 
 
 class User {
   async create (email: string, name: string, role: role, pass?: any ): Promise<insert> {
     try {
-      const date = dateTimeZone(new Date())
       await db.query(`
           INSERT INTO "user" (email, name, role, passwd,date_registration)
           VALUES ($1, $2, $3, $4, NOW() )
@@ -48,16 +47,23 @@ class User {
   }
   
   async update_pass(pass, email) {
-    console.log("🚀 ~ file: User.ts ~ line 51 ~ User ~ update_pass ~ email", email)
-    console.log("🚀 ~ file: User.ts ~ line 51 ~ User ~ update_pass ~ pass", pass)
     try {
-      
       const salt = await bcrypt.genSalt(10)
       const hash = await bcrypt.hash(pass,salt)
 
       const result = await db.query(`
       UPDATE "user" SET passwd = $1 WHERE email = $2
       `,[hash, email])
+
+      return result
+    } catch(e) { return e }
+  }
+
+  async update_name(name, email) {
+    try {
+      const result = await db.query(`
+      UPDATE "user" SET name = $1 WHERE email = $2
+      `,[name, email])
 
       return result
     } catch(e) { return e }

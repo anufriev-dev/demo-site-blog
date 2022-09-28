@@ -1,19 +1,17 @@
-import { Row } from "src/components"
+import { Row,AccountProfileName } from "src/components"
 import { themeAccount as theme } from "config/filling_data"
 import { useSession } from "next-auth/react"
+import { IUser } from "src/types"
 
-function AccountProfile(props) { 
+
+function AccountProfile(props: { date: string } & IUser  ) { 
   const { data: session } = useSession()
 
   const { date } = props
 
   return (
     <div>
-      <Row 
-        title={"ФИО"} 
-        payload={session?.user.name} 
-        bg={theme.bg_first} color={theme.color}
-      />
+      <AccountProfileName user={props.user} />
       <Row 
         title={"Дата регистрации"} 
         payload={date} 

@@ -18,7 +18,7 @@ export default function useChange(props) {
     } else setErrorPass(false)
 
     const body = { pass, email }
-    const statusText = await UserApi.change(body)
+    const statusText = await UserApi.changePasswd(body)
     if(statusText === "OK") {
       setIsSuccess(true)
     } else setIsSuccess(false)

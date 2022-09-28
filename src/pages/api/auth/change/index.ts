@@ -28,7 +28,6 @@ const Change = async (req: NextApiRequest, res: NextApiResponse) => {
     } catch(e) { 
       res.status(400).json({})
     }
-    
   }
   
   if(req.method === "POST") {

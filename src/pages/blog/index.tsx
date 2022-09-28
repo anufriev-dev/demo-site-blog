@@ -1,35 +1,45 @@
 import { GetServerSideProps } from "next"
+import { getToken } from "next-auth/jwt"
 import { Layout, Blog } from "src/components"
-import { Posts } from "src/model"
-import { IBlog } from "src/types"
+import { Posts, User } from "src/model"
+import { IBlog, IUser } from "src/types"
 
 
-export default function IndexBlogPage(props: IBlog) {
+export default function IndexBlogPage(props: IBlog & IUser) {
   if(!props) return null
   
   return (
-    <Layout>
+    <Layout user={props.user}>
       <Blog {...props}/>
     </Layout>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) =>  {
-  const { query: { page = 1, search = "" }} = context
+  const { query: { page = 1, search = "" }, req} = context
   
-  try{
-    // получаем данные постов
-    const { 
-      data, allPosts, maxPages
-    } = await Posts.getPostJoinComments(+page, search as string)
-    
-    return { 
-      props: { currentPage: +page, data, maxPages, allPosts }
-    }
+  // получаем данные постов
+  const { 
+    data, allPosts, maxPages
+  } = await Posts.getPostJoinComments(+page, search as string)
 
-  }catch(e) {
-    /* eslint-disable-next-line no-console */
-    console.error("Ошибка на сервере", e)
-    return { props : undefined }
+  const token = await getToken({ req })
+
+  const props = {
+    currentPage: +page, data, maxPages, allPosts 
+  }
+  
+  if(!token) {
+    return { props }
+  }
+  const user = await User.get_by_email(token.email)
+
+  return {
+    props: {
+      ...props,
+      user: {
+        name: user.name
+      }
+    }
   }
 }

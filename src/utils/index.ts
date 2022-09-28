@@ -9,6 +9,7 @@ import trim from "./trim"
 import defineRole from "./defineRole"
 import getDate from "./getDate"
 import dateTimeZone from "./dateTimeZone"
+import refreshData from "../hooks/functional/useRefreshData"
 
 
 export {
@@ -22,5 +23,6 @@ export {
   trim,
   defineRole,
   getDate,
-  dateTimeZone
+  dateTimeZone,
+  refreshData
 }

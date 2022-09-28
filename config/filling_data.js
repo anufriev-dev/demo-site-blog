@@ -22,9 +22,9 @@ export const dataLinks = [
 ]
 
 export const themeAccount = {
-  bg_first: "var(--themeLayoutOne)",
-  bg_second: "var(--themeLayoutTwo)",
-  color: "white"
+  bg_first: "#b5b2b224",
+  bg_second: "#b5b2b224",
+  color: "black"
 }
 
 export const dataLinksFooter = [

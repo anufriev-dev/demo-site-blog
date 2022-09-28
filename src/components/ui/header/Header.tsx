@@ -1,6 +1,6 @@
 import { Container } from "@mui/system"
 import { Navbar, BurgerMenu, SignInHeader, DropDownMenu } from "src/components"
-import { Burger } from "src/types"
+import { Burger, IUser } from "src/types"
 import { useHeader } from "src/hooks"
 
 import indexStyles from "./index.module.scss"
@@ -8,8 +8,8 @@ import { dataLinks } from "config/filling_data"
 
 
 
-export default function Header(props: Burger) {
-
+export default function Header(props: Burger & IUser ) {
+  
   const { 
     navbarProps, burgerMenuProps
   } = useHeader(props, indexStyles, dataLinks)
@@ -24,7 +24,7 @@ export default function Header(props: Burger) {
           >
             <Navbar {...navbarProps} />
 
-            <SignInHeader className={indexStyles.user} />
+            <SignInHeader {...props} className={indexStyles.user} />
             <DropDownMenu styles={indexStyles} />
 
             <BurgerMenu {...burgerMenuProps}/>

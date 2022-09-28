@@ -1,14 +1,14 @@
 import { useSession } from "next-auth/react"
-import Image from "next/image"
 import { useRouter } from "next/router"
 import { NextJsActiveLink } from "src/components"
+import { IUser } from "src/types"
 import style from "./style.module.scss"
 
 
-function AvatarHeader() {
+function AvatarHeader(props: IUser ) {
   const router = useRouter()
   const { data: session } = useSession()
-
+  
   return (
     <div 
       className={style.user_veryfy}
@@ -17,7 +17,7 @@ function AvatarHeader() {
         )} 
     >
         <NextJsActiveLink 
-          name={session.user.name} 
+          name={props?.user?.name || session.user.name} 
           classNameProps={style.user_name}
           href={process.env["NEXT_PUBLIC_ACCOUNT"]} 
         />

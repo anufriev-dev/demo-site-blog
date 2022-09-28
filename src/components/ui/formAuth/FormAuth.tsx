@@ -13,7 +13,7 @@ export default function FormAuth(props: FormAuthProps ) {
     <>
     <Container>
       <h1 className={indexStyles?.title}>{title}</h1>
-      <p id={id} className="text">{text}</p> 
+      <p id={id} className={`text ${indexStyles.text}`}>{text}</p> 
       <form className={indexStyles.form}>
         { children }
       </form>

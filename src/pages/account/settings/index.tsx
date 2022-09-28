@@ -2,18 +2,20 @@ import { GetServerSideProps } from "next"
 import { getToken } from "next-auth/jwt"
 import { useState } from "react"
 import { Layout, Settings, SettingsModal } from "src/components"
+import { User } from "src/model"
+import { IUser } from "src/types"
 
 
-export default function SettingsPage () {
+export default function SettingsPage (props: IUser) {
   const [activeModal, setActiveModal] = useState(false)
-  const props = {
+  const state = {
     activeModal, setActiveModal
   }
   return (
     <>
-      <SettingsModal {...props}/>
-      <Layout>
-        <Settings {...props} />
+      <SettingsModal {...state}/>
+      <Layout user={props.user}>
+        <Settings {...state} />
       </Layout>
     </>
   )
@@ -27,7 +29,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return { props: {}, redirect: { destination: "/login"} }
   }
 
-  return {
-    props:{}
+  const user = await User.get_by_email(token.email)
+
+  const props = {
+    user: {
+      name: user.name
+    }
   }
+
+  return { props }
 }

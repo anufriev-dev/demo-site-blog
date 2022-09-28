@@ -2,14 +2,14 @@ import { Layout, Account } from "src/components"
 import { getToken } from "next-auth/jwt"
 import { convertDate, dateTimeZone, defineRole, getDate } from "../../utils"
 import { GetServerSideProps } from "next"
-import { AccountProps } from "src/types"
+import { AccountProps, IUser } from "src/types"
+import { User } from "src/model"
 
 
-export default function AccountPage(props: AccountProps ) {
+export default function AccountPage(props: AccountProps & IUser ) {
   if(!props) return <div>Loading...</div>
-  
   return (
-    <Layout>
+    <Layout user={props.user}>
       <Account {...props} />
     </Layout>
   )
@@ -30,8 +30,16 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if(!token) {
     return { props: {}, redirect: { destination: "/login"} }
   }
+
+  const user = await User.get_by_email(token.email)
+
+  const props = { date, user: { name: user.name } } 
+
   
   return role === "ADMIN"
-    ? { props: { isAdmin: true, date } }
-    : { props: { date } } 
+    ? { props: { 
+        ...props, isAdmin: true 
+      }
+    }
+    : { props }
 }

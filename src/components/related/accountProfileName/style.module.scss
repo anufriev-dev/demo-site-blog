@@ -1,0 +1,15 @@
+.link {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.button {
+  background: var(--themeLayoutOne);
+}

@@ -4,8 +4,9 @@ import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider  from "next-auth/providers/credentials"
 import { User } from "../../../model"
 import bcrypt from "bcrypt"
+import { NextApiRequest, NextApiResponse } from "next"
 
-export const authOptions: NextAuthOptions = {
+const createOptions = (req:NextApiRequest , res: NextApiResponse) => ({
   // Configure one or more authentication providers
   providers: [
     GithubProvider({
@@ -71,12 +72,11 @@ export const authOptions: NextAuthOptions = {
           date_registration: user.date_registration
         }
       }
-    })
+    }),
     // ...add more providers here
   ],
   callbacks: {
     async signIn({ user, account }) {
-
       const name = user.name
       const email = user.email
       const isUser = await User.exist(email)
@@ -103,29 +103,16 @@ export const authOptions: NextAuthOptions = {
       }
     },
     async jwt({token,user,account}) {
-      
       if(account) {
-        const provider = account.provider
-        if(provider === "github" || 
-           provider === "google" 
-        ) {
-          const user_db = await User.get_by_email(user.email)
-          
-          token.date_registration = user_db.date_registration
-          token.id_db = user_db.id
-          token.role = user_db.role
-        }
-        if(
-          provider === "Authorization" ||
-          provider === "Registration"
-        ) {
-          token.date_registration = user.date_registration
-          token.id_db = user.id_db
-          token.role = user.role
-        }
+        const user_db = await User.get_by_email(user.email)
+
+        token.date_registration = user_db.date_registration
+        token.id_db = user_db.id
+        token.role = user_db.role
+        token.name = user_db.name
       }
       return token
-    }
+    },
   },
   session: {
     strategy: "jwt",
@@ -134,5 +121,10 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login"
   }
-}
-export default NextAuth(authOptions)
+} as NextAuthOptions)
+// export default NextAuth(authOptions)
+
+
+export default async function auth(req: NextApiRequest, res: NextApiResponse) {
+  return await NextAuth(req, res, createOptions(req, res))
+};

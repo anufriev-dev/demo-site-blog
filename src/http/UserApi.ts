@@ -6,8 +6,12 @@ class UserApi {
     const { statusText } = await $host.delete("/api/auth/delete")
     return statusText
   }
-  async change(body) {
+  async changePasswd(body) {
     const { statusText } = await  $host.put("/api/auth/change",body)
+    return statusText
+  }
+  async changeName(body) {
+    const { statusText } = await  $host.put("/api/auth/change/name",body)
     return statusText
   }
 }

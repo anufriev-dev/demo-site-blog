@@ -1,32 +1,39 @@
 import { Layout, Post } from "src/components"
-import { Posts } from "src/model"
+import { Posts, User } from "src/model"
 import { GetServerSideProps } from "next"
-import { PostPageProps } from "src/types"
+import { IUser, PostPageProps } from "src/types"
+import { getToken } from "next-auth/jwt"
 
 
-export default function PostPage(props: PostPageProps ) {
+export default function PostPage(props: PostPageProps & IUser ) {
   if(!props) return null
   
   return (
-    <Layout>
+    <Layout user={props.user}>
       <Post {...props} />
     </Layout>
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { query } = context
+  const { query, req } = context
 
-  try{
-    const comments = await Posts.getComments(+query.id)
+  const comments = await Posts.getComments(+query.id)
+  const post = await Posts.getPost(+query.id)
 
-    const post = await Posts.getPost(+query.id)
+  const props = { data: post, comments }
+  const token = await getToken({ req })
 
-    return { props: { data: post, comments } }
+  if(!token) return { props }
 
-  }catch(e) {
-    /* eslint-disable-next-line no-console */
-    console.error("Ошибка на сервере")
-    return { props: { data: null } } 
+  const user = await User.get_by_email(token.email)
+  
+  
+  return { props: {
+      ...props, 
+        user: {
+          name: user.name
+        }
+    }
   }
 }
