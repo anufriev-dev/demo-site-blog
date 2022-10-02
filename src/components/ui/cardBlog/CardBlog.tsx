@@ -21,14 +21,14 @@ function CardBlog(props: ICardBlog) {
       </p>
       <div className={style.card__bar}>
         <span className={style.card__bar_comment}>
-         Комментарии: ( {comments} )
+          Комментарии: ( {comments} )
         </span>
         <span className={style.card__bar_category}>
-          <NextJsActiveLink 
+          <NextJsActiveLink
             classNameProps={`${style.card__link}
             ${style.card__link_category}`}
             href={`category/${category}`} name={category}
-          /> 
+          />
         </span>
         <span className={style.card__bar_date}>
           {convertDate(date)}

@@ -12,13 +12,13 @@ export default function FormData(props) {
       <div className={style.form__name__wrapp}>
         {
           isErrorAuthor &&
-        <label className={style.form__errMessage } 
+        <label className={style.form__errMessage }
           htmlFor="pole1">Таких людей не бывает!</label>
         }
         <input
           id="pole1"
           onChange={(e) => setAuthor(e.target.value)}
-          value={author} 
+          value={author}
           type="text" placeholder="Укажите ваше имя"
           className={style.form__name}
         />
@@ -26,18 +26,18 @@ export default function FormData(props) {
         <br />
         {
           isErrorText &&
-        <label 
-          className={style.form__errMessage } 
+        <label
+          className={style.form__errMessage }
           htmlFor="pole2">Сообщение не может быть маленьким, напиши что-то подлиннее</label>
         }
         <textarea
           id="pole2"
-          onChange={(e) => setText(e.target.value)} 
-          value={text}  
-          placeholder="Напиши свой комментарий здесь" 
+          onChange={(e) => setText(e.target.value)}
+          value={text}
+          placeholder="Напиши свой комментарий здесь"
           className={style.form__textArea}
         />
-        <button 
+        <button
           onClick={(e) => submit(e)}
           className={style.form__button}
         >

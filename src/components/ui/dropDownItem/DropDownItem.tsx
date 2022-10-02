@@ -7,7 +7,7 @@ function DropDownItem(props: any) {
   return (
   <div className={style.dropDown__item}>
     <NextJsActiveLink
-      classNameProps={style.dropDown__link} 
+      classNameProps={style.dropDown__link}
       href={href} name={name}
     />
   </div>

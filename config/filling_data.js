@@ -6,7 +6,7 @@ export const dataNavBarLeft = [
   // {namelink: "Конференция", href: "#"},
   // {namelink: "ИТ Книга", href: "#"},
   // {namelink: "Программы", href: "#"},
-  // {namelink: "Поисковик", href: "#"},  
+  // {namelink: "Поисковик", href: "#"},
   // {namelink: "Microsoft", href: "#"},
 ]
 
@@ -19,6 +19,12 @@ export const dataLinks = [
   // {namelink: "Книги",href: "#"},
   // {namelink: "Видео", href: "#"},
   // {namelink: "Подкасты", href: "#"}
+]
+
+export const dataLinksAdmin = [
+  {namelink: "Главная",href: "/admin"},
+  {namelink: "Пользователи",href: "/admin/users"},
+  {namelink: "Контент",href: "/admin/content"}
 ]
 
 export const themeAccount = {
@@ -39,7 +45,7 @@ export const contactme = {
 
 export const dataAbout = [
   {
-    title: "О блоге", 
+    title: "О блоге",
     text: "Начинающий кодер, люблю программировать, учусь  в интернете, на основе открытых источников",
 
   },

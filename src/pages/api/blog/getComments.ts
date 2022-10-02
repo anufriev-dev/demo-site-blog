@@ -12,10 +12,9 @@ interface Settings {
 export default async function getCommentsIndex (req: NextApiRequest,res: NextApiResponse) {
   const METHOD = req.method
 
-  
   if(METHOD === "POST") {
-    const { author, text, date, post_id }: stringObject  = req.body 
-    
+    const { author, text, date, post_id }: stringObject  = req.body
+
     try {
       // валидация
       if(!date) throw new Error("date is not defined")
@@ -28,16 +27,16 @@ export default async function getCommentsIndex (req: NextApiRequest,res: NextApi
       }
       // выбираю только тот пост, к которому хочу добавить комментарий
       const post = await Posts.getPost(+post_id)
-      
+
       // если поста не нахожу, ошибка
       if(!post) throw new Error("post_id is not valid")
       // добавляем комментарий в 2 запроса
       const result = await Comment.add(author,text,date,+post_id)
 
       if(result !== "INSERT") throw new Error()
-      
+
       res.status(200).json({})
-    }catch(e) {
+    } catch(e) {
       res.status(400).json({})
     }
   }

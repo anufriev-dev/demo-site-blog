@@ -12,17 +12,17 @@ export default function Layout(props: { children: any } & IUser) {
   const { isActiveBurger, setIsActiveBurger } = layout
 
 
-  const classMain = isActiveBurger 
-    ? style.mainTransform 
+  const classMain = isActiveBurger
+    ? style.mainTransform
     : null
 
   return (
     <>
       <Head>
-        <link 
-          rel="shortcut icon" 
-          href={"/assets/favicon.ico"} 
-          type="image/png" 
+        <link
+          rel="shortcut icon"
+          href={"/assets/favicon.ico"}
+          type="image/png"
         />
       </Head>
 

@@ -10,6 +10,6 @@ export default function useInput(props: InputLableProps) {
   const lableProps = {
     id, text
   }
-  
+
   return { inputProps, lableProps }
 }

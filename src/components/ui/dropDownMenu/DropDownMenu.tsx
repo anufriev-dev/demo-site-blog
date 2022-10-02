@@ -9,13 +9,13 @@ const DropDownMenu = ({ styles }) => {
     <div className={styles.dropDown}>
       { !session &&
         <>
-          <DropDownItem 
+          <DropDownItem
             style={styles} name="Вход"
             href={process.env["NEXT_PUBLIC_LOGIN"]}
           />
-          <DropDownItem 
+          <DropDownItem
             style={styles} name="Регистрация"
-            href={process.env["NEXT_PUBLIC_REGISTRATION"]} 
+            href={process.env["NEXT_PUBLIC_REGISTRATION"]}
           />
         </>
       }

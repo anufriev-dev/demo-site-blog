@@ -8,7 +8,7 @@ import { dataNavBarLeft } from "config/filling_data"
 import style from "./style.module.scss"
 
 
-export default function Blog(props: IBlog) {  
+export default function Blog(props: IBlog) {
   const { data, maxPages, currentPage } = useBlog(props)
 
   return (
@@ -36,7 +36,7 @@ export default function Blog(props: IBlog) {
         {/* Постраничная навигация */}
         <PaginationMui maxPages={maxPages} currentPage={currentPage} />
         <br />
-        <br />  
+        <br />
     </Container>
     </>
   )

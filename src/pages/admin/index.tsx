@@ -1,14 +1,14 @@
-import { Layout } from "src/components"
 import { getToken } from "next-auth/jwt"
 import { defineRole } from "src/utils"
 import { GetServerSideProps } from "next"
+import { LayoutAdmin } from "src/components"
 
 export default function Admin() {
 
   return (
-    <Layout>
+    <LayoutAdmin>
       <h1>This is admin panel</h1>
-    </Layout>
+    </LayoutAdmin>
   )
 }
 

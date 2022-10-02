@@ -6,8 +6,8 @@ import styles from "./style.module.scss"
 
 export default function LinksFooter (props:LinksFooterProps ) {
   const { data } = props
-  
-  return (  
+
+  return (
     <Grid container >
       <Grid item xs={12} >
           <h3 className={ styles.title }>Ссылки</h3>

@@ -1,7 +1,7 @@
 import { useSearch } from "../../../hooks"
 import cn from "classnames"
 import style from "./style.module.scss"
-  
+
 export default function Search(props) {
   const { url } = props
   const { search, setSearch, handlerClick } = useSearch(url)
@@ -15,7 +15,7 @@ export default function Search(props) {
         <tbody>
           <tr className={style?.search__tr}>
             <td className={style?.search__td}>
-              <input 
+              <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -24,8 +24,8 @@ export default function Search(props) {
             />
             </td>
             <td className={classes}>
-              <button 
-                className={style?.search__btn} 
+              <button
+                className={style?.search__btn}
                 onClick={ handlerClick }
               >
                 Найти
@@ -35,6 +35,6 @@ export default function Search(props) {
         </tbody>
       </table>
       <br/>
-    </>   
+    </>
   )
 }

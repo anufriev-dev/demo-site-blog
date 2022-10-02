@@ -5,7 +5,7 @@ function Label(props: LabelProps) {
   const { id, text } = props
 
   return (
-    <label 
+    <label
       className="inputLabel"
       htmlFor={id.toString()}>
         { text }

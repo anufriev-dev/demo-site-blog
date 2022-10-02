@@ -20,11 +20,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     result = tokenJWT.verify(token?.toString(), env["NEXTAUTH_SECRET"])
   } catch(e) {}
-  
+
   if(!result) {
     return { props: {} ,redirect: { destination: "/login" } }
   }
-  
+
   return {
     props: {
       email: result.email

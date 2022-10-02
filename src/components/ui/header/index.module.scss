@@ -36,7 +36,7 @@
 }
 
 .dropDown {
-  display: flex; 
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
@@ -57,7 +57,7 @@
     color: white;
     text-decoration: none;
     font-size: 100%;
-    
+
     padding: 15px;
     &:hover {
       text-decoration: underline;
@@ -135,12 +135,12 @@
     overflow-y: scroll;
     background: var(--navTopMenu);
     transition: all var(--delayBurgerMenu) ease 0s;
-    
+
     &__list {
       box-sizing: content-box;
       flex-direction: column;
       align-items: flex-start;
-      
+
       margin-top: 83px;
       padding: 30px 30px 30px 30px;
     }

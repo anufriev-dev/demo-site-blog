@@ -11,12 +11,12 @@ function CardFooterItem(props) {
       <h3 className={ style.title }>{ item.title }</h3>
       <p className={ style.content }>{ item.text }</p>
 
-      {item.namelink && 
-        <NextJsActiveLink 
+      {item.namelink &&
+        <NextJsActiveLink
           href={ item.href }
             name={ item.namelink }
           classNameProps={ style.link }
-        /> 
+        />
           }
     </div>
   </Grid>

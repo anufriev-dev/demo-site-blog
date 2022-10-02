@@ -33,8 +33,8 @@ const createOptions = (req:NextApiRequest , res: NextApiResponse) => ({
         // check hash
         const access = await bcrypt.compare(pass,user.passwd)
         if(!access) throw new Error("passwd not valid")
-          
-        return { 
+
+        return {
           id_db: user.id,
           email: user.email,
           name: user.name,
@@ -54,7 +54,7 @@ const createOptions = (req:NextApiRequest , res: NextApiResponse) => ({
         const exist = await User.exist(email)
 
         if(exist) throw new Error("user exist")
-        // password hashing 
+        // password hashing
         const salt = await bcrypt.genSalt(10)
         const hash = await bcrypt.hash(pass,salt)
 
@@ -63,8 +63,8 @@ const createOptions = (req:NextApiRequest , res: NextApiResponse) => ({
         if(created !== "INSERT") throw new Error("user not created")
 
         const user = await User.get_by_email(email)
-          
-        return { 
+
+        return {
           id_db: user.id,
           email: user.email,
           name: user.name,

@@ -18,7 +18,7 @@ import FormAuth from "./ui/formAuth"
 import InputLabel from "./ui/inputLabel"
 import TextArea from "./ui/textArea"
 import NavbarList from "./ui/navbarList"
-import Layout from "./ui/layout"
+import Layout from "./layouts/layout"
 import Blog from "./pages/blog"
 import FormContactMe from "./ui/formContactMe"
 import DropDownMenu from "./ui/dropDownMenu"
@@ -52,6 +52,7 @@ import SettingsModal from "./related/settingsModal"
 import CardBlog from "./ui/cardBlog"
 import AccountProfileName from "./related/accountProfileName"
 import NextLink from "./ui/nextLink"
+import LayoutAdmin from "./layouts/layoutAdmin"
 
 
 export {
@@ -76,6 +77,7 @@ export {
   TextArea,
   NavbarList,
   Layout,
+  LayoutAdmin,
   Blog,
   FormContactMe,
   DropDownMenu,

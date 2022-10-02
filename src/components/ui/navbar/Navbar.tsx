@@ -7,7 +7,7 @@ export default function Navbar (props: NavbarProps) {
 
   return (
     <nav  className={`navbar ${classBurger}`}>
-      <NavbarList 
+      <NavbarList
         closeNavBar={closeNavBar}
         styles={ styles } data={ data }
       />

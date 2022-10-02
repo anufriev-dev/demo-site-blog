@@ -9,8 +9,8 @@ import { dataLinks } from "config/filling_data"
 
 
 export default function Header(props: Burger & IUser ) {
-  
-  const { 
+
+  const {
     navbarProps, burgerMenuProps
   } = useHeader(props, indexStyles, dataLinks)
 
@@ -18,9 +18,9 @@ export default function Header(props: Burger & IUser ) {
     <header className={ indexStyles.header }>
       <div className={ indexStyles.navbarWrap }>
         <Container>
-          <div 
-            onClick={(e) => e.stopPropagation()} 
-            className={ indexStyles.reverseWrap } 
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className={ indexStyles.reverseWrap }
           >
             <Navbar {...navbarProps} />
 

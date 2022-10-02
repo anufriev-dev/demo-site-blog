@@ -15,7 +15,7 @@ export default function useHeader (props: Burger, style: any, data: dataLinks[] 
       setIsActiveBurger(false)
       setTimeout(() => {
         router.push(href)
-      },DELAY_DROP_DOWN_BURGER_MENU) 
+      },DELAY_DROP_DOWN_BURGER_MENU)
     }
   }
 

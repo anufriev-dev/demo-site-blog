@@ -6,9 +6,9 @@ import { themeAccount as theme } from "config/filling_data"
 
 
 function AccountProfileName(props: IUser) {
-  const { 
+  const {
     handleChange, save, activeChange,
-      name, setName, errorName 
+      name, setName, errorName
   } = useAccountProfile()
 
   return (
@@ -16,7 +16,7 @@ function AccountProfileName(props: IUser) {
       { activeChange
         ?
         <div>
-          {errorName && 
+          {errorName &&
             <TextWarningForm>Имя не соответствует требованием</TextWarningForm>
           }
           <InputLabel id={"chName"} setState={setName} state={name} text="Имя" />
@@ -26,9 +26,9 @@ function AccountProfileName(props: IUser) {
           </div>
         </div>
         :
-        <Row 
-          title={"ФИО"} 
-          payload={props.user.name} 
+        <Row
+          title={"ФИО"}
+          payload={props.user.name}
           bg={theme.bg_first} color={theme.color}
         >
             <NextLink onClick={handleChange} href="#" text="Изменить" className={style.link} />

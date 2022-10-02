@@ -41,7 +41,7 @@ class Posts {
       const allPosts = data.rows[0]?.counts || 0  // посты не могут быть пустым массивом
       const maxPages = Math.round( allPosts / 10 ) || 1  // страниц не может быть 0
 
-        
+
       return { data: data.rows , allPosts: +allPosts , maxPages: +maxPages }
     } catch(e) { return e }
   }

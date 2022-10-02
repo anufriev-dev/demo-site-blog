@@ -1,5 +1,5 @@
 import { render ,screen } from "@testing-library/react"
-import { Comment } from "src/components" 
+import { Comment } from "src/components"
 
 const commentJSON = {
   author: "Gosha",

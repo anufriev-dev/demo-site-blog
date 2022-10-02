@@ -3,9 +3,9 @@ import useTextEffect from "./useTextEffect"
 
 
 export default function useBlog(props: IBlog) {
-  const { 
+  const {
     data,allPosts,
-    maxPages,currentPage 
+    maxPages,currentPage
   } = props
 
     // effect текста

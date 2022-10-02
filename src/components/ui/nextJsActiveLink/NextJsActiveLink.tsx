@@ -16,13 +16,13 @@ export default function NextJsActiveLink(props: INextJsActiveLink) {
   } = props
 
   const { pathname } = useRouter()
-  
+
   return (
 
     <Link href={ href }>
-      <a 
-        onClick={ onClick ? (e) => onClick(e,href) : null }  
-        id={ trim(pathname) == href ? "activeLink" : null } 
+      <a
+        onClick={ onClick ? (e) => onClick(e,href) : null }
+        id={ trim(pathname) == href ? "activeLink" : null }
         className={`link ${classNameProps}` }
       >
         { name }

@@ -8,18 +8,18 @@ import style from "./style.module.scss"
 function AvatarHeader(props: IUser ) {
   const router = useRouter()
   const { data: session } = useSession()
-  
+
   return (
-    <div 
+    <div
       className={style.user_veryfy}
         onClick={() => router.push(
           process.env["NEXT_PUBLIC_ACCOUNT"]
-        )} 
+        )}
     >
-        <NextJsActiveLink 
-          name={props?.user?.name || session.user.name} 
+        <NextJsActiveLink
+          name={props?.user?.name || session.user.name}
           classNameProps={style.user_name}
-          href={process.env["NEXT_PUBLIC_ACCOUNT"]} 
+          href={process.env["NEXT_PUBLIC_ACCOUNT"]}
         />
     </div>
   )

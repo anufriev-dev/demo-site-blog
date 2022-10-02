@@ -5,7 +5,7 @@ import { useForgotpassword } from "src/hooks"
 import style from "./style.module.scss"
 
 function Forgotpassword() {
-  const { 
+  const {
     email, isActive, handler, setEmail, isErrorEmail
   } = useForgotpassword()
 
@@ -27,7 +27,7 @@ function Forgotpassword() {
             isErrorEmail && ( <TextWarningForm>E-mail не соответствует требованиям</TextWarningForm>)
           }
           <InputLabel id={"forgot"} setState={setEmail} state={email} text="E-mail"  />
-          <ButtonSubmit className={style.button} event={handler} text="Восстановить мой пароль"/>          
+          <ButtonSubmit className={style.button} event={handler} text="Восстановить мой пароль"/>
           </>
         }
 

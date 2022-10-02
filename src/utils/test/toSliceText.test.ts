@@ -57,5 +57,5 @@ describe("Returns a new string separated by dots: '.?!', up to 3 sentences defau
 
     expect(toSliceText(test, 6)).toBe(expected)
   })
-  
+
 })

@@ -3,7 +3,7 @@ import cn from "classnames"
 
 
 export default function useBurgerMenu(props: Burger, style: any) {
-  const {  
+  const {
     isActiveBurger,
     setIsActiveBurger
   } = props
@@ -12,10 +12,10 @@ export default function useBurgerMenu(props: Burger, style: any) {
     style.burger,
     isActiveBurger ? style.burgerActive : null
   )
-  
+
   const handler = () => {
     return setIsActiveBurger(!isActiveBurger)
   }
-  
+
   return { handler, classBurger }
 }

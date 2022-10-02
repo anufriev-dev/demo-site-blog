@@ -31,7 +31,7 @@ function usePost(comments_params: object[]) {
       setErrorAuthor(true)
       return
     }else  setErrorAuthor(false)
-    
+
 
     if(!isValid(text,{ min: 6 })){
       setErrorText(true)
@@ -41,7 +41,7 @@ function usePost(comments_params: object[]) {
     // отправка формы на сервер
     const date = createDate()
     const dataFetch = { post_id: +post_id, author, text, date }
-    
+
     BlogApi.addComment(dataFetch).then(() => {
       setComments([...comments, dataFetch])
       setErrorSubmit(false)
@@ -56,7 +56,7 @@ function usePost(comments_params: object[]) {
     isErrorText,
   }
 
-  return { 
+  return {
     errSubmit, comments, formProps
   }
 }

@@ -13,7 +13,7 @@ const style = {
 function ButtonAuth(props: { provider: "github" | "google", event: MouseEventHandler<HTMLElement>}) {
 
   const { provider, event } = props
-  
+
   return (
     <>
       <button onClick={event} className={`buttonAuth ${style[provider]}`}>

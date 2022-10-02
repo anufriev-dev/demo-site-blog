@@ -2,7 +2,7 @@
   position: relative;
   transform: translate3d(var(--pageMove), 0px, 0px);
   z-index: 1200;
-  
+
   background: rgba(0, 0, 0, 0.3);
   transition: all var(--delayBurgerMenu) ease 0s;
 }
@@ -12,7 +12,7 @@
   .mainTransform {
     position: relative;
     transform: translate3d(-150px, 0px, 0px);
-    
+
     z-index: 1200;
     transition: all var(--delayBurgerMenu) ease 0s;
   }

@@ -1,6 +1,6 @@
 
 // валидатор 3000
-// может проверять на: 
+// может проверять на:
 //        1) минимальную длинну
 //        2) максимальную длинну
 //        3) соответствия по регулярным выражениям
@@ -12,10 +12,10 @@
  * @param { object } object - объект настроек
  */
 
- type isValidObject = { min?: null | number, max?: null | number, regexp?: null | RegExp }
+  type isValidObject = { min?: null | number, max?: null | number, regexp?: null | RegExp }
 
- const isValid = (pole: string, object: isValidObject = { min: null, max: null, regexp: null }) => {
-  
+  const isValid = (pole: string, object: isValidObject = { min: null, max: null, regexp: null }) => {
+
   if(!pole) return false
   if(pole.length < object.min) return false
   if(pole.length > object.max) return false

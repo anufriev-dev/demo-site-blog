@@ -7,7 +7,7 @@ import { getToken } from "next-auth/jwt"
 
 export default function PostPage(props: PostPageProps & IUser ) {
   if(!props) return null
-  
+
   return (
     <Layout user={props.user}>
       <Post {...props} />
@@ -27,10 +27,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if(!token) return { props }
 
   const user = await User.get_by_email(token.email)
-  
-  
+
+
   return { props: {
-      ...props, 
+      ...props,
         user: {
           name: user.name
         }

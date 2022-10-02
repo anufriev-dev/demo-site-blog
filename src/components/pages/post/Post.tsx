@@ -1,17 +1,16 @@
 import { usePost } from "src/hooks"
 import { Container } from "@mui/system"
-import Router from "next/router"
 import { ErrorComments, Warning, PostItem, Comment, FormData } from "src/components"
 import { PostPageProps } from "src/types"
 import style from "./style.module.scss"
 
 
 export default function Post(props: PostPageProps) {
-    // state, setState
-  const { 
+  // state, setState
+  const {
     errSubmit, comments, formProps
   } = usePost(props.comments)
-  
+
   return (
     <div>
         {/* Пост */}
@@ -27,11 +26,11 @@ export default function Post(props: PostPageProps) {
           {/* Отобразить */}
           {comments.length
             ? comments.map((comment,index) => (
-               <Comment key={index} comment={comment} />
+                <Comment key={index} comment={comment} />
             ))
             : <Warning />
               }
-          
+
           {/* Ошибка отправки */}
           { errSubmit && <ErrorComments /> }
         </Container>

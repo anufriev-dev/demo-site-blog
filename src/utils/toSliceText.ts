@@ -1,15 +1,15 @@
 /**
  * Преобразует текст в несколько предложений,
  * по умолчанию: 3
- * 
+ *
  * @param {string} text - текст
  * @param {number} sentence - кол-во предложений, которые нужно вытащить
  * @author Ануфриев Георгий
  * @author github: GeorgyDev11111
  */
- function toSliceText (text: string, sentence: number = 3) {
+function toSliceText (text: string, sentence: number = 3) {
 
-  const regexp = /[!\.\?](?=\s|$|[a-zа-ё])/gi  // (! || . || ? ).(" " || "конец строки" || [алфавит]) 
+  const regexp = /[!\.\?](?=\s|$|[a-zа-ё])/gi  // (! || . || ? ).(" " || "конец строки" || [алфавит])
   const points = [...text.matchAll(regexp)] // все найденные символы в строке : [[...],[...]]
 
   if(!points.length) return text // если не было найдено ни одного искомого символа

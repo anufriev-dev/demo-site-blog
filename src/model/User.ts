@@ -45,7 +45,7 @@ class User {
       return result
     } catch(e) { return e }
   }
-  
+
   async update_pass(pass, email) {
     try {
       const salt = await bcrypt.genSalt(10)

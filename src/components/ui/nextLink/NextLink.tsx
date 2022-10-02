@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { MouseEvent } from "react"
 
 interface INextLink {
   href: string,

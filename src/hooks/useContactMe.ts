@@ -8,7 +8,7 @@ function useContactMe () {
   const [area, setArea] = useState<string>("")
 
   const { data: session } = useSession()
-  
+
   const text: string = "Убедись, что e-mail верный, иначе ответ не дойдет"
   useEffect(() => {
     strDelay(text,"textWarning")

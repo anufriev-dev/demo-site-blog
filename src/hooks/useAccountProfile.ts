@@ -10,7 +10,7 @@ export default function useAccountProfile () {
   const [errorName, setErrorName] = useState(false)
   const { data: session } = useSession()
   const { refreshData } = useRefreshData()
-  
+
   const handleChange = (e: MouseEvent<HTMLAreaElement>) => {
     e.preventDefault()
     setActiveChange(!activeChange)
@@ -19,7 +19,7 @@ export default function useAccountProfile () {
   const save = async () => {
     if(!isValid(name, { min: 2, max: 20 })) {
       setErrorName(true)
-      return 
+      return
     } else setErrorName(false)
 
     const statusText = await UserApi.changeName({name, email: session.user.email })

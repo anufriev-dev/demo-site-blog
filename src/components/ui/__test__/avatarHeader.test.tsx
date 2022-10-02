@@ -3,7 +3,6 @@ import { debug } from "console"
 import { AvatarHeader } from "src/components"
 
 
-
 describe("AvatarHeader component", () => {
   it("", () => {
     const { container } = render(<AvatarHeader />)

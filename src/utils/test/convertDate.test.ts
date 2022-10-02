@@ -1,7 +1,7 @@
 import  { convertDate } from  "../"
 
 describe("formatter date", () => {
-  
+
   it("&1", () => {
     const test = "2001-01-28"
     const expected = "28 Января 2001"

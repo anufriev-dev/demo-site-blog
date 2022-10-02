@@ -8,7 +8,7 @@ const $host = axios.create({
 })
 
 
-export { 
+export {
   $host,
   UserApi,
   BlogApi,

@@ -5,15 +5,15 @@ import style from "./style.module.scss"
 
 
 function Login() {
-  const { 
+  const {
     email, pass, formProps,
     setEmail, setPass,
-    isErrorEmail, isErrorPass, 
+    isErrorEmail, isErrorPass,
     submitExit, eventForgetPasswd
   } = useAuth()
 
 
-  
+
   return (
     <div>
     <FormAuth {...formProps}>
@@ -24,9 +24,9 @@ function Login() {
           <InputLabel setState={setPass} state={pass} id={"passId"} text={"Пароль"} />
           <div className={style.buttons}>
             <ButtonSubmit className={style.signIn} event={submitExit} text={"Войти"} />
-            <ButtonSubmit 
-              className={style.exit}  
-              event={eventForgetPasswd} text={"Забыли пароль?"} 
+            <ButtonSubmit
+              className={style.exit}
+              event={eventForgetPasswd} text={"Забыли пароль?"}
             />
           </div>
         </div>

@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { convertDate } from "src/utils"
-import style from "./style.module.scss" 
+import style from "./style.module.scss"
 
 
 export default function PostItem(props) {
@@ -17,7 +17,7 @@ export default function PostItem(props) {
             <span className={style.post__time}>{date}</span>
             <Link href={`/category/${item.category}`}>
               <a className={style.post__category__link}>{item.category}</a>
-            </Link>  
+            </Link>
           </div>
           <div className={style.post__img__wrapp}>
             <Image className={style.post__img} src={`${item.src_img}`} alt="" width={1920} height={1080} />

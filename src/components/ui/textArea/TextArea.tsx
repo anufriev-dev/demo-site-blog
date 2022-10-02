@@ -1,20 +1,20 @@
 import style from "./style.module.scss"
 
 export default function TextArea(props) {
-  const { 
-    state, 
+  const {
+    state,
     setState,
     placeholder
   } = props
-  
+
   return (
     <>
       <textarea
-        placeholder={placeholder} 
+        placeholder={placeholder}
         className={style.textArea}
         value={state}
-        onChange={(e) => setState(e.target.value)} 
-      />    
+        onChange={(e) => setState(e.target.value)}
+      />
     </>
   )
 }

@@ -15,11 +15,11 @@ const Change = async (req: NextApiRequest, res: NextApiResponse) => {
       if(!result) throw new Error()
 
       res.status(200).json({ msg: "Name is update" })
-    } catch(e) { 
+    } catch(e) {
       res.status(400).json({ msg: "Name isn't update" })
     }
   }
-  
+
 }
 
 export default Change

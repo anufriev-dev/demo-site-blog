@@ -33,12 +33,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const user = await User.get_by_email(token.email)
 
-  const props = { date, user: { name: user.name } } 
+  const props = { date, user: { name: user.name } }
 
-  
+
   return role === "ADMIN"
-    ? { props: { 
-        ...props, isAdmin: true 
+    ? { props: {
+        ...props, isAdmin: true
       }
     }
     : { props }

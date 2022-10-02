@@ -15,7 +15,7 @@ function SettingsModal(props:IettingsModal ) {
 
   return (
     <Modal active={activeModal} setActive={setActiveModal}>
-    <> 
+    <>
       <h1 className="text">Вы действительно хотите удалить аккаунт?</h1>
       <div className={style.wrappButtons}>
         <ButtonSubmit className={style.cancel} event={setAModal} text="Отмена" />

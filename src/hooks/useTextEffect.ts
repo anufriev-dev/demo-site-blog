@@ -7,10 +7,10 @@ function useTextEffect (posts: number) {
 
   const router = useRouter()
 
-  const text: string = router.query.search 
+  const text: string = router.query.search
     ? `По запросу: "${ router.query.search }" Найдено постов: `
     : "Найдено: "
-  
+
   useEffect(() => {
     document.getElementById("postsEffect").textContent = ""
     strDelay(text,"titleSearch")

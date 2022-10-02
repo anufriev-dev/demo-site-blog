@@ -25,11 +25,11 @@ const Change = async (req: NextApiRequest, res: NextApiResponse) => {
       }else {
         throw new Error("user is not update")
       }
-    } catch(e) { 
+    } catch(e) {
       res.status(400).json({})
     }
   }
-  
+
   if(req.method === "POST") {
     try {
       const { email } = req.body
@@ -50,7 +50,7 @@ const Change = async (req: NextApiRequest, res: NextApiResponse) => {
         template + `<p>http://localhost:3000/forgotpassword/change?token=${token}<p>`
       )
       const file = await readFile(pathNewFile,{ encoding: "utf-8" })
-      
+
       await transport.sendMail({
         from: env["EMAIL_NODEMAILER"],
         to: email,
@@ -59,9 +59,9 @@ const Change = async (req: NextApiRequest, res: NextApiResponse) => {
       })
 
       await unlink(pathNewFile)
-      
+
       res.status(200).json({})
-    } catch(e) { 
+    } catch(e) {
       res.status(400).json(e)
     }
   }

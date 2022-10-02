@@ -3,7 +3,7 @@ import { Burger } from "src/types"
 import { useBurgerMenu } from "src/hooks"
 
 export default function BurgerMenu(props: Burger) {
-  const { 
+  const {
     classBurger, handler
   } = useBurgerMenu(props, style)
 

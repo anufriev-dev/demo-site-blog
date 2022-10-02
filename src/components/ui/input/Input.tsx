@@ -5,8 +5,8 @@ function Input(props: InputProps) {
     id,setState,state
   } = props
 
-  return (  
-  <input 
+  return (
+  <input
     onChange={(e) => setState(e.target.value)}
     className="input"
     id={id.toString()} type="text" value={state}

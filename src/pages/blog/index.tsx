@@ -7,7 +7,7 @@ import { IBlog, IUser } from "src/types"
 
 export default function IndexBlogPage(props: IBlog & IUser) {
   if(!props) return null
-  
+
   return (
     <Layout user={props.user}>
       <Blog {...props}/>
@@ -17,18 +17,18 @@ export default function IndexBlogPage(props: IBlog & IUser) {
 
 export const getServerSideProps: GetServerSideProps = async (context) =>  {
   const { query: { page = 1, search = "" }, req} = context
-  
+
   // получаем данные постов
-  const { 
+  const {
     data, allPosts, maxPages
   } = await Posts.getPostJoinComments(+page, search as string)
 
   const token = await getToken({ req })
 
   const props = {
-    currentPage: +page, data, maxPages, allPosts 
+    currentPage: +page, data, maxPages, allPosts
   }
-  
+
   if(!token) {
     return { props }
   }

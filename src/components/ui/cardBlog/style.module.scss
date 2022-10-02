@@ -4,24 +4,24 @@
   margin-bottom: 20px;
   box-shadow: 0px 2px 4px #ccc;
   border-radius: var(--border-radius);
- &__image { 
-  overflow: hidden;
-  margin-bottom: 10px;
-  box-sizing: border-box;
-  height: 100%;
-  border-radius: var(--border-radius);
- }
- &__text {
-  min-height: 60px;
-  overflow: hidden;
- }
- &__link {
-  font-size: 120%;
-  color: var(--linkLayout1);
- }
- &__link_category {
-  font-size: 100%;
- }
+  &__image {
+    overflow: hidden;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    height: 100%;
+    border-radius: var(--border-radius);
+  }
+  &__text {
+    min-height: 60px;
+    overflow: hidden;
+  }
+  &__link {
+    font-size: 120%;
+    color: var(--linkLayout1);
+  }
+  &__link_category {
+    font-size: 100%;
+  }
 
 }
 

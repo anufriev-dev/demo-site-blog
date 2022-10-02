@@ -8,10 +8,10 @@ import Router  from "next/router"
 function useAuth () {
   const [email, setEmail] = useState<string>("")
   const [pass, setPass ] = useState<string>("")
-  
+
   const [isErrorEmail, setErrorEmail] = useState<boolean>(false)
   const [isErrorPass, setErrorPass] = useState<boolean>(false)
-  
+
   const text: string = "Авторизация на сайте пока не обязательна, но в будующем, будет много фичей"
   useEffect(() => {
     strDelay(text,"auth")
@@ -36,17 +36,17 @@ function useAuth () {
     } else setErrorPass(false)
 
     const result = await signIn("Authorization", {
-      email, 
+      email,
       pass,
       redirect: false
-     },)
-     if(result.ok) {
+    },)
+      if(result.ok) {
       Router.push("/account")
-     }else {
+    }else {
       setErrorEmail(true)
       setErrorPass(true)
       return
-     }
+    }
 
     dropState()
   }

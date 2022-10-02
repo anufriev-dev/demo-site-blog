@@ -6,7 +6,7 @@ const Delete = async (req: NextApiRequest, res: NextApiResponse) => {
   if(req.method === "DELETE") {
     try {
       const token = await getToken({ req })
-      
+
       if(!token) throw new Error("access denied")
 
       const result = User.delete_account(+token.id_db)
@@ -14,7 +14,7 @@ const Delete = async (req: NextApiRequest, res: NextApiResponse) => {
       if(!result) throw new Error("user not deleted")
 
       res.status(200).json({})
-    } catch(e) { 
+    } catch(e) {
       res.status(400).json({})
     }
   }

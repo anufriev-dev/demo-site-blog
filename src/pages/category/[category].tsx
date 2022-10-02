@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if(!token) return { props }
 
   const user = await User.get_by_email(token.email)
-  
+
   return {
     props: {
       ...props,

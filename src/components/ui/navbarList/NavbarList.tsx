@@ -3,7 +3,7 @@ import { NavListProps } from "src/types"
 
 
 export default function NavList(props: NavListProps) {
-  const { 
+  const {
     data, styles, closeNavBar
   } = props
 

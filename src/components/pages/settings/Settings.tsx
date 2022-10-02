@@ -14,21 +14,21 @@ function Settings(props: ISettings) {
     <Container>
       <h1 className={style.heading}>Настройки</h1>
       <div className={style.wrapp}>
-         <div>
-          <ButtonSubmit className={style.back} 
+        <div>
+          <ButtonSubmit className={style.back}
             width={"200px"} event={() => Router.back()} text={"Назад"}
           />
-         </div>
+        </div>
         <div>
-          <ButtonSubmit 
-            className={style.exit_account} 
+          <ButtonSubmit
+            className={style.exit_account}
             width={"200px"} event={exit} text={"Выйти из аккаунта"}
           />
         </div>
         <div>
-          <ButtonSubmit 
-            className={style.delete_account} 
-            width={"200px"} event={() => setActiveModal(!activeModal)} text={"Удалить аккаунта"} 
+          <ButtonSubmit
+            className={style.delete_account}
+            width={"200px"} event={() => setActiveModal(!activeModal)} text={"Удалить аккаунта"}
           />
         </div>
       </div>

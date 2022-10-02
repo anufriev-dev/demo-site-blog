@@ -8,4 +8,4 @@ class Email {
 
 }
 
-export default new Email  
+export default new Email

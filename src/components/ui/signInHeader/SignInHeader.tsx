@@ -7,11 +7,11 @@ import { Burger, IUser } from "src/types"
 function SignInHeader(props: Burger & { className: string } & IUser ) {
   const { className } = props
   const { data: session } = useSession()
-  
+
   return (
     <>
-    { session 
-        ? <AvatarHeader user={props.user} /> 
+    { session
+        ? <AvatarHeader user={props.user} />
         : <Link href="#"><a className={className}>Гость</a></Link>
       }
     </>

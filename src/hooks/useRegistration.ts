@@ -13,7 +13,7 @@ function useRegistration () {
   const [isErrorEmail, setErrorEmail] = useState<boolean>(false)
   const [isErrorPass, setErrorPass] = useState<boolean>(false)
   const [isErrorName, setErrorName] = useState<boolean>(false)
-  
+
   const text: string = "Авторизация на сайте пока не обязательна, но в будующем, будет много фичей"
   useEffect(() => {
     strDelay(text,"auth")
@@ -21,12 +21,12 @@ function useRegistration () {
 
   const submit = async (e: MouseEvent<HTMLElement>) => {
     e.preventDefault()
-    
+
     if(!isValid(name, { min: 2, max: 20 })) {
       setErrorName(true)
       return
     }else setErrorName(false)
-    
+
     if(!isValid(email,{ regexp: RegExpEmail })) {
       setErrorEmail(true)
       return
@@ -37,13 +37,13 @@ function useRegistration () {
       return
     }else setErrorPass(false)
 
-    const result = await signIn("Registration", { 
-      email, 
-      pass, 
+    const result = await signIn("Registration", {
+      email,
+      pass,
       name,
       redirect: false
     })
-    
+
     if(result.ok) {
       Router.push("/account")
     }else {
@@ -52,7 +52,7 @@ function useRegistration () {
       setErrorPass(true)
       return
     }
-    
+
     dropState()
   }
 
@@ -62,11 +62,11 @@ function useRegistration () {
     setName("")
   }
   const formProps = {
-    id: "auth", 
+    id: "auth",
     title: "Регистрация"
   }
 
-  return { 
+  return {
     email, pass, name, setEmail, setPass, setName, formProps,
     isErrorEmail, isErrorPass, isErrorName, submit
   }

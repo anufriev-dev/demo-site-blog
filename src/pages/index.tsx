@@ -7,7 +7,7 @@ import { IHomePage, IUser } from "src/types"
 
 export default function HomePage(props: IHomePage & IUser ) {
   if(!props) return <h1>Loading...</h1>
-  
+
   return (
     <Layout user={props.user}>
       <Home data={props.data}/>
@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 
   const user = await User.get_by_email((token.email))
-  
+
   return {
     props: {
       data: result,

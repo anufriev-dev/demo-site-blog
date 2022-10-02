@@ -8,16 +8,16 @@ import styles from "./style.module.scss"
 
 export default function DemoCardBlog(props: DemoCardBlogProps ) {
   const { dataBlog, routherType } = props
-  
+
   return (
   <>
-    { 
+    {
       dataBlog.map((item) => (
         <div key={item.post_id} className={styles.wrapp}>
           <h2 className={styles.title}>
-            <NextJsActiveLink 
-              classNameProps={styles.cardBlog__link} 
-              href={`/${routherType}/${item.post_id}/${item.summary}`} 
+            <NextJsActiveLink
+              classNameProps={styles.cardBlog__link}
+              href={`/${routherType}/${item.post_id}/${item.summary}`}
               name={item.summary}
             />
           </h2>
@@ -28,7 +28,7 @@ export default function DemoCardBlog(props: DemoCardBlogProps ) {
             <p className={styles.cardBlog__text}>{ toSliceText(item.text) }</p>
           </div >
             <Dashboard  data={item} routh={routherType}/>
-        </div> 
+        </div>
       ))
     }
   </>

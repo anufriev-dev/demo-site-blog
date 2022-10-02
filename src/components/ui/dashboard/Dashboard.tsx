@@ -14,12 +14,12 @@ export default function Dashboard(props: DashboardProps) {
 
   return (
     <div className={indexStyles.dashboard}>
-      <DashboardLink 
-        href={`/${routh}/${data.post_id}/${data.summary}`} 
+      <DashboardLink
+        href={`/${routh}/${data.post_id}/${data.summary}`}
         text="Читать дельше"
       />
-      <DashboardLink 
-        href={`/category/${data.category}`} 
+      <DashboardLink
+        href={`/category/${data.category}`}
         text={data.category}
       />
       <span  className={classes}>{thisDate}</span>

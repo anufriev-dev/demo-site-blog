@@ -14,13 +14,13 @@ const PaginationMui = (props) => {
       `/blog?page=${number}${search ? "&search="+ search : "" }`
     )
   }
-  
+
   return (
-    <Pagination 
-      count={maxPages} 
-      page={currentPage} 
-      onChange={onChange} 
-      shape="rounded" 
+    <Pagination
+      count={maxPages}
+      page={currentPage}
+      onChange={onChange}
+      shape="rounded"
       variant="outlined"
       color="primary"
     />

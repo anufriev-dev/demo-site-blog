@@ -1,10 +1,6 @@
 import { MouseEvent } from "react"
 import { useContactMe } from "../../../hooks"
-/* components
-   -------------------------------------------------- */
 import { FormAuth, InputLabel, TextArea, ButtonSubmit } from "src/components"
-/* fake data
-   -------------------------------------------------- */
 import { contactme } from "config/filling_data"
 
 
@@ -19,7 +15,7 @@ export default function FormContactMe() {
 
   const formProps = {
     id: "contact_me",
-    title: "Напишите мне", text: contactme.text 
+    title: "Напишите мне", text: contactme.text
   }
 
   return (
@@ -30,7 +26,7 @@ export default function FormContactMe() {
         <br />
         <p className="text text-blue"id="textWarning"></p>
 
-        <InputLabel id={"email"} state={email} setState={setEmail} text="E-mail"/> 
+        <InputLabel id={"email"} state={email} setState={setEmail} text="E-mail"/>
         <TextArea state={area} setState={setArea} placeholder={"Сообщение"}/>
         <ButtonSubmit event={submit} text="Отправить сообщение"  />
       </div>

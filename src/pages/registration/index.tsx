@@ -5,7 +5,7 @@ import { Layout, Registration } from "src/components"
 
 
 export default function RegistrationPage() {
-  
+
   return (
     <Layout >
       <Registration />

@@ -5,7 +5,7 @@ import style from "./style.module.scss"
 
 
 function Registration() {
-  const { 
+  const {
     email, pass, name,
     setEmail, setPass, setName, submit,
     formProps, isErrorEmail, isErrorPass, isErrorName
@@ -16,7 +16,7 @@ function Registration() {
         <FormAuth {...formProps}>
         <div>
           { isErrorName && <TextWarningForm>Имя не соответствует требованием</TextWarningForm> }
-          <InputLabel  setState={setName} state={name} id={"nameId"} text={"Имя"} /> 
+          <InputLabel  setState={setName} state={name} id={"nameId"} text={"Имя"} />
 
           { isErrorEmail && <TextWarningForm>E-mail не соответствует требованием или уже занят</TextWarningForm> }
           <InputLabel  setState={setEmail} state={email}  id={"emailId"} text={"E-mail"} />
