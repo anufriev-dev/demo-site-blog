@@ -10,6 +10,13 @@
   color: white;
 }
 
+.link {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+}
+
 .cell {
   flex: 1;
   padding: 20px;

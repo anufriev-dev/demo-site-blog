@@ -7,7 +7,7 @@ function ButtonSubmit(props: IuttonSubmit ) {
   const { event, text, className, width } = props
 
   return (
-  <button onClick={event} style={{width}} className={`buttonSubmit ${className}`}>
+  <button onClick={event} style={{width}} className={`buttonSubmit ${className ? className : ""}`}>
       { text }
   </button>
   )

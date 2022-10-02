@@ -22,6 +22,7 @@ function AccountProfile(props: { date: string } & IUser  ) {
         payload={session?.user.email}
         bg={theme.bg_first}
         color={theme.color}
+        
       />
   </div>
   )

@@ -158,7 +158,7 @@ export interface IettingsModal {
 }
 
 export interface IuttonSubmit {
-  event: any,
+  event(),
   text: string,
   className?: string,
   width?: string
@@ -192,3 +192,13 @@ export interface ICardBlog {
   src_img: string,
   comments: string
 }
+
+export interface IAdminProps {
+  setState: Dispatch<SetStateAction<string>>;
+  state: string;
+}
+
+export interface IuseLayoutAdmin {
+  [key: string]: IAdminProps
+}
+

@@ -17,6 +17,8 @@ import useForgotpassword from "./useForgotpassword"
 import useChange from "./useChange"
 import useRefreshData from "./functional/useRefreshData"
 import useAccountProfile from "./useAccountProfile"
+import useLayoutAdmin from "./useLayoutAdmin"
+import useAdmin from "./useAdmin"
 
 
 export {
@@ -38,5 +40,7 @@ export {
   useForgotpassword,
   useChange,
   useAccountProfile,
-  useRefreshData
+  useRefreshData,
+  useLayoutAdmin,
+  useAdmin
 }

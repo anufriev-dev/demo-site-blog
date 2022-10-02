@@ -1,3 +1,4 @@
+import style from "./style.module.scss"
 
 export interface ISearchUniversal {
   setState(e: string): void,
@@ -8,14 +9,15 @@ function SearchUniversal(props: ISearchUniversal) {
   const { setState, state } = props
 
   return (
-    <>
-      <input 
+    <div>
+      <label className={style.lable} htmlFor="search">Поиск</label>
+      <input
+        id="search"
         type="text"
         value={state}
-        onChange={(e) => {
-        }}
+        onChange={(e) => setState(e.target.value)}
       />
-    </>
+    </div>
   )
 }
 

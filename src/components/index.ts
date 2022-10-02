@@ -53,7 +53,11 @@ import CardBlog from "./ui/cardBlog"
 import AccountProfileName from "./related/accountProfileName"
 import NextLink from "./ui/nextLink"
 import LayoutAdmin from "./layouts/layoutAdmin"
-
+import SearchUniversal from "./ui/searchUniversal"
+import Admin from "./pages/admin"
+import AdminUser from "./pages/adminUser"
+import AdminPostsBlog from "./pages/adminPostsBlog"
+import AdminComments from "./pages/adminComments"
 
 export {
   ErrorComments,
@@ -110,5 +114,10 @@ export {
   SettingsModal,
   CardBlog,
   AccountProfileName,
-  NextLink
+  NextLink,
+  SearchUniversal,
+  Admin,
+  AdminUser,
+  AdminPostsBlog,
+  AdminComments
 }

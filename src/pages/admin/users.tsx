@@ -1,15 +1,15 @@
 import { getToken } from "next-auth/jwt"
 import { defineRole } from "src/utils"
 import { GetServerSideProps } from "next"
-import { Admin, LayoutAdmin } from "src/components"
+import { LayoutAdmin, AdminUser } from "src/components"
 import { useLayoutAdmin } from "src/hooks"
 
-export default function AdminPage() {
+export default function AdminUserPage() {
   const { props } = useLayoutAdmin()
   
   return (
     <LayoutAdmin {...props} >
-      <Admin {...props} />
+      <AdminUser {...props} />
     </LayoutAdmin>
   )
 }

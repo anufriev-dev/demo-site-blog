@@ -30,9 +30,8 @@ function AccountProfileName(props: IUser) {
           title={"ФИО"}
           payload={props.user.name}
           bg={theme.bg_first} color={theme.color}
-        >
-            <NextLink onClick={handleChange} href="#" text="Изменить" className={style.link} />
-        </Row>
+          href={"#"} onClick={handleChange} textLink="Изменить"
+         />
       }
     </div>
   )

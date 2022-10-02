@@ -56,3 +56,9 @@ export const dataAbout = [
     href: "/contactme"
   },
 ]
+export const nameCategoryAdminPanel = [
+  {name: "Пользователи", link: "/admin/users"},
+  {name: "Посты блога", link: "/admin/posts/blog"},
+  {name: "Комментарии", link: "/admin/comments"},
+  // {name: "Еще что-то непонятное...", link: "#"},
+]
