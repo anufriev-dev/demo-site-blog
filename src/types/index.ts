@@ -202,3 +202,52 @@ export interface IuseLayoutAdmin {
   [key: string]: IAdminProps
 }
 
+
+
+export interface IAdminUserPageUsers {
+  id: string,
+  email: string,
+  name: string,
+  role: string,
+  date_registration: string
+}
+
+export interface IAdminUserPage {
+  users:IAdminUserPageUsers
+}
+
+export interface IAdminUser extends IAdminProps {
+  users: IAdminUserPageUsers[]
+}
+
+interface IAdminPostPagePosts {
+  post_id: string,
+  summary: string,
+  category: string,
+  date: string,
+  text: string
+}
+
+export interface IAdminPostPage {
+  posts: IAdminPostPagePosts[]
+}
+
+export interface IAdminPostsBlog extends IAdminProps {
+  posts: IAdminPostPagePosts[]
+}
+
+
+interface AdminCommentsPageComment {
+  comment_id: string,
+  author: string,
+  date: string,
+  text: string
+}
+
+export interface IAdminCommentsPage {
+  comments: AdminCommentsPageComment[]
+}
+
+export interface IAdminComments extends IAdminProps {
+  comments: AdminCommentsPageComment[]
+}

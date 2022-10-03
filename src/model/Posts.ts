@@ -61,6 +61,15 @@ class Posts {
       return result.rows
     } catch(e) { return e }
   }
+
+  async getPosts () {
+    try {
+      const result = await db.query(`
+        SELECT * FROM "post_blog"
+      `)
+      return result.rows
+    } catch(e) { return e }
+  }
 }
 
 export default new Posts

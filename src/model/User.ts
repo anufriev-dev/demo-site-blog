@@ -68,6 +68,17 @@ class User {
       return result
     } catch(e) { return e }
   }
+
+  async get() {
+    try {
+      const result = await db.query(`
+        SELECT id, email, name, role, date_registration
+        FROM "user"
+      `)
+
+      return await JSON.parse(JSON.stringify(result.rows))
+    } catch(e) { return e }
+  }
 }
 
 export default new User
