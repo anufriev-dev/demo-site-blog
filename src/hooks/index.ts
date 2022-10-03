@@ -19,6 +19,7 @@ import useRefreshData from "./functional/useRefreshData"
 import useAccountProfile from "./useAccountProfile"
 import useLayoutAdmin from "./useLayoutAdmin"
 import useAdmin from "./useAdmin"
+import useAdminUser from "./useAdminUser"
 
 
 export {
@@ -42,5 +43,6 @@ export {
   useAccountProfile,
   useRefreshData,
   useLayoutAdmin,
-  useAdmin
+  useAdmin,
+  useAdminUser
 }

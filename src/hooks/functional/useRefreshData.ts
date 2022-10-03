@@ -2,10 +2,10 @@ import { useRouter } from "next/router"
 
 
 export default function useRefreshData() {
-  const routher = useRouter()
+  const router = useRouter()
 
   const refreshData = () => {
-    routher.replace(routher.asPath)
+    router.replace(router.asPath)
   }
   return { refreshData }
 }

@@ -2,7 +2,7 @@ import { AppBar } from "@mui/material"
 import { Container } from "@mui/system"
 import { SearchUniversal, NextLink } from "src/components"
 import style from "./style.module.scss"
-import Router from "next/router"
+import { useRouter } from "next/router"
 
 interface ILayputAdmin {
   children: JSX.Element,
@@ -10,8 +10,11 @@ interface ILayputAdmin {
   setState(e: string): void,
 }
 
+
 function LayoutAdmin (props: ILayputAdmin ) {
   const { children, state, setState } = props
+  const router = useRouter()
+
     
   return (
     <div>
@@ -22,7 +25,7 @@ function LayoutAdmin (props: ILayputAdmin ) {
                 <NextLink  href="/admin" text="Админка" className={`${style.linkAdmin} ${style.link}`} />
                 <NextLink  href="/" text="Сайт" className={style.linkAdmin} />
               </div>
-              <NextLink  onClick={() => Router.back()} text="Назад" className={style.linkAdmin} />
+              <NextLink  onClick={() => router.back()} text="Назад" className={style.linkAdmin} />
             </div>
           </Container>
         </AppBar>
@@ -33,9 +36,9 @@ function LayoutAdmin (props: ILayputAdmin ) {
             </div>
           </Container>
         </AppBar>
-      <main className={style.main}>
-        { children }
-      </main>
+        <main className={style.main}>
+          { children }
+        </main>
     </div>
   )
 }

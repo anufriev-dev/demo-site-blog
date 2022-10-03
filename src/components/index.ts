@@ -58,6 +58,7 @@ import Admin from "./pages/admin"
 import AdminUser from "./pages/adminUser"
 import AdminPostsBlog from "./pages/adminPostsBlog"
 import AdminComments from "./pages/adminComments"
+import TableRow from "./ui/tableRow"
 
 export {
   ErrorComments,
@@ -119,5 +120,6 @@ export {
   Admin,
   AdminUser,
   AdminPostsBlog,
-  AdminComments
+  AdminComments,
+  TableRow
 }

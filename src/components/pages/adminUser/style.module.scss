@@ -1,0 +1,52 @@
+.wrappTable {
+  margin: 0 20px;
+  margin-bottom: 100px;
+}
+
+.tr {
+  background: #b5b2b224;
+  text-align: center;
+}
+
+.td {
+  padding: 15px 20px;
+  border-collapse: collapse;
+}
+
+.th {
+  padding: 8px 20px;
+}
+
+.button {
+  background: transparent;
+  border: none;
+  color: black;
+  margin: 0;
+  padding: 15px 20px;
+
+  &:hover,&:active,&:focus {
+    background: transparent;
+    box-shadow: none;
+  }
+  &:hover::first-letter {
+    color: blue;
+  }
+
+  &_delete{
+    &:active {
+      color: red;
+    }
+  }
+  &_change{
+    &:active {
+      color: green;
+    }
+  }
+}
+
+.modal__delete_buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}

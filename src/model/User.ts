@@ -33,7 +33,7 @@ class User {
           FROM "user" as "us"
           WHERE us.email = $1
       `,[email])
-      return data?.rows[0]
+      return await JSON.parse(JSON.stringify(data?.rows[0]))
     } catch(e) { return e  }
   }
 
@@ -42,7 +42,8 @@ class User {
       const result = await db.query(`
         DELETE FROM "user" WHERE id = $1
       `,[id])
-      return result
+
+      return result.rowCount
     } catch(e) { return e }
   }
 
@@ -77,6 +78,16 @@ class User {
       `)
 
       return await JSON.parse(JSON.stringify(result.rows))
+    } catch(e) { return e }
+  }
+
+  async update(id, name, email, role) {
+    try {
+      const result = db.query(`
+        UPDATE "user" SET name = $1 ,email = $2 ,role = $3
+        WHERE id = $4
+      `,[name, email, role, id])
+      return result
     } catch(e) { return e }
   }
 }

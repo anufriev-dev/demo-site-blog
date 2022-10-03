@@ -10,7 +10,7 @@ function AccountProfileName(props: IUser) {
     handleChange, save, activeChange,
       name, setName, errorName
   } = useAccountProfile()
-
+ 
   return (
     <div>
       { activeChange

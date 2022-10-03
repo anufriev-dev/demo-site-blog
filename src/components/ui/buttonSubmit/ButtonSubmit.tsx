@@ -1,4 +1,3 @@
-import { MouseEvent } from "react"
 import { IuttonSubmit } from "src/types"
 
 

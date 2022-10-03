@@ -12,7 +12,7 @@ function NextLink(props: INextLink ) {
   const { href, text, className, onClick } = props
 
   return (
-    <Link href={href ? href : ""}>
+    <Link href={href ? href : "#"}>
       <a onClick={onClick} className={`nextLink ${className}`}>{ text }</a>
     </Link>
   )

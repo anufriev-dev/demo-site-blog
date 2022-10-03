@@ -158,7 +158,7 @@ export interface IettingsModal {
 }
 
 export interface IuttonSubmit {
-  event(),
+  event,
   text: string,
   className?: string,
   width?: string
@@ -177,7 +177,7 @@ export interface IUser {
     name: string,
     role?: string
     date_registration?: string
-  }
+  },
 }
 
 export interface IHomePage {
@@ -213,7 +213,7 @@ export interface IAdminUserPageUsers {
 }
 
 export interface IAdminUserPage {
-  users:IAdminUserPageUsers
+  users:IAdminUserPageUsers[]
 }
 
 export interface IAdminUser extends IAdminProps {
