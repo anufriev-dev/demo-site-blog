@@ -13,4 +13,9 @@ module.exports = {
       "lh3.googleusercontent.com"
     ],
   },
+  api: {
+    bodyParser: {
+      sizeLimit: "4mb" // Set desired value here
+    },
+}
 }

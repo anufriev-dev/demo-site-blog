@@ -138,6 +138,7 @@ export interface InputProps {
 export interface LabelProps {
   id: string | number;
   text: string;
+  classNames?: string
 }
 
 export interface LinksFooterProps {
@@ -166,7 +167,7 @@ export interface IuttonSubmit {
 
 export interface IModal {
   active: boolean,
-  setActive(state): void,
+  onActive(state): void,
   children: any
 }
 
@@ -225,7 +226,8 @@ interface IAdminPostPagePosts {
   summary: string,
   category: string,
   date: string,
-  text: string
+  text: string,
+  src_img: string
 }
 
 export interface IAdminPostPage {

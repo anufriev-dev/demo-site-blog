@@ -1,7 +1,6 @@
 import { ChangeEvent, useState } from "react"
 import { UserApi } from "src/http"
 import { isValid } from "src/utils"
-import { useRouter } from "next/router"
 
 export default function useChange(props) {
   const { email } = props

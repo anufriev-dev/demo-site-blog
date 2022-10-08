@@ -1,8 +1,8 @@
 import { Container, Snackbar } from "@mui/material"
 import { RegExpEmail } from "config"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ButtonSubmit, Modal, InputLabel } from "src/components"
-import { useAdminUser, useRefreshData } from "src/hooks"
+import { useRefreshData } from "src/hooks"
 import { UserApi } from "src/http"
 import { IAdminUser } from "src/types"
 import { defineRole, isValid } from "src/utils"
@@ -10,118 +10,190 @@ import { defineRole, isValid } from "src/utils"
 import style from "./style.module.scss"
 
 
-function AdminUser(props: IAdminUser) {
-  const { refreshData } = useRefreshData()
-  
-  const {
-    activeDelete, activeChange,
-    setActiveDelete, setActiveChange,
-    _delete, data, setData, snack,
-    onCloseSnack, filterUsers
- } = useAdminUser(props)
+function Snacks({
+  onSnack,
+  snack
+}) {
+  return (
+    <>
+      <Snackbar
+        onClose={() => onSnack({ ...snack, change: false})}
+        autoHideDuration={6000}
+        open={snack.change} message="Пользователь изменен!!"
+      />
+      <Snackbar
+        onClose={() => onSnack({ ...snack, delete: false})}
+        autoHideDuration={6000}
+        open={snack.delete} message="Пользователь удалён!!"
+      />
+    </>
+  )
+}
 
-  const [chName, setChName] = useState(data.name || "")
-  const [chEmail, setChEmail] = useState(data.email || "")
-  const [chRole, setChRole] = useState(data.role || "")
-  const [id, setId] = useState(data.id || "")
+function ModalDelete({
+  onActiveDelete,
+  activeDelete,
+  onDelete,
+  id,
+  name
+}) {
+  return (
+  <Modal active={activeDelete} onActive={onActiveDelete} >
+    <p className="text">Удалить пользователя &#34;{name}&#34; c id = &#34;{id}&#34;</p>
+    <div className={style.modal__delete_buttons}>
+      <ButtonSubmit event={() => onActiveDelete(!activeDelete) } text="Отмена" />
+      <ButtonSubmit event={() => onDelete(id)} text="Удалить" />
+    </div>
+  </Modal>
+  )
+}
+
+function ModatUpdate({
+  activeChange,
+  onActive,
+  data,
+  onState,
+  onUpdate
+}) {
+  return (
+  <Modal active={activeChange} onActive={onActive} >
+    <p className="text">Изменить поля</p>
+    <InputLabel setState={(value) => onState({ ...data, name: value  })} state={data.name} id={"name"} text="Name" />
+    <InputLabel setState={(value) => onState({ ...data, email: value  })} state={data.email} id={"email"} text="E-mail" />
+    <InputLabel setState={(value) => onState({ ...data, role: value  })} state={data.role} id={"role"} text="Role" />
+    <div className={style.modal__delete_buttons}>
+      <ButtonSubmit event={() => onActive(!activeChange) } text="Отмена" />
+      <ButtonSubmit event={onUpdate} text="Изменить" />
+    </div>
+  </Modal>
+  )
+}
+
+export default function AdminUser(props: IAdminUser) {
+  const { state, users } = props
+  const { refreshData } = useRefreshData()
+
+  //#region state 
+  const [active, setActive] = useState({ delete: false, change: false })
+  const [snack, setSnack] = useState({ delete: false, change: false })
+  const [filterUsers, setFilterUsers] = useState(users)
+  const [formUpdate, setFormUpdate] = useState({ name: "", email: "", role: "", id: ""})
+  //#endregion
+
+  // effects
+  useEffect(() => {
+    setFilterUsers(users.filter((el) =>
+      Object.entries(el)
+        .toString()
+        .toLowerCase()
+        .includes(state.toLowerCase())
+    ))
+  },[state, users])
+
+  // handles
+  const _delete = async (id) => {
+    const statusText = await UserApi.delete(id)
+    
+    if(statusText === "OK") {
+      setActive({ ...active, delete: false})
+      setSnack({ ...snack, delete: true})
+      refreshData()
+      setFilterUsers(users)
+    }
+  }
 
   const _update = async () => {
     if(
-      !isValid(chName, { min: 2, regexp: /\D/ig }) &&
-      !isValid(chEmail, { regexp: RegExpEmail }) &&
-      !isValid(chRole, { regexp: /^[12]$/ })
+      !isValid(formUpdate.name, { min: 2, regexp: /\D/ig }) &&
+      !isValid(formUpdate.email, { regexp: RegExpEmail }) &&
+      !isValid(formUpdate.role, { regexp: /^[12]$/ })
     ) return
     
     const body = {
-      id,
-      name: chName,
-      email: chEmail,
-      role: chRole,
+      id: formUpdate.id,
+      name: formUpdate.name,
+      email: formUpdate.email,
+      role: formUpdate.role,
     }
     const resutl = await UserApi.updateUser(body)
     if(resutl === "OK") {
-      setActiveChange(false)
+      setActive({ ...active, change: false})
+      setSnack({ ...snack, change: true})
       refreshData()
     }
   }
+
+  function handleDelete(user) {
+    setActive({ ...active, delete: !active.delete }) 
+    setFormUpdate({ ...formUpdate, id: user.id, name: user.name })
+  }
+
+  function handleChange(user) {
+    setFormUpdate({ 
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role
+    })
+    setActive({ ...active, change: !active.change}) 
+  }
+
+  const tableBody = filterUsers.map((user) => (
+    <tr className={style.tr} key={user.id}>
+      <td className={style.td}>{user.id}</td>
+      <td className={style.td}>{user.name}</td>
+      <td className={style.td}>{user.email}</td>
+      <td className={style.td}>{defineRole(user.role)}</td>
+      <td className={style.td}>{"" + new Date(user.date_registration)}</td>
+      <td>
+        <ButtonSubmit 
+          className={`${style.button} ${style.button_delete}`} 
+          text="Удалить" event={() => handleDelete(user) }   
+        />
+      </td>
+      <td>
+        <ButtonSubmit 
+          className={`${style.button} ${style.button_change}`} 
+          text="Изменить" event={() => handleChange(user) } 
+        />
+      </td>
+    </tr>
+  ))
   
   return (
     <div>
-        <Snackbar
-          onClose={onCloseSnack}
-          autoHideDuration={6000}
-          open={snack} message="Пользователь удалён!!"
-        />
-      <Modal active={activeChange} setActive={setActiveChange} >
-        <p className="text">Изменить поля</p>
-        <InputLabel setState={setChName} state={chName} id={"name"} text="Name" />
-        <InputLabel setState={setChEmail} state={chEmail} id={"email"} text="E-mail" />
-        <InputLabel setState={setChRole} state={chRole} id={"role"} text="Role" />
-        <div className={style.modal__delete_buttons}>
-          <ButtonSubmit event={() => setActiveChange(!activeChange) } text="Отмена" />
-          <ButtonSubmit event={() => _update()} text="Изменить" />
-        </div>
-      </Modal>
+      <Snacks onSnack={setSnack} snack={snack} />
+      <ModatUpdate 
+        activeChange={active.change} 
+        onUpdate={_update} 
+        onActive={(value) => setActive({ ...active, change: value })} 
+        onState={setFormUpdate} 
+        data={formUpdate} 
+      />
+      <ModalDelete 
+        activeDelete={active.delete} 
+        onActiveDelete={(value) => setActive({ ...active, delete: value })} 
+        id={formUpdate.id} 
+        name={formUpdate.name}
+        onDelete={_delete} 
+      />
 
-      <Modal active={activeDelete} setActive={setActiveDelete} >
-        <p className="text">Удалить пользователя &#34;{data.name}&#34; c id = &#34;{data.id}&#34;</p>
-        <div className={style.modal__delete_buttons}>
-          <ButtonSubmit event={() => setActiveDelete(!activeDelete) } text="Отмена" />
-          <ButtonSubmit event={() => _delete(data.id)} text="Удалить" />
-        </div>
-      </Modal>
-
-    <div className={style.wrappTable}>
-      <Container>
-        <h1 className="text-h1">Пользователи</h1>
+    <div className={style.content}>
+        <h1 className={`text-h1 ${style.title}`}>Пользователи</h1>
         <table>
-          <tbody>
+          <thead className={style.thead}>
             <tr className={style.tr}>
               <th className={style.th}>id</th>
               <th className={style.th}>name</th>
               <th className={style.th}>email</th>
               <th className={style.th}>role</th>
               <th className={style.th}>date_registration</th>
-              <th colSpan={2}>Настройки </th>
+              <th colSpan={2}>Настройки</th>
             </tr>
-            {
-              filterUsers.length
-              ? filterUsers.map((user) => (
-              <tr className={style.tr} key={user.id}>
-                <td className={style.td}>{user.id}</td>
-                <td className={style.td}>{user.name}</td>
-                <td className={style.td}>{user.email}</td>
-                <td className={style.td}>{defineRole(user.role)}</td>
-                <td className={style.td}>{"" + new Date(user.date_registration)}</td>
-                <td>
-                  <ButtonSubmit 
-                    className={`${style.button} ${style.button_delete}`} 
-                    text="Удалить" event={() => {
-                      setActiveDelete(!activeDelete)
-                      setData(user)
-                    }}   
-                  />
-                </td>
-                <td>
-                  <ButtonSubmit 
-                    className={`${style.button} ${style.button_change}`} 
-                    text="Изменить" event={() => {
-                      setChName(user.name); setChEmail(user.email)
-                      setChRole(user.role); setId(user.id)
-                      setActiveChange(!activeChange)
-                    }} 
-                  />
-                </td>
-              </tr>
-            ))
-            : <p>Не найдено</p>
-          }
-          </tbody>
+          </thead>
+          <tbody>{tableBody}</tbody>
         </table>
-      </Container>
       </div>
     </div>
   )
 }
-
-export default AdminUser

@@ -29,8 +29,10 @@ export default function Blog(props: IBlog) {
         </Grid>
         <Grid item xs={12} md={3}>
           {/* Категории */}
-          <h2 className={style.title} >Категории:</h2>
-          <Navbar  styles={style} data={dataNavBarLeft} />
+          <aside>
+            <h2 className={style.title} >Категории:</h2>
+            <Navbar  styles={style} data={dataNavBarLeft} />
+          </aside>
         </Grid>
       </Grid>
         {/* Постраничная навигация */}

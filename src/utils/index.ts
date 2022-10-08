@@ -10,6 +10,7 @@ import defineRole from "./defineRole"
 import getDate from "./getDate"
 import dateTimeZone from "./dateTimeZone"
 import refreshData from "../hooks/functional/useRefreshData"
+import error from "./error"
 
 
 export {
@@ -24,5 +25,6 @@ export {
   defineRole,
   getDate,
   dateTimeZone,
-  refreshData
+  refreshData,
+  error
 }

@@ -28,8 +28,8 @@ export default function Layout(props: { children: any } & IUser) {
 
       <div onClick={() => setIsActiveBurger(false)}>
         <Header {...layout} user={props.user}/>
-        <main className={classMain} >
-          { children }
+        <main  className={classMain} >
+            { children }
         </main>
         <Footer />
       </div>

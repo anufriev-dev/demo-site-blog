@@ -1,0 +1,4 @@
+#  todo: add uuid on uploads files
+
+#  src\pages\api\blog\post\create.ts
+#  src\pages\api\blog\post\update.ts

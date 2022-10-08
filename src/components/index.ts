@@ -59,6 +59,8 @@ import AdminUser from "./pages/adminUser"
 import AdminPostsBlog from "./pages/adminPostsBlog"
 import AdminComments from "./pages/adminComments"
 import TableRow from "./ui/tableRow"
+import Preloader from "./ui/preloader"
+import Snack from "./ui/snack"
 
 export {
   ErrorComments,
@@ -121,5 +123,7 @@ export {
   AdminUser,
   AdminPostsBlog,
   AdminComments,
-  TableRow
+  TableRow,
+  Preloader,
+  Snack
 }

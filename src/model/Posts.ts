@@ -1,5 +1,6 @@
 import db from "config/db"
 import { getCommentsParams, getPostJoinCommentsData, PostDB } from "src/types"
+import { createDate } from "src/utils"
 
 class Posts {
   async getComments(id: number): Promise<getCommentsParams[]> {
@@ -69,6 +70,48 @@ class Posts {
       `)
       return result.rows
     } catch(e) { return e }
+  }
+
+  async deletePostWithComments(id) {
+    try {
+      let result = await db.query(`
+        DELETE FROM "post_blog_comment"
+        WHERE post_id = $1;
+      `,[id])
+      result = await db.query(`
+        DELETE FROM "post_blog"
+        WHERE post_id = $1
+      `,[id])
+
+      return result.rowCount
+    } catch(e) { return e }
+  }
+
+  async updatePost(post_id, category, summary, text, src_img) {
+    try {
+      const result = await db.query(`
+        UPDATE "post_blog" SET
+          category = $1,
+          summary = $2,
+          text = $3,
+          src_img = $4
+        WHERE post_id = $5;
+      `,[category, summary, text, src_img, post_id])
+
+      return result.rowCount
+    } catch(e) { console.log(e)}
+  }
+
+  async create(category, summary, text, filename) {
+    try {
+      const result = await db.query(`
+      INSERT INTO "post_blog"
+      (category,summary,text,src_img,date)
+      VALUES ($1,$2,$3,$4,$5)
+      `,[category, summary, text, filename, createDate()])
+
+      return result.rowCount
+    } catch(e) { console.log(e) }
   }
 }
 

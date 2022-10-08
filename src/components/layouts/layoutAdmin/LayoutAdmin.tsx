@@ -18,6 +18,7 @@ function LayoutAdmin (props: ILayputAdmin ) {
     
   return (
     <div>
+      <div className={style.bar}>
         <AppBar className={style.appBarFirst} color="transparent" position="relative">
           <Container>
             <div className={style.appBarFirstWrapp}>
@@ -36,6 +37,7 @@ function LayoutAdmin (props: ILayputAdmin ) {
             </div>
           </Container>
         </AppBar>
+        </div>
         <main className={style.main}>
           { children }
         </main>

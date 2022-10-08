@@ -7,23 +7,23 @@ function Change(props) {
   const { pass, setPass, handleHange, errorPass, isSuccess } = useChange(props)
 
 
+  if(isSuccess) 
+    return ( 
+    <Container>
+      <h1 className={"text-h1"}>
+        Ваш пароль был успешно изменен.
+      </h1>
+    </Container>
+  )
+  
   return (
     <Container>
-      {isSuccess ?
-        <>
-          <h1 className={"text-h1"}>Ваш пароль был успешно изменен.</h1>
-        </>
-        :
-          <>
-            <h1 className="text-h1">Введите новый пароль</h1>
-            {
-              errorPass && (<TextWarningForm>Пароль не соответствует требованием или неверный</TextWarningForm>)
-            }
-            <InputLabel id={"passwd"} setState={setPass} state={pass} text="Пароль"/>
-            <ButtonSubmit event={handleHange} text="Обновить"/>
-          </>
-        }
-
+      <h1 className="text-h1">Введите новый пароль</h1>
+      {
+        errorPass && (<TextWarningForm>Пароль не соответствует требованием или неверный</TextWarningForm>)
+      }
+      <InputLabel id={"passwd"} setState={setPass} state={pass} text="Пароль"/>
+      <ButtonSubmit event={handleHange} text="Обновить"/>
     </Container>
   )
 }

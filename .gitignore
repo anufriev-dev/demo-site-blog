@@ -21,3 +21,6 @@ Dockerfile
 
 # ts
 tsconfig.tsbuildinfo
+
+# public
+/public/uploads/*.*

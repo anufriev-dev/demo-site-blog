@@ -14,7 +14,7 @@ function SettingsModal(props:IettingsModal ) {
   }
 
   return (
-    <Modal active={activeModal} setActive={setActiveModal}>
+    <Modal active={activeModal} onActive={setActiveModal}>
     <>
       <h1 className="text">Вы действительно хотите удалить аккаунт?</h1>
       <div className={style.wrappButtons}>

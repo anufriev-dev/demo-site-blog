@@ -24,8 +24,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const role = defineRole(token?.role as "1"|"2")
   const comments = await Comment.getComments()
-
-  console.log(comments);
   
   if(role === "ADMIN") {
     return { props: { comments } }

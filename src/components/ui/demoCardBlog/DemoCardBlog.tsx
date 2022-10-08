@@ -23,7 +23,10 @@ export default function DemoCardBlog(props: DemoCardBlogProps ) {
           </h2>
           <div className={styles.cardBlog}>
             <div className={styles.cardBlog__imgContainer}>
-              <Image  width={1920} height={1080} className={styles.cardBlog__img} src={item.src_img} alt={item.summary} />
+              <Image  width={1920} height={1080} 
+                className={styles.cardBlog__img} src={"/uploads/"+ item.src_img || "/public/assets/blank.jpg" } 
+                alt={item.summary} 
+              />
             </div>
             <p className={styles.cardBlog__text}>{ toSliceText(item.text) }</p>
           </div >

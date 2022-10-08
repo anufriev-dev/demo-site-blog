@@ -8,7 +8,7 @@ import style from "./style.module.scss"
 export default function PostItem(props) {
   const { item } = props
   const date = convertDate(item.date)
-
+    
   return (
     <div className={style.post}>
         <h2 className={style.post__title}>{item.summary}</h2>
@@ -20,9 +20,9 @@ export default function PostItem(props) {
             </Link>
           </div>
           <div className={style.post__img__wrapp}>
-            <Image className={style.post__img} src={`${item.src_img}`} alt="" width={1920} height={1080} />
+            <Image className={style.post__img} src={`/uploads/${item.src_img}`} alt="" width={1920} height={1080} />
           </div>
-          <p className={style.post__text}>{item.text}</p>
+          <p contentEditable className={style.post__text}>{item.text}</p>
         </div>
         <hr/>
     </div>

@@ -1,15 +1,24 @@
 import style from "./style.module.scss"
 
-export default function TextArea(props) {
+interface ITextArea {
+  state,
+  setState,
+  placeholder?,
+  id?
+}
+
+export default function TextArea(props: ITextArea) {
   const {
     state,
     setState,
-    placeholder
+    placeholder,
+    id
   } = props
 
   return (
     <>
       <textarea
+        id={id}
         placeholder={placeholder}
         className={style.textArea}
         value={state}
