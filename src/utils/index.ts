@@ -11,6 +11,7 @@ import getDate from "./getDate"
 import dateTimeZone from "./dateTimeZone"
 import refreshData from "../hooks/functional/useRefreshData"
 import error from "./error"
+import toPascalCase from "./toPascalCase"
 
 
 export {
@@ -26,5 +27,6 @@ export {
   getDate,
   dateTimeZone,
   refreshData,
-  error
+  error,
+  toPascalCase
 }

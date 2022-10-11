@@ -11,5 +11,5 @@ export default function useBlog(props: IBlog) {
     // effect текста
     useTextEffect(allPosts)
 
-    return { data, maxPages, currentPage }
+    return { data, maxPages, currentPage, allPosts }
 }

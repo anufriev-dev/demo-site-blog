@@ -1,9 +1,10 @@
 .card {
   background: #fff;
-  padding: 10px;
+  padding: 0px;
   margin-bottom: 20px;
   box-shadow: 0px 2px 4px #ccc;
   border-radius: var(--border-radius);
+  animation: cardanim 1s forwards;
   &__image {
     overflow: hidden;
     margin-bottom: 10px;
@@ -22,32 +23,53 @@
   &__link_category {
     font-size: 100%;
   }
-
+  &__bar {
+    text-align: center;
+    font-family: Helvetica;
+    font-style: "Roboto-Light";
+    font-size: 100%;
+    padding: 20px 0;
+    margin-top: 10px;
+    border-top: 1px solid #eee;
+    white-space: nowrap;
+    overflow: hidden;
+    &_comment {
+      // border-right: 1px solid #eee;
+      padding-right: 4px;
+      margin-right: 4px;
+      &::after {
+        background-image: url("/assets/free-comment.png");
+        background-size: 25px 25px;
+        background-repeat: no-repeat;
+        display: inline-block;
+        margin-left: 10px;
+        width: 25px;
+        height: 25px;
+        content: "";
+      }
+    }
+    &_category {
+      border-right: 1px solid #eee;
+      padding-right: 4px;
+      margin-right: 4px;
+    }
+    &_date {
+      border-right: 1px solid #eee;
+      padding-right: 4px;
+      margin-right: 4px;
+    }
+  }
+}
+@keyframes cardanim {
+  from {
+    padding: 0;
+  }
+  to {
+    padding: 10px;
+  }
 }
 
-.card__bar {
-  font-size: 100%;
-  padding-top: 10px;
-  margin-top: 10px;
-  border-top: 1px solid #eee;
-  white-space: nowrap;
-  overflow: hidden;
-  &_comment {
-    border-right: 1px solid #eee;
-    padding-right: 4px;
-    margin-right: 4px;
-  }
-  &_category {
-    border-right: 1px solid #eee;
-    padding-right: 4px;
-    margin-right: 4px;
-  }
-  &_date {
-    border-right: 1px solid #eee;
-    padding-right: 4px;
-    margin-right: 4px;
-  }
-}
+
 
 .image {
   object-fit: fill;

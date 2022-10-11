@@ -1,27 +1,24 @@
+import { ITextArea } from "src/types"
 import style from "./style.module.scss"
 
-interface ITextArea {
+
+
+export default function TextArea({
+  id,
   state,
+  disabled,
   setState,
-  placeholder?,
-  id?
-}
-
-export default function TextArea(props: ITextArea) {
-  const {
-    state,
-    setState,
-    placeholder,
-    id
-  } = props
-
+  placeholder,
+}: ITextArea) {
+  
   return (
     <>
       <textarea
         id={id}
+        value={state}
+        disabled={disabled}
         placeholder={placeholder}
         className={style.textArea}
-        value={state}
         onChange={(e) => setState(e.target.value)}
       />
     </>

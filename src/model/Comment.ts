@@ -30,7 +30,7 @@ class Comment {
         DELETE FROM "post_blog_comment"
         WHERE comment_id = $1
       `, [id])
-       result = await db.query(`
+        result = await db.query(`
         DELETE FROM "comment"
         WHERE comment_id = $1
       `,[id])

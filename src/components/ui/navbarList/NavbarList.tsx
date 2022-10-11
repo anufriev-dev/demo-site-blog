@@ -1,18 +1,18 @@
 import { NavbarItem } from "src/components"
-import { NavListProps } from "src/types"
+import { useContext } from "react"
+import { NavbarContext } from "src/context"
 
 
-export default function NavList(props: NavListProps) {
-  const {
-    data, styles, closeNavBar
-  } = props
+
+export default function NavList() {
+  const { data, styles } = useContext(NavbarContext)
 
   return (
     <ul className={`navbar__list ${styles?.nav__list}`}>
         {data.map((it) => (
           <li className={`navbar__item ${styles?.nav__item}`} key={ it.namelink } >
             <NavbarItem
-              event={closeNavBar} elements={it}
+              elements={it} id={it.id}
               className={`navbar__link ${styles?.nav__link}`}
             />
           </li>

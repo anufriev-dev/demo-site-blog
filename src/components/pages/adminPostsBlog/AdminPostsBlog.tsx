@@ -77,7 +77,6 @@ function ModalUpdate({
 function Snacks({
   onSneck,
   snack
-
 }) {
   return (
     <>
@@ -93,6 +92,10 @@ function Snacks({
         autoHideDuration={6000}
         open={snack.create} message="Пост создан"
       />
+      <Snackbar onClose={() => onSneck({ ...snack, add: false })}
+        autoHideDuration={6000}
+        open={snack.add} message="Ошибка добавления"
+      />
     </>
   )
 }
@@ -103,16 +106,14 @@ export default function AdminPostsBlog(props: IAdminPostsBlog) {
 
   const { refreshData } = useRefreshData()
   const [filterPosts, setFilterPosts] = useState(posts)
-  const [active, setActive] = useState({ delete: false, change: false })
+  const [active, setActive] = useState({ delete: false, change: false, newPost: false })
 
   const [snack, setSnack] = useState({
      delete: false, 
      change: false, 
-     create: false 
+     create: false ,
+     add: false
   })
-
-  // state form for adding post
-  const [activeNewPost, setActiveNewPost] = useState(false)
 
   const [post, setPost] = useState({
     post_id: "",
@@ -163,11 +164,10 @@ export default function AdminPostsBlog(props: IAdminPostsBlog) {
     body.append("category",post.category)
     body.append("summary",post.summary)
     body.append("text",post.text)
-    if(post.img) {
-      body.append("img",post.img)
-    }else{
-      body.append("img_name", post.img_name)
-    }
+    post.img 
+      ? body.append("img",post.img)
+      : body.append("img_name", post.img_name)
+    
 
     const statusText = await BlogApi.updatePost(body)
 
@@ -197,7 +197,7 @@ export default function AdminPostsBlog(props: IAdminPostsBlog) {
 
   const newPost = () => {
     dropStateForm()
-    setActiveNewPost(!activeNewPost)
+    setActive({ ...active, newPost: !active.newPost})
   }
 
   const dropStateForm = () => {
@@ -212,18 +212,21 @@ export default function AdminPostsBlog(props: IAdminPostsBlog) {
     data.append("img", post.img)
     
 
-    const statusText = await BlogApi.createPost(data)
-
-    if(statusText === "Created") {
-      dropStateForm()
-      setActiveNewPost(false)
-      setSnack({ ...snack, create: true })
-      refreshData()
+    try {
+      await BlogApi.createPost(data)
+    } catch(e) {
+        setSnack({ ...snack, add: true })
+      return 
     }
+      
+    dropStateForm()
+    setActive({ ...active ,newPost: false})
+    setSnack({ ...snack ,create: true })
+    refreshData()
   }
   // ui
 
-  const buttonNewPost = !activeNewPost &&
+  const buttonNewPost = !active.newPost &&
   <ButtonSubmit 
     className={style.buttonAddPost} 
     text="Новый пост" 
@@ -255,17 +258,18 @@ export default function AdminPostsBlog(props: IAdminPostsBlog) {
     </tr>
   ))
 
-  if(activeNewPost) {
+  if(active.newPost) {
     return (
     <Container>
+      <Snacks key={"snacks"} snack={snack} onSneck={setSnack}/>
       <h1 className="text-h1">Новый пост</h1>
       <InputLabel 
         state={post.category} 
-        setState={(value) => setPost({ ...post, category: value })} 
+        setState={(value: string) => setPost({ ...post, category: value })} 
         text="Category" id={"addc"} 
       />
       <InputLabel  
-        setState={(value) => setPost({...post, summary: value})} 
+        setState={(value: string) => setPost({...post, summary: value})} 
         state={post.summary} 
         text="Summary" id={"adds"} 
       />
@@ -275,14 +279,14 @@ export default function AdminPostsBlog(props: IAdminPostsBlog) {
         setState={(value) => setPost({...post, text: value})} 
         id="addta"
       />
-      <input 
+      <label className={`buttonSubmit ${style.file}`} >Файл<input
         onChange={(e) => setPost({ ...post, img: e.target.files[0]})} 
-        type="file"   
-      />
+        type="file" style={{display: "none"}}
+      /></label>
       <div className={style.newFormButtons}>
         <ButtonSubmit 
           className={style.buttonAddPost} 
-          text="Закрыть" event={() => setActiveNewPost(!activeNewPost)} 
+          text="Закрыть" event={() => setActive({ ...active, newPost: !active.newPost})} 
         />    
         <ButtonSubmit 
           className={`${style.buttonAddPost} ${style.buttonAddPost_closeButton}`} 
@@ -295,7 +299,7 @@ export default function AdminPostsBlog(props: IAdminPostsBlog) {
 
   return (
     <div>
-      <Snacks snack={snack} onSneck={setSnack} />
+      <Snacks key={"snacks"} snack={snack} onSneck={setSnack}/>
        {/* -------Modals------ */}
       <ModalDelete 
         data={post} 

@@ -79,7 +79,35 @@ main {
   line-height: 1.5em;
 }
 
+// breadcrum
+.breadcrum {
+  color: white;
+  text-decoration: underline;
+  &:hover {
+    color: red;
+  }
+}
+.activeBreadcrum {
+  color: aqua;
+}
 
+// navbar main
+#home__link_navbar::before {
+  background-image: url("/assets/free-house.png");
+}
+#blog__link_navbar::before {
+  background-image: url("/assets/free-blog.png");
+}
+
+#home__link_navbar::before, #blog__link_navbar::before  {
+  background-size: 20px 20px;
+  display: inline-block;
+  margin-right: 10px;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  content: "";
+}
 
 
 @import "./fonts.scss";

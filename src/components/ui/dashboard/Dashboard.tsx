@@ -19,7 +19,7 @@ export default function Dashboard(props: DashboardProps) {
         text="Читать дельше"
       />
       <DashboardLink
-        href={`/category/${data.category}`}
+        href={`${process.env["NEXT_PUBLIC_CATEGORY"]}${data.category}`}
         text={data.category}
       />
       <span  className={classes}>{thisDate}</span>

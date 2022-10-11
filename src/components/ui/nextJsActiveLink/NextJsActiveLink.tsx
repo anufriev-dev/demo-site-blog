@@ -11,7 +11,7 @@ interface INextJsActiveLink {
 
 export default function NextJsActiveLink(props: INextJsActiveLink) {
   const {
-    href,name,classNameProps,
+    href = "#",name,classNameProps,
     onClick = false
   } = props
 

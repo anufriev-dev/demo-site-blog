@@ -2,6 +2,7 @@
   list-style-type: none;
 }
 .navbar__link {
+  position: relative;
   text-decoration: none;
   &:hover {
     text-decoration: underline;

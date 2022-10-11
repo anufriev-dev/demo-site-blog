@@ -1,11 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
+import { PostDB } from "src/types"
 
 import { convertDate } from "src/utils"
 import style from "./style.module.scss"
 
 
-export default function PostItem(props) {
+export default function PostItem(props: {item: PostDB} ) {
   const { item } = props
   const date = convertDate(item.date)
     
@@ -22,7 +23,7 @@ export default function PostItem(props) {
           <div className={style.post__img__wrapp}>
             <Image className={style.post__img} src={`/uploads/${item.src_img}`} alt="" width={1920} height={1080} />
           </div>
-          <p contentEditable className={style.post__text}>{item.text}</p>
+          <p className={style.post__text}>{item.text}</p>
         </div>
         <hr/>
     </div>

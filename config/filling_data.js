@@ -1,5 +1,7 @@
 export const dataNavBarLeft = [
-  {namelink: "Apple", href: "/category/Apple"},
+  {namelink: "Apple", href: "/blog/category/Apple"},
+  {namelink: "Кино", href: "/blog/category/Кино"},
+  {namelink: "Google", href: "/blog/category/Google"},
   // {namelink: "Болтовня", href: "#"},
   // {namelink: "Деньги", href: "#"},
   // {namelink: "Книга", href: "#"},
@@ -11,9 +13,9 @@ export const dataNavBarLeft = [
 ]
 
 export const dataLinks = [
-  {namelink: "Главная", href: "/"},
+  {namelink: "Главная", href: "/", id: "home__link_navbar"},
   // {namelink: "Статьи",href: "#"},
-  {namelink: "Блог",href: "/blog"},
+  {namelink: "Блог",href: "/blog", id: "blog__link_navbar"},
   // {namelink: "Вход",href: "/login"},
   // {namelink: "Регистрация",href: "/register"},
   // {namelink: "Книги",href: "#"},
@@ -60,5 +62,6 @@ export const nameCategoryAdminPanel = [
   {name: "Пользователи", link: "/admin/users"},
   {name: "Посты блога", link: "/admin/posts/blog"},
   {name: "Комментарии", link: "/admin/comments"},
+  {name: "Сообщения", link: "/admin/messages" }
   // {name: "Еще что-то непонятное...", link: "#"},
 ]

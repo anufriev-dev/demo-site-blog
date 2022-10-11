@@ -7,9 +7,9 @@ import { IUser } from "src/types"
 export default function ContactMePage(props: IUser) {
   return (
     <>
-    <Layout user={props.user}>
-      <ContactMe />
-    </Layout>
+      <Layout user={props.user}>
+        <ContactMe />
+      </Layout>
     </>
   )
 }

@@ -23,6 +23,13 @@ export interface DashboardProps {
   routh: string;
 }
 
+export interface ICategoryPage {
+  data,
+  currentPage,
+  maxPages,
+  allPosts
+}
+
 export interface DemoCardBlogProps {
   dataBlog: PostJoinData[];
   routherType: string;
@@ -87,6 +94,17 @@ export interface CardFooterProps {
   }[]
 }
 
+export interface IRow {
+  title: string,
+  payload?: string,
+  bg: string,
+  color: string,
+  children?: any,
+  onClick?(e): void,
+  href?: string,
+  textLink?: string
+}
+
 export interface FormAuthProps {
   title: string;
   children: JSX.Element;
@@ -116,22 +134,36 @@ export interface NavbarProps extends NavListProps  {
 }
 
 export interface NavbarItemProps {
-  event(e): any;
   elements: dataLinks;
   className: string;
+  id?: any
 }
 
+export interface ITextArea {
+  state,
+  setState,
+  placeholder?,
+  id?,
+  disabled?
+}
 
 export interface InputLableProps {
   id: string | number;
   text: string;
   state: string;
+  disabled?: boolean,
   setState: Dispatch<SetStateAction<string>>;
+}
+
+export interface IMessages {
+  state: string,
+  setState(e: string): void,
 }
 
 export interface InputProps {
   id: string | number;
   state: string;
+  disabled: boolean,
   setState: Dispatch<SetStateAction<string>>;
 }
 
@@ -252,4 +284,15 @@ export interface IAdminCommentsPage {
 
 export interface IAdminComments extends IAdminProps {
   comments: AdminCommentsPageComment[]
+}
+
+export interface Messages {
+  id: string,
+  email: string,
+  text: string
+}
+
+export interface IMessagePage {
+  state: string;
+  messages: Messages[]
 }

@@ -45,7 +45,7 @@ import Row from "./ui/row"
 import AccountProfile from "./ui/accountProfile"
 import ButtonSubmit from "./ui/buttonSubmit"
 import Settings from "./pages/settings"
-import Forgotpassword from "./pages/forgotpassword"
+import ForgotPassword from "./pages/forgotpassword"
 import Change from "./pages/change"
 import Modal from "./ui/modal"
 import SettingsModal from "./related/settingsModal"
@@ -61,6 +61,8 @@ import AdminComments from "./pages/adminComments"
 import TableRow from "./ui/tableRow"
 import Preloader from "./ui/preloader"
 import Snack from "./ui/snack"
+import Messages from "./pages/messages"
+
 
 export {
   ErrorComments,
@@ -111,7 +113,7 @@ export {
   AccountProfile,
   ButtonSubmit,
   Settings,
-  Forgotpassword,
+  ForgotPassword,
   Change,
   Modal,
   SettingsModal,
@@ -125,5 +127,6 @@ export {
   AdminComments,
   TableRow,
   Preloader,
-  Snack
+  Snack,
+  Messages,
 }

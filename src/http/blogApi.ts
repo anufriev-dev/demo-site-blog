@@ -22,7 +22,7 @@ class BlogApi {
 
   async updatePost(body) {
     const { statusText } = await $host.put("/api/blog/post/update",body, {
-       headers: {
+        headers: {
         "Content-Type": "multipart/form-data"
       }
     })
@@ -30,12 +30,12 @@ class BlogApi {
   }
 
   async createPost(body) {
-    const { statusText } = await $host.post("/api/blog/post/create", body, {
+    const { status } = await $host.post("/api/blog/post/create", body, {
       headers: {
         "Content-Type": "multipart/form-data"
       }
     } )
-    return statusText
+    return status
   }
 }
 

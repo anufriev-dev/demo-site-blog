@@ -9,8 +9,8 @@ import style from "./style.module.scss"
 
 
 export default function Blog(props: IBlog) {
-  const { data, maxPages, currentPage } = useBlog(props)
-
+  const { data, maxPages, currentPage, allPosts } = useBlog(props)
+  
   return (
     <>
     {/* Поиск по странице */}
@@ -20,7 +20,10 @@ export default function Blog(props: IBlog) {
         <span id="titleSearch" className={style.title}></span>
         <span id="postsEffect" className={style.title}></span>
         {/* Постраничная навигация */}
-        <PaginationMui maxPages={maxPages} currentPage={currentPage} />
+        {
+          !!allPosts &&
+          <PaginationMui maxPages={maxPages} currentPage={currentPage} />
+        }
         {/* Main */}
       <Grid container columnSpacing={{xl:9,xs:5}} rowSpacing={{xl: 2, xs: 4}}>
         <Grid item xs={12} md={9} >
@@ -36,7 +39,10 @@ export default function Blog(props: IBlog) {
         </Grid>
       </Grid>
         {/* Постраничная навигация */}
-        <PaginationMui maxPages={maxPages} currentPage={currentPage} />
+        {
+          !!allPosts &&
+          <PaginationMui maxPages={maxPages} currentPage={currentPage} />
+        }
         <br />
         <br />
     </Container>

@@ -11,7 +11,6 @@ export default function Layout(props: { children: any } & IUser) {
   const layout = useLayout(SIZE_WINDOW_DROP_DOWN_BURGER_MENU)
   const { isActiveBurger, setIsActiveBurger } = layout
 
-
   const classMain = isActiveBurger
     ? style.mainTransform
     : null

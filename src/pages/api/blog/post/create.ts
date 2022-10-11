@@ -12,14 +12,24 @@ export const config = {
 const post = async (req, res) => {
   const form = new formidable.IncomingForm()
   form.parse(req, async function (err, fields, files) {
-    const { category, summary, text } = fields
-    const isSave = await saveFile(files.img)
-    if(!isSave) error("Error")
-    const result = await Posts.create(category, summary, text, files.img.name )
-    if(+result <= 0) error("Error")
+    try {
 
-    return res.status(201).send("")
-  });
+
+      const { category, summary, text } = fields
+
+      const isSave = await saveFile(files.img)
+
+      if(!isSave) error("Error")
+
+      const result = await Posts.create(category, summary, text, files.img.name )
+
+      if(!result) return error("Error")
+
+      return res.status(201).send("")
+    } catch(e) {
+      return res.status(400).send("")
+    }
+  })
 };
 
 const saveFile = async (file) => {

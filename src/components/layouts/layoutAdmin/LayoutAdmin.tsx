@@ -17,7 +17,7 @@ function LayoutAdmin (props: ILayputAdmin ) {
 
     
   return (
-    <div>
+    <div className={style.layoutAdmin}>
       <div className={style.bar}>
         <AppBar className={style.appBarFirst} color="transparent" position="relative">
           <Container>

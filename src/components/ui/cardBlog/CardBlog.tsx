@@ -20,8 +20,8 @@ function CardBlog(props: ICardBlog) {
         <NextJsActiveLink href={`/blog/${post_id}/${summary}`} classNameProps={style.card__link} name={summary}  />
       </p>
       <div className={style.card__bar}>
-        <span className={style.card__bar_comment}>
-          Комментарии: ( {comments} )
+      <span className={style.card__bar_date}>
+          {convertDate(date)}
         </span>
         <span className={style.card__bar_category}>
           <NextJsActiveLink
@@ -30,8 +30,8 @@ function CardBlog(props: ICardBlog) {
             href={`category/${category}`} name={category}
           />
         </span>
-        <span className={style.card__bar_date}>
-          {convertDate(date)}
+        <span className={style.card__bar_comment}>
+          ({comments})
         </span>
       </div>
     </div>

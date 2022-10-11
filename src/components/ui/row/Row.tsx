@@ -1,16 +1,7 @@
+import { IRow } from "src/types"
 import NextLink from "../nextLink"
 import style from "./style.module.scss"
 
-interface IRow {
-  title: string,
-  payload?: string,
-  bg: string,
-  color: string,
-  children?: any,
-  onClick?(e): void,
-  href?: string,
-  textLink?: string
-}
 
 function Row(props: IRow) {
   const { title, payload, bg, color, onClick, href, textLink } = props

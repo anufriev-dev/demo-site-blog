@@ -13,12 +13,13 @@ import useBurgerMenu from "./useBurgerMenu"
 import useNavbar from "./useNavbar"
 import useBlog from "./useBlog"
 import useSettings from "./useSettings"
-import useForgotpassword from "./useForgotpassword"
 import useChange from "./useChange"
 import useRefreshData from "./functional/useRefreshData"
 import useAccountProfile from "./useAccountProfile"
 import useLayoutAdmin from "./useLayoutAdmin"
 import useAdmin from "./useAdmin"
+import useRouterPath from "./functional/useRouterPath"
+import useBreadcrumbPath from "./functional/useBreadcrumbPath"
 
 
 export {
@@ -37,10 +38,11 @@ export {
   useNavbar,
   useBlog,
   useSettings,
-  useForgotpassword,
   useChange,
   useAccountProfile,
   useRefreshData,
   useLayoutAdmin,
   useAdmin,
+  useRouterPath,
+  useBreadcrumbPath
 }

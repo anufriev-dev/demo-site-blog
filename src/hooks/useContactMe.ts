@@ -6,6 +6,8 @@ import { useSession } from "next-auth/react"
 function useContactMe () {
   const [email, setEmail] = useState<string>("")
   const [area, setArea] = useState<string>("")
+  const [error, setError] = useState({ email: false, area: false, send: false })
+  const [success, setSuccess] = useState(false)
 
   const { data: session } = useSession()
 
@@ -20,7 +22,7 @@ function useContactMe () {
     setArea("")
   }
 
-  return { email, area, setEmail, setArea, dropState }
+  return { email, area, setEmail, setArea, dropState, error, setError, success, setSuccess }
 }
 
 
