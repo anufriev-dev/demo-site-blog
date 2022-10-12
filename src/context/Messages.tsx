@@ -1,13 +1,33 @@
+import { createContext, useContext, useReducer } from "react"
+import { IuseMessages } from "src/types"
 
-export const initialState = {
-  messages: [],
-  modalOnActiveDelete: false,
-  IdMesssage: 0,
-  snackAccess: false,
-  snackDenied: false
+const MessagesContext = createContext(null)
+const MessagesDispatch = createContext(null)
+
+
+export function MessagesProvider({ children, messages }) {
+  const [state, dispatch] = useReducer(messagesReducer, { 
+    ...initialState,
+    messages
+  })
+
+  return (
+    <MessagesContext.Provider value={state}>
+      <MessagesDispatch.Provider value={dispatch}>
+        { children }
+      </MessagesDispatch.Provider>
+    </MessagesContext.Provider>
+  )
 }
 
-export function messagesReducer(state, action) {
+export function useMessages(): IuseMessages {
+  return useContext(MessagesContext)
+}
+export function useMessagesDispatch() {
+  return useContext(MessagesDispatch)
+}
+
+function messagesReducer(state, action) {
   switch(action.type) {
     case "filter_data": {
       return {
@@ -61,4 +81,12 @@ export function messagesReducer(state, action) {
       }
     }
   }
+}
+
+const initialState = {
+  messages: [],
+  modalOnActiveDelete: false,
+  IdMesssage: 0,
+  snackAccess: false,
+  snackDenied: false
 }

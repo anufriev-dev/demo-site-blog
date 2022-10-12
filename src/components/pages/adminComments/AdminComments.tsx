@@ -1,84 +1,28 @@
 import { IAdminComments } from "src/types"
-import { Modal, ButtonSubmit, Snack } from "src/components"
-import { useEffect, useState } from "react"
-import { BlogApi } from "src/http"
-import { useRefreshData } from "src/hooks"
+import { ButtonSubmit } from "src/components"
+import { useEffect } from "react"
+import { useAdminComments, useAdminCommentsDispatch } from "src/context"
 
+import { SnacksView, ModalView } from "."
 import style from "./style.module.scss"
 
 
-function SnacksView({
-  onSnack,
-  snack
-}) {
-  return (
-    <>
-      <Snack
-        text={"Комментарий удалён"} 
-        onSnack={(value) => onSnack({ ...snack, delete: value })} 
-        snack={snack.delete}  
-      />
-      <Snack 
-        text={"Комментарий НЕ удалён!"} 
-        onSnack={(value) => onSnack({ ...snack, fatal: value })} 
-        snack={snack.fatal}  
-      />
-    </>
-  )  
-}
-
-
-function ModalView ({ 
-  data, 
-  modalDelete,
-  onModalDelete 
-}) {
-  const [snack, setSnack] = useState({ delete: false, fatal: false })
-  const { refreshData } = useRefreshData()
-
-  async function handleDelete() {
-    const result = await BlogApi.deleteComment(data.id)
-    
-    result === "OK"
-      ? setSnack({ ...snack, delete: true })
-      : setSnack({ ...snack, fatal:  true })
-    
-    onModalDelete(false)
-    refreshData()
-  }
-
-  return (
-    <>
-      <Modal active={modalDelete} onActive={onModalDelete}>
-         <p className="text">Удалить комментарий id = {data.id}</p> 
-        <div className={style.buttons}>
-          <ButtonSubmit text="Отмена"  event={() => onModalDelete(false)}/>
-          <ButtonSubmit text="Удалить" event={handleDelete} />
-        </div>
-      </Modal>
-      <SnacksView onSnack={setSnack} snack={snack} />
-    </>
-  )
-}
-
-export default  function AdminComments(props: IAdminComments ) {
+export default function AdminComments(props: IAdminComments ) {
   const {comments: data, state} = props
-  const [filteredData, setFilteredData] = useState(data)
-  const [modalDelete, setModalDelete] = useState(false)
-  const [modalData, setModalData] = useState({ id: "" })
+  const { filteredData } = useAdminComments()
+  const dispatch = useAdminCommentsDispatch()
 
   useEffect(() => {
-    setFilteredData(data.filter((comment) => 
+    dispatch({ type: "filter_data", payload: data.filter((comment) => 
       Object.entries(comment)
         .toString()
         .toLowerCase()
         .includes(state.trim().toLowerCase())
-    ))
-  }, [state, data])
+    )})
+  }, [state, data, dispatch])
 
-  function deleteComment(id) { 
-    setModalData({ ...modalData, id})
-    setModalDelete(!modalDelete) 
+  function deleteComment(id: string | number) {
+    dispatch({ type: "modal_delete_active", id })
   }
 
   const comments = filteredData.map((el) => (
@@ -100,7 +44,8 @@ export default  function AdminComments(props: IAdminComments ) {
 
   return (
     <div className={style.content}>
-      <ModalView data={modalData} modalDelete={modalDelete} onModalDelete={setModalDelete} />
+      <ModalView />
+      <SnacksView />
         <h1 className="text-h1">Комментарии</h1>
         <table className={style.table}>
           <thead className={style.thead}>

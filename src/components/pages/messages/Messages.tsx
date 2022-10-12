@@ -1,40 +1,18 @@
 import { Container } from "@mui/system"
-import { useEffect, useReducer } from "react"
-import { ButtonSubmit, Modal, Snack } from "src/components"
-import { useRefreshData } from "src/hooks"
-import { Message } from "src/http"
+import { useEffect } from "react"
+import { ButtonSubmit, } from "src/components"
+import { useMessages, useMessagesDispatch } from "src/context"
 import { IMessagePage } from "src/types"
+import { Snacks, ModalDelete } from "."
 
-import { messagesReducer, initialState } from "./messagesReducer"
 import style from "./style.module.scss"
-
-
-function ModalDelete({
-  onActiveDelete,
-  activeDelete,
-  onDelete,
-  id,
-}) {
-  return (
-  <Modal active={activeDelete} onActive={onActiveDelete} >
-    <p className="text">Удалить сообщение c id = &#34;{id}&#34;?</p>
-    <div className={style.modal__delete_buttons}>
-      <ButtonSubmit event={() => onActiveDelete(!activeDelete) } text="Отмена" />
-      <ButtonSubmit event={() => onDelete(id)} text="Удалить" />
-    </div>
-  </Modal>
-  )
-}
 
 
 export default function Messages(props: IMessagePage) {
   const { state: stateSearch, messages } = props
-  const { refreshData } = useRefreshData()
   
-  const [state, dispatch] = useReducer(messagesReducer, { 
-    ...initialState, 
-    messages: messages
-  })
+  const state = useMessages()
+  const dispatch = useMessagesDispatch()
 
   useEffect(() => {
     const resutl = messages.filter((el) =>
@@ -44,20 +22,7 @@ export default function Messages(props: IMessagePage) {
         .includes(stateSearch.trim().toLowerCase())
     )
     dispatch({ type: "filter_data", messages: resutl })
-  },[stateSearch,messages])
-
-  //handles
-  async function _delete() {
-    const result = await Message.delete(state.IdMesssage)
-
-    if(result === "OK") {
-      dispatch({ type: "send_delete_success" })
-      refreshData()
-      return
-    }
-    dispatch({ type: "send_delete_error" })
-  }
-
+  },[stateSearch, messages, dispatch])
 
   const tdata = state.messages.map((message) => 
     <tr className={style.tr} key={message.id}>
@@ -76,19 +41,8 @@ export default function Messages(props: IMessagePage) {
 
   return (
     <div className={style.content}>
-      <ModalDelete id={state.IdMesssage}
-        activeDelete={state.modalOnActiveDelete} 
-        onActiveDelete={(value) => dispatch({ type: "delete_active", value })}
-        onDelete={_delete}  
-      />
-      <Snack 
-        onSnack={(value) => dispatch({ type: "onSnackAccess", value})} 
-        snack={state.snackAccess} text={"Сообщение удалено!"} 
-      />
-      <Snack 
-        onSnack={(value) => dispatch({ type: "onSnackDenied", value})} 
-        snack={state.snackDenied} text={"Сообщение НЕ удалено!"} 
-      />
+      <Snacks />
+      <ModalDelete />
       <Container>
         <h1 className="text-h1">Сообщения</h1>
       <table>

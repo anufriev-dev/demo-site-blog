@@ -5,11 +5,12 @@ import { LayoutAdmin, Messages } from "src/components"
 import { Message, User } from "src/model"
 import { IMessagePage } from "src/types"
 import { useState } from "react"
+import { MessagesProvider } from "src/context"
 
 
 export default function MessagePage(props: IMessagePage ) {
   const [search, setSearch] = useState("")
-
+  const { messages } = props
   const propsLayout = {
     state: search,
     setState: setSearch
@@ -19,7 +20,9 @@ export default function MessagePage(props: IMessagePage ) {
   return (
     <div>
       <LayoutAdmin {...propsLayout} >
-        <Messages {...props} state={search}  />
+        <MessagesProvider messages={messages}>
+          <Messages {...props} state={search}  />
+        </MessagesProvider>
       </LayoutAdmin>
     </div>
   )

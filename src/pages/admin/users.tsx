@@ -1,11 +1,11 @@
 import { getToken } from "next-auth/jwt"
 import { defineRole } from "src/utils"
 import { GetServerSideProps } from "next"
-import { LayoutAdmin, AdminUser, Modal, ButtonSubmit } from "src/components"
+import { LayoutAdmin, AdminUser } from "src/components"
 import { useLayoutAdmin } from "src/hooks"
 import { User } from "src/model"
 import { IAdminUserPage } from "src/types"
-import { useState } from "react"
+import { AdminUserProvider } from "src/context"
 
 
 
@@ -17,7 +17,9 @@ export default function AdminUserPage(props: IAdminUserPage ) {
   return (
     <div>
       <LayoutAdmin {...propsLayout} >
-        <AdminUser {...propsLayout} users={props.users} />
+        <AdminUserProvider users={props.users} >
+          <AdminUser {...propsLayout} users={props.users}/>
+        </AdminUserProvider>
       </LayoutAdmin>
     </div>
   )

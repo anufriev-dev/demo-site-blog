@@ -5,6 +5,7 @@ import { AdminComments, LayoutAdmin } from "src/components"
 import { useLayoutAdmin } from "src/hooks"
 import { Comment } from "src/model"
 import { IAdminCommentsPage } from "src/types"
+import { AdminCommentsProvider } from "src/context"
 
 
 export default function AdminCommentsPage(props: IAdminCommentsPage) {
@@ -13,7 +14,9 @@ export default function AdminCommentsPage(props: IAdminCommentsPage) {
   
   return (
     <LayoutAdmin {...propsLayout} >
-      <AdminComments {...propsLayout} comments={comments} />
+      <AdminCommentsProvider comments={comments}>
+        <AdminComments {...propsLayout} comments={comments} />
+      </AdminCommentsProvider>
     </LayoutAdmin>
   )
 }

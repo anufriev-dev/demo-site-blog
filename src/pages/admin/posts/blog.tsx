@@ -5,6 +5,7 @@ import { LayoutAdmin, AdminPostsBlog } from "src/components"
 import { useLayoutAdmin } from "src/hooks"
 import { Posts } from "src/model"
 import { IAdminPostPage } from "src/types"
+import { AdminPostsBlogProvider } from "src/context"
 
 
 
@@ -14,7 +15,9 @@ export default function AdminPostPage(props: IAdminPostPage) {
   if(!props) return <div>Loading</div>
   return (
     <LayoutAdmin {...propsLayout} >
-      <AdminPostsBlog {...propsLayout} posts={posts} />
+      <AdminPostsBlogProvider posts={posts}>
+        <AdminPostsBlog {...propsLayout} posts={posts} />
+      </AdminPostsBlogProvider>
     </LayoutAdmin>
   )
 }

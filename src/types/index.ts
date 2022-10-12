@@ -296,3 +296,46 @@ export interface IMessagePage {
   state: string;
   messages: Messages[]
 }
+
+
+// hooks
+export interface IuseAdminComments {
+  filteredData: any[] ;
+  modalData: { id: string };
+  modalDelete: boolean;
+  snack: { delete: boolean, fatal: boolean }
+}
+
+export interface IuseAdminUser {
+  filterUsers: any[],
+  active: { delete: boolean, change: boolean }
+  snack: { delete: boolean, change: boolean }
+  formUpdate: { name: string, email: string, role: string, id: string}
+}
+
+export interface IuseMessages {
+  messages: any[],
+  modalOnActiveDelete: boolean,
+  IdMesssage: number | string,
+  snackAccess: boolean,
+  snackDenied: boolean
+}
+
+export interface IuseAdminPostsBlog {
+  filterPosts: any[];
+  active: { delete: boolean, change: boolean, newPost: boolean };
+  snack: {
+    delete: boolean,
+    change: boolean,
+    create: boolean,
+    add: boolean
+  };
+  post: {
+    post_id: string,
+    category: string,
+    summary: string,
+    img: null,
+    img_name: string,
+    text: string
+  }
+}
