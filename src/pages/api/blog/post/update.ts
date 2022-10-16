@@ -1,6 +1,8 @@
 
 import formidable from "formidable"
 import fs from "fs"
+import path from "path";
+import { cwd } from "process";
 import { Posts } from "src/model";
 import { createDate, error, isValid } from "src/utils";
 
@@ -41,7 +43,7 @@ const put = async (req, res) => {
 
 const saveFile = async (file) => {
   const data = fs.readFileSync(file.path)
-  fs.writeFileSync(`./public/${process.env["NEXT_PUBLIC_UPLOAD"]}/${file.name}`, data)
+  fs.writeFileSync(path.join(cwd(), "public",`${process.env["NEXT_PUBLIC_UPLOAD"]}`,`${file.name}`), data)
   await fs.unlinkSync(file.path)
   return true
 }

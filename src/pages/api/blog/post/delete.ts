@@ -4,9 +4,10 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { getToken } from "next-auth/jwt"
 import { Posts } from "src/model"
-import { resolve } from "path"
+import path from "path"
 import { error, isValid } from "src/utils"
 import fs from "fs"
+import { cwd } from "process"
 
 const Login = async (req: NextApiRequest, res: NextApiResponse) => {
   if(req.method === "DELETE") {
@@ -21,8 +22,9 @@ const Login = async (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       const img = await Posts.getPost(id)
-
-      const pathFile = resolve(`./public/${process.env["NEXT_PUBLIC_UPLOAD"]}/`+ img.src_img)
+        // path.join(cwd(), "public",`${process.env["NEXT_PUBLIC_UPLOAD"]}`,`${file.name}`)
+        // img.src_img
+      const pathFile = path.join(cwd(), "public",`${process.env["NEXT_PUBLIC_UPLOAD"]}`,`${img.src_img}`)
 
       if(fs.existsSync(pathFile)) {
         fs.unlinkSync(pathFile)
