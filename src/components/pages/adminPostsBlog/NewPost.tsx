@@ -1,9 +1,9 @@
-import { Container } from "@mui/system";
+import { Container } from "@mui/system"
 import { Snacks } from "."
-import { BlogApi } from "src/http";
-import { useRefreshData } from "src/hooks";
-import { InputLabel, TextArea, Label, ButtonSubmit } from "src/components"
-import { useAdminPostsBlog, useAdminPostsBlogDispatch } from "src/context";
+import { BlogApi } from "src/http"
+import { useRefreshData } from "src/hooks"
+import { InputLabel, TextArea, Label, ButtonSubmit, ButtonFile } from "src/components"
+import { useAdminPostsBlog, useAdminPostsBlogDispatch } from "src/context"
 
 import style from "./style.module.scss"
 
@@ -54,10 +54,8 @@ export default function NewPost () {
         setState={(value) => dispatch({ type: "post_text", text: value })} 
         id="addta"
       />
-      <label className={`buttonSubmit ${style.file}`} >Файл<input
-        onChange={(e) => dispatch({ type: "post_img", img: e.target.files[0]}) } 
-        type="file" style={{display: "none"}}
-      /></label>
+      <ButtonFile change={(value) => dispatch({ type: "post_img", img: value }) } />
+
       <div className={style.newFormButtons}>
         <ButtonSubmit 
           className={style.buttonAddPost} 

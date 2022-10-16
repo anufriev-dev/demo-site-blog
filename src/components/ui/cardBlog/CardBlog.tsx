@@ -14,7 +14,7 @@ function CardBlog(props: ICardBlog) {
   return (
     <div className={style.card}>
       <div className={style.card__image}>
-        <Image className={style.image} src={"/uploads/"+ src_img || "/public/assets/blank.jpg"} alt="test" width={"1920"} height={"1080"} />
+        <Image className={style.image} src={`/${process.env["NEXT_PUBLIC_UPLOAD"]}/`+ src_img || "/public/assets/blank.jpg"} alt="test" width={"1920"} height={"1080"} />
       </div>
       <p className={style.card__text}>
         <NextJsActiveLink href={`/blog/${post_id}/${summary}`} classNameProps={style.card__link} name={summary}  />
@@ -27,7 +27,7 @@ function CardBlog(props: ICardBlog) {
           <NextJsActiveLink
             classNameProps={`${style.card__link}
             ${style.card__link_category}`}
-            href={`category/${category}`} name={category}
+            href={`${process.env["NEXT_PUBLIC_CATEGORY"]}${category}`} name={category}
           />
         </span>
         <span className={style.card__bar_comment}>

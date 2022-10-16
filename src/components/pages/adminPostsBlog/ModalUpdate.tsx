@@ -1,4 +1,4 @@
-import { Modal, ButtonSubmit, InputLabel, Label, TextArea } from "src/components"
+import { Modal, ButtonSubmit, InputLabel, Label, TextArea, ButtonFile } from "src/components"
 import { useAdminPostsBlog, useAdminPostsBlogDispatch } from "src/context"
 import { useRefreshData } from "src/hooks"
 import { BlogApi } from "src/http"
@@ -52,10 +52,7 @@ export default function ModalUpdate() {
   return (
     <Modal active={active.change} onActive={handleModalChange} >
       <p className="text">Изменить пост c id = &#34;{post.post_id}&#34;?</p>
-      <input 
-        type="file" 
-        onChange={(e) => dispatch({ type: "post_img", img: e.target.files[0]}) } 
-      />
+      <ButtonFile change={(value) => dispatch({ type: "post_img", img: value }) } />
       <InputLabel 
         state={post.category} 
         setState={(value) => dispatch({ type: "post_category", category: value }) }   

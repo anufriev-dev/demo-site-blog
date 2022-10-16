@@ -1,7 +1,7 @@
 import formidable from "formidable"
 import fs from "fs"
-import { Posts } from "src/model";
-import { createDate, error } from "src/utils";
+import { Posts } from "src/model"
+import { error } from "src/utils"
 
 export const config = {
   api: {
@@ -23,7 +23,7 @@ const post = async (req, res) => {
 
       const result = await Posts.create(category, summary, text, files.img.name )
 
-      if(!result) return error("Error")
+      if(result <= 0) return error("Error")
 
       return res.status(201).send("")
     } catch(e) {
@@ -34,21 +34,13 @@ const post = async (req, res) => {
 
 const saveFile = async (file) => {
   const data = fs.readFileSync(file.path)
-  fs.writeFileSync(`./public/uploads/${file.name}`, data)
+  fs.writeFileSync(`./public/${process.env["NEXT_PUBLIC_UPLOAD"]}/${file.name}`, data)
   await fs.unlinkSync(file.path)
   return true
 };
 
 const createPost = (req, res) => {
-  req.method === "POST"
-    ? post(req, res)
-    : req.method === "PUT"
-    ? console.log("PUT")
-    : req.method === "DELETE"
-    ? console.log("DELETE")
-    : req.method === "GET"
-    ? console.log("GET")
-    : res.status(404).send("")
+  post(req, res)
 };
 
 

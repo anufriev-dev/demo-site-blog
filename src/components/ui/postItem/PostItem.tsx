@@ -21,7 +21,7 @@ export default function PostItem(props: {item: PostDB} ) {
             </Link>
           </div>
           <div className={style.post__img__wrapp}>
-            <Image className={style.post__img} src={`/uploads/${item.src_img}`} alt="" width={1920} height={1080} />
+            <Image className={style.post__img} src={`/${process.env["NEXT_PUBLIC_UPLOAD"]}/${item.src_img}`} alt="" width={1920} height={1080} />
           </div>
           <p className={style.post__text}>{item.text}</p>
         </div>

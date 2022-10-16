@@ -8,7 +8,7 @@ class User {
   async create (email: string, name: string, role: role, pass?: any ): Promise<insert> {
     try {
       await db.query(`
-          INSERT INTO "user" (email, name, role, passwd,date_registration)
+          INSERT INTO "user" (email, name, role, passwd, date_registration)
           VALUES ($1, $2, $3, $4, NOW() )
       `,[email, name, defineRole(role), pass])
 

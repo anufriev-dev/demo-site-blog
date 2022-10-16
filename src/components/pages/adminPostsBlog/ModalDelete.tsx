@@ -25,8 +25,8 @@ export default function ModalDelete() {
   const handlerSnack = (value) => {
     dispatch({ type: "snack_handler_delete", value })
   }
-  const handlerSnackClose = (value) => {
-    dispatch({ type: "snack_handler_delete_close", value })
+  const handlerSnackClose = () => {
+    dispatch({ type: "snack_handler_delete_close" })
   }
 
   return (

@@ -64,7 +64,7 @@ export default function AdminPostsBlog(props: IAdminPostsBlog) {
       <td className={`${style.td} ${style.text}`}>{el.text}</td>
       <td className={style.td}>{el.date}</td>
       <td className={`${style.td} ${style.imgTD}`}>
-        <Image src={`/uploads/${el.src_img}`} width={"200"} height={"100"} alt="img"/>
+        <Image src={`/${process.env["NEXT_PUBLIC_UPLOAD"]}/${el.src_img}`} width={"200"} height={"100"} alt="img"/>
       </td>
       <td>
         <ButtonSubmit 

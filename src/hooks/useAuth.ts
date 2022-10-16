@@ -12,10 +12,10 @@ function useAuth () {
   const [isErrorEmail, setErrorEmail] = useState<boolean>(false)
   const [isErrorPass, setErrorPass] = useState<boolean>(false)
 
-  const text: string = "Авторизация на сайте пока не обязательна, но в будующем, будет много фичей"
   useEffect(() => {
+    const text: string = "Авторизация на сайте пока не обязательна, но в будующем, будет много фичей"
     strDelay(text,"auth")
-  }, [text])
+  },[])
 
   const eventForgetPasswd = (e) => {
     e.preventDefault()

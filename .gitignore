@@ -16,11 +16,10 @@ next-env.d.ts
 Pg_Local.session.sql
 
 # other
-docker-compose.yml
-Dockerfile
 
 # ts
 tsconfig.tsbuildinfo
 
 # public
 /public/uploads/*.*
+/public/assets/uploads/*.*

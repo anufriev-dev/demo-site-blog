@@ -62,6 +62,7 @@ import TableRow from "./ui/tableRow"
 import Preloader from "./ui/preloader"
 import Snack from "./ui/snack"
 import Messages from "./pages/messages"
+import ButtonFile from "./ui/buttonFile"
 
 
 export {
@@ -129,4 +130,5 @@ export {
   Preloader,
   Snack,
   Messages,
+  ButtonFile
 }

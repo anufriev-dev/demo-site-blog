@@ -22,7 +22,7 @@ const Login = async (req: NextApiRequest, res: NextApiResponse) => {
 
       const img = await Posts.getPost(id)
 
-      const pathFile = resolve("./public/uploads/"+ img.src_img)
+      const pathFile = resolve(`./public/${process.env["NEXT_PUBLIC_UPLOAD"]}/`+ img.src_img)
 
       if(fs.existsSync(pathFile)) {
         fs.unlinkSync(pathFile)

@@ -22,9 +22,9 @@ function Login() {
             </TextWarningForm> }
           
           <InputLabel 
-            setState={setEmail} 
-            state={email}  
-            id={"emailId"} text={"E-mail"} 
+            setState={setEmail}
+            state={email}
+            id={"emailId"} text={"E-mail"}
           />
           { isErrorPass && 
             <TextWarningForm>

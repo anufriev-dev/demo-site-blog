@@ -81,6 +81,7 @@ function apbReducer(state, action) {
       return {
         ...state,
         post: {
+          ...state.post,
           post_id: action.id
         },
         active: {

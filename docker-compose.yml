@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  db:
+    container_name: db
+    image: postgres:14.5-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=0000
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=blog
+    ports:
+      - 5433:5432
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql # загружаем дамп в db
+      - db:/var/lib/postgresql/data
+  next:
+    build: ./
+    restart: always
+    container_name: next
+    ports:
+      - 3000:3000
+
+volumes:
+  db:
