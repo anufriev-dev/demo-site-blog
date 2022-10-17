@@ -21,5 +21,5 @@ Pg_Local.session.sql
 tsconfig.tsbuildinfo
 
 # public
-/public/uploads/*.*
-/public/assets/uploads/*.*
+# /public/uploads/*.*
+# /public/assets/uploads/*.*

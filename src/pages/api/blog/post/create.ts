@@ -33,20 +33,18 @@ const post = async (req, res) => {
       return res.status(400).send("")
     }
   })
-};
+}
 
-const saveFile = async (file) => {
+const saveFile = (file) => {
   const data = fs.readFileSync(file.path)
-
   fs.writeFileSync(path.join(cwd(), "public",`${process.env["NEXT_PUBLIC_UPLOAD"]}`,`${file.name}`), data)
-
-  await fs.unlinkSync(file.path)
+  fs.unlinkSync(file.path)
   return true
-};
+}
 
 const createPost = (req, res) => {
   post(req, res)
-};
+}
 
 
 export default createPost
