@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const posts = await Posts.getPosts()
 
   if(role === "ADMIN") {
-    return { props: { posts } }
+    return { props: JSON.parse(JSON.stringify({ posts })) }
   }
   return { props: {} ,redirect: { destination: "/" } }
 }

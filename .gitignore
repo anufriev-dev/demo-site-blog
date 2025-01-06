@@ -22,4 +22,4 @@ tsconfig.tsbuildinfo
 
 # public
 # /public/uploads/*.*
-# /public/assets/uploads/*.*
+/public/assets/uploads/*.*

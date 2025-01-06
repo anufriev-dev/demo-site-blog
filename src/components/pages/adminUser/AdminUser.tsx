@@ -12,58 +12,71 @@ export default function AdminUser(props: IAdminUser) {
 
   const { filterUsers }  = useAdminUser()
   const dispatch = useAdminUserDispatch()
-  
+
   // effects
   useEffect(() => {
-    dispatch({ type: "to_search", payload: users.filter((el) =>
-      Object.entries(el)
-        .toString()
-        .toLowerCase()
-        .includes(state.toLowerCase())
-    ) })
-  },[state, users, dispatch])
+    if (Array.isArray(users)) {
+      dispatch({
+        type: "to_search",
+        payload: users.filter((el) =>
+          Object.entries(el)
+            .toString()
+            .toLowerCase()
+            .includes(state.toLowerCase())
+        )
+      });
+    } else {
+      console.error("Users is not an array:", users);
+    }
+  }, [state, users, dispatch]);
 
   // handles
   function handleDelete(user) {
-    dispatch({ 
+    dispatch({
       type: "active_modal_delete",
-      id: user.id, 
-      name: user.name 
+      id: user.id,
+      name: user.name
     })
   }
 
   function handleChange(user) {
-    dispatch({ 
+    dispatch({
       type: "active_modal_change",
-      id: user.id, 
-      name: user.name, 
-      email: user.email, 
+      id: user.id,
+      name: user.name,
+      email: user.email,
       role: user.role,
     })
   }
 
-  const tableBody = filterUsers.map((user) => (
-    <tr className={style.tr} key={user.id}>
-      <td className={style.td}>{user.id}</td>
-      <td className={style.td}>{user.name}</td>
-      <td className={style.td}>{user.email}</td>
-      <td className={style.td}>{defineRole(user.role)}</td>
-      <td className={style.td}>{"" + new Date(user.date_registration)}</td>
-      <td>
-        <ButtonSubmit 
-          className={`${style.button} ${style.button_delete}`} 
-          text="Удалить" event={() => handleDelete(user) }   
-        />
-      </td>
-      <td>
-        <ButtonSubmit 
-          className={`${style.button} ${style.button_change}`} 
-          text="Изменить" event={() => handleChange(user) } 
-        />
-      </td>
+  const tableBody = Array.isArray(filterUsers) && filterUsers.length > 0 ? (
+    filterUsers.map((user) => (
+      <tr className={style.tr} key={user.id}>
+        <td className={style.td}>{user.id}</td>
+        <td className={style.td}>{user.name}</td>
+        <td className={style.td}>{user.email}</td>
+        <td className={style.td}>{defineRole(user.role)}</td>
+        <td className={style.td}>{"" + new Date(user.date_registration)}</td>
+        <td>
+          <ButtonSubmit
+            className={`${style.button} ${style.button_delete}`}
+            text="Удалить" event={() => handleDelete(user)}
+          />
+        </td>
+        <td>
+          <ButtonSubmit
+            className={`${style.button} ${style.button_change}`}
+            text="Изменить" event={() => handleChange(user)}
+          />
+        </td>
+      </tr>
+    ))
+  ) : (
+    <tr>
+      <td className={style.td}>Нет пользователей</td> {/* Заглушка */}
     </tr>
-  ))
-  
+  );
+
   return (
     <div>
       <Snacks />

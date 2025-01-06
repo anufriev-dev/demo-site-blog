@@ -8,8 +8,9 @@ import styles from "./style.module.scss"
 
 
 export default function DemoCardBlog(props: DemoCardBlogProps ) {
-  const { dataBlog, routherType } = props
-  
+  const { dataBlog = [], routherType } = props
+
+
   const data = useMemo(() => dataBlog.map((item) => (
     <div key={item.post_id} className={styles.wrapp}>
       <h2 className={styles.title}>
@@ -21,9 +22,9 @@ export default function DemoCardBlog(props: DemoCardBlogProps ) {
       </h2>
       <div className={styles.cardBlog}>
         <div className={styles.cardBlog__imgContainer}>
-          <Image  width={1920} height={1080} 
-            className={styles.cardBlog__img} src={`/${process.env["NEXT_PUBLIC_UPLOAD"]}/`+ item.src_img || "/assets/blank.jpg" } 
-            alt={item.summary} 
+          <Image  width={1920} height={1080}
+            className={styles.cardBlog__img} src={`/${process.env["NEXT_PUBLIC_UPLOAD"]}/`+ item.src_img || "/assets/blank.jpg" }
+            alt={item.summary}
           />
         </div>
         <p className={styles.cardBlog__text}>{ toSliceText(item.text) }</p>

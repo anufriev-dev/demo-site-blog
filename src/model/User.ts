@@ -76,9 +76,10 @@ class User {
         SELECT id, email, name, role, date_registration
         FROM "user"
       `)
-
       return await JSON.parse(JSON.stringify(result.rows))
-    } catch(e) { return e }
+    } catch(e) {
+      return e
+    }
   }
 
   async update(id, name, email, role) {

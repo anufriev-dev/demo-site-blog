@@ -2,7 +2,7 @@ import formidable from "formidable"
 import fs from "fs"
 import path from "path"
 import { Posts } from "src/model"
-import { error } from "src/utils"
+import { error, getDate } from "src/utils"
 import { cwd } from "process"
 
 
@@ -20,11 +20,13 @@ const post = async (req, res) => {
 
       const { category, summary, text } = fields
 
-      const isSave = await saveFile(files.img)
+      const fileName =  Date.now() + "-" + files.img.name
+
+      const isSave = await saveFile(files.img, fileName)
 
       if(!isSave) error("Error")
 
-      const result = await Posts.create(category, summary, text, files.img.name )
+      const result = await Posts.create(category, summary, text, fileName )
 
       if(result <= 0) return error("Error")
 
@@ -35,9 +37,9 @@ const post = async (req, res) => {
   })
 }
 
-const saveFile = (file) => {
+const saveFile = (file, fileName) => {
   const data = fs.readFileSync(file.path)
-  fs.writeFileSync(path.join(cwd(), "public",`${process.env["NEXT_PUBLIC_UPLOAD"]}`,`${file.name}`), data)
+  fs.writeFileSync(path.join(cwd(), "public",`${process.env["NEXT_PUBLIC_UPLOAD"]}`,`${fileName}`), data)
   fs.unlinkSync(file.path)
   return true
 }

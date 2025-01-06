@@ -13,7 +13,7 @@ export default function AdminUserPage(props: IAdminUserPage ) {
   const { props: propsLayout } = useLayoutAdmin()
 
   if(!props) return <div>Loading</div>
-  
+
   return (
     <div>
       <LayoutAdmin {...propsLayout} >
@@ -32,10 +32,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const role = defineRole(token?.role as "1"|"2")
 
   const users = await User.get()
-  
-  
+
+
+
   if(role === "ADMIN") {
-    return { props: { users } }
+    return { props: JSON.parse(JSON.stringify({ users })) }
   }
-  return { props: { users: null } ,redirect: { destination: "/" } }
+  return { props: JSON.parse(JSON.stringify({ users: null })) ,redirect: { destination: "/" } }
 }

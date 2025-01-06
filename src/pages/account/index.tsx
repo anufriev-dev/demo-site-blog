@@ -7,6 +7,7 @@ import { User } from "src/model"
 
 
 export default function AccountPage(props: AccountProps & IUser ) {
+
   if(!props) return <div>Loading...</div>
   return (
     <Layout user={props.user}>
@@ -34,7 +35,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const user = await User.get_by_email(token.email)
 
   const props = { date, user: { name: user.name } }
-
 
   return role === "ADMIN"
     ? { props: {

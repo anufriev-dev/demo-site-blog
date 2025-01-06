@@ -10,7 +10,7 @@ import style from "./style.module.scss"
 
 export default function Blog(props: IBlog) {
   const { data, maxPages, currentPage, allPosts } = useBlog(props)
-  
+
   return (
     <>
     {/* Поиск по странице */}

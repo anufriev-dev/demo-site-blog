@@ -6,6 +6,7 @@ import { IBlog, IUser } from "src/types"
 
 
 export default function IndexBlogPage(props: IBlog & IUser) {
+
   if(!props) return null
 
   return (
@@ -35,11 +36,11 @@ export const getServerSideProps: GetServerSideProps = async (context) =>  {
   const user = await User.get_by_email(token.email)
 
   return {
-    props: {
+    props: JSON.parse(JSON.stringify({
       ...props,
       user: {
         name: user.name
       }
-    }
+    }))
   }
 }

@@ -5,11 +5,17 @@ import { IHomePage } from "src/types"
 function Home(props: IHomePage) {
   const { data } = props
 
-  const card = data.map((it) => (
-    <Grid key={it.post_id} xs={12} md={6} lg={4} item>
-      <CardBlog {...it} />
-    </Grid>
-  ))
+
+  const card = Array.isArray(data) && data.length > 0 ? (
+    data.map((it) => (
+      <Grid key={it.post_id} xs={12} md={6} lg={4} item>
+        <CardBlog {...it} />
+      </Grid>
+    ))
+  ) : (
+    ""
+  );
+
 
   return (
     <div>

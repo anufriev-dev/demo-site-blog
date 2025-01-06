@@ -10,7 +10,7 @@ import style from "./style.module.scss"
 
 export default function NewPost () {
   const { refreshData } = useRefreshData()
-  
+
   const { post } = useAdminPostsBlog()
   const dispatch = useAdminPostsBlogDispatch()
 
@@ -20,7 +20,7 @@ export default function NewPost () {
     data.append("summary", post.summary)
     data.append("text", post.text)
     data.append("img", post.img)
-    
+
 
     try {
       await BlogApi.createPost(data)
@@ -28,7 +28,7 @@ export default function NewPost () {
         dispatch({ type: "show_snack_on_add" })
       return
     }
-    
+
     dispatch({ type: "drop_state_form" })
     dispatch({ type: "fetch_create_success" })
     refreshData()
@@ -38,32 +38,32 @@ export default function NewPost () {
     <Container>
       <Snacks key={"snacks"} />
       <h1 className="text-h1">Новый пост</h1>
-      <InputLabel 
-        state={post.category} 
+      <InputLabel
+        state={post.category}
         setState={(value: string) => dispatch({ type: "post_category", category: value })}
-        text="Category" id={"addc"} 
+        text="Category" id={"addc"}
       />
-      <InputLabel  
-        setState={(value: string) => dispatch({ type: "post_summary", summary: value}) } 
+      <InputLabel
+        setState={(value: string) => dispatch({ type: "post_summary", summary: value}) }
         state={post.summary}
         text="Summary" id={"adds"}
       />
       <Label classNames={style.AreaLable} text="Text" id={"textarea-add"} />
-      <TextArea  
-        state={post.text} 
-        setState={(value) => dispatch({ type: "post_text", text: value })} 
+      <TextArea
+        state={post.text}
+        setState={(value) => dispatch({ type: "post_text", text: value })}
         id="addta"
       />
       <ButtonFile change={(value) => dispatch({ type: "post_img", img: value }) } />
 
       <div className={style.newFormButtons}>
-        <ButtonSubmit 
-          className={style.buttonAddPost} 
-          text="Закрыть" event={() => dispatch({ type: "post_new_post"})} 
-        />    
-        <ButtonSubmit 
-          className={`${style.buttonAddPost} ${style.buttonAddPost_closeButton}`} 
-          text="Добавить" event={() => handleCreatePost()} 
+        <ButtonSubmit
+          className={style.buttonAddPost}
+          text="Закрыть" event={() => dispatch({ type: "post_new_post"})}
+        />
+        <ButtonSubmit
+          className={`${style.buttonAddPost} ${style.buttonAddPost_closeButton}`}
+          text="Добавить" event={() => handleCreatePost()}
         />
       </div>
     </Container>
